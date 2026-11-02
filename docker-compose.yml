@@ -1,0 +1,74 @@
+# Sobe um alvo por vez (profiles go, jvm e native). Os três têm limites idênticos.
+x-target: &target
+  cpus: 2
+  mem_limit: 1g
+  memswap_limit: 1g
+  ulimits:
+    nofile: 65535
+  sysctls:
+    net.core.somaxconn: 65535
+    net.ipv4.ip_local_port_range: "1024 65535"
+  depends_on: [mock-api]
+  networks: [bench]
+
+services:
+  mock-api:
+    build: ./mock-api
+    image: bench/mock-api
+    container_name: bench-mock-api
+    cpus: 4
+    mem_limit: 2g
+    environment:
+      DELAY: ${MOCK_DELAY:-5s}
+    # Não pode ser o gargalo: recebe os mesmos ajustes de rede dos alvos.
+    ulimits:
+      nofile: 65535
+    sysctls:
+      net.core.somaxconn: 65535
+    networks: [bench]
+
+  go-fiber:
+    <<: *target
+    profiles: [go]
+    build: ./go-fiber
+    image: bench/go-fiber
+    container_name: bench-go-fiber
+    ports: ["8081:8080"]
+
+  java-jvm:
+    <<: *target
+    profiles: [jvm]
+    build:
+      context: ./java-spring
+      dockerfile: Dockerfile.jvm
+    image: bench/java-jvm
+    container_name: bench-java-jvm
+    ports: ["8082:8080"]
+
+  java-native:
+    <<: *target
+    profiles: [native]
+    build:
+      context: ./java-spring
+      dockerfile: Dockerfile.native
+    image: bench/java-native
+    container_name: bench-java-native
+    ports: ["8083:8080"]
+
+  k6:
+    profiles: [tools]
+    image: grafana/k6:2.3.0
+    cpus: 4
+    # A imagem não roda como root: usa o dono do diretório para gravar em results/.
+    user: "${BENCH_UID:-1000}:${BENCH_GID:-1000}"
+    volumes:
+      - ./loadtest:/scripts:ro
+      - ./results:/results
+    ulimits:
+      nofile: 65535
+    sysctls:
+      net.ipv4.ip_local_port_range: "1024 65535"
+    networks: [bench]
+
+networks:
+  bench:
