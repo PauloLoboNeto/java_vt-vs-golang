@@ -1,0 +1,5 @@
+services:
+  java-native:
+    mem_limit: 2g
+    memswap_limit: 2g
+    command: ["-XX:+PrintGC"]

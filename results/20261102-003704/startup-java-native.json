@@ -1,0 +1,48 @@
+{
+  "target": "java-native",
+  "runs": [
+    {
+      "time_to_ready_ms": 178.96484299990334,
+      "first_io_ms": 8.372400999974161,
+      "idle_mem_bytes": 22818816,
+      "self_reported_ms": 43.0
+    },
+    {
+      "time_to_ready_ms": 161.53180200001316,
+      "first_io_ms": 7.549139999923682,
+      "idle_mem_bytes": 21860352,
+      "self_reported_ms": 43.0
+    },
+    {
+      "time_to_ready_ms": 163.3799100000033,
+      "first_io_ms": 8.122045999925831,
+      "idle_mem_bytes": 22462464,
+      "self_reported_ms": 43.0
+    }
+  ],
+  "image_size_bytes": 131229549,
+  "time_to_ready_ms": {
+    "median": 163.3799100000033,
+    "p90": 178.96484299990334,
+    "min": 161.53180200001316,
+    "max": 178.96484299990334
+  },
+  "first_io_ms": {
+    "median": 8.122045999925831,
+    "p90": 8.372400999974161,
+    "min": 7.549139999923682,
+    "max": 8.372400999974161
+  },
+  "idle_mem_bytes": {
+    "median": 22462464,
+    "p90": 22818816,
+    "min": 21860352,
+    "max": 22818816
+  },
+  "self_reported_ms": {
+    "median": 43.0,
+    "p90": 43.0,
+    "min": 43.0,
+    "max": 43.0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "target_url": "http://java-native:8080/api/io",
+  "vus": 1000,
+  "warmup_s": 30,
+  "duration_s": 180,
+  "window_start_ms": 1793581501161,
+  "window_end_ms": 1793581681161,
+  "requests": 35989,
+  "errors": 0,
+  "errors_transport": 0,
+  "error_rate": 0,
+  "rps": 199.9388888888889,
+  "ideal_rps": 200,
+  "latency_ms": {
+    "avg": 5005.260747054466,
+    "min": 5000.510336,
+    "p50": 5002.378293,
+    "p90": 5004.8660678,
+    "p95": 5006.7426862,
+    "p99": 5076.04663932,
+    "max": 5188.891463
+  },
+  "http_req_blocked_ms": {
+    "p99": 0.14914102000000037,
+    "max": 8.794048
+  },
+  "http_req_connecting_ms": {
+    "p99": 0.10382543000000022,
+    "max": 8.764839
+  }
+}

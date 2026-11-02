@@ -1,0 +1,34 @@
+2026-11-02T02:41:33.045Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting AOT-processed BenchApplication using Java 25.0.4.1.1 with PID 1 (/app started by root in /)
+2026-11-02T02:41:33.045Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+2026-11-02T02:41:33.055Z  INFO 1 --- [java-spring] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-11-02T02:41:33.056Z  INFO 1 --- [java-spring] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-02T02:41:33.056Z  INFO 1 --- [java-spring] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-02T02:41:33.060Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 14 ms
+2026-11-02T02:41:33.075Z  INFO 1 --- [java-spring] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-11-02T02:41:33.075Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 0.039 seconds (process running for 0.043)
+2026-11-02T02:41:33.151Z  INFO 1 --- [java-spring] [omcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T02:41:33.151Z  INFO 1 --- [java-spring] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T02:41:33.151Z  INFO 1 --- [java-spring] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+[1.728s] GC(0) Pause Incremental GC (Collect on allocation) 48.00M->31.50M 36.145ms
+[3.791s] GC(1) Pause Incremental GC (Collect on allocation) 79.50M->73.50M 56.962ms
+[5.619s] GC(2) Pause Incremental GC (Collect on allocation) 121.50M->115.50M 70.807ms
+[8.943s] GC(3) Pause Incremental GC (Collect on allocation) 163.50M->139.50M 83.094ms
+[12.602s] GC(4) Pause Full GC (Collect on allocation) 187.50M->140.50M 193.649ms
+[16.827s] GC(5) Pause Incremental GC (Collect on allocation) 188.50M->157.50M 56.690ms
+[21.226s] GC(6) Pause Incremental GC (Collect on allocation) 205.50M->163.50M 65.392ms
+[25.547s] GC(7) Pause Incremental GC (Collect on allocation) 211.50M->167.00M 64.029ms
+[29.876s] GC(8) Pause Incremental GC (Collect on allocation) 215.00M->170.50M 67.443ms
+[34.242s] GC(9) Pause Incremental GC (Collect on allocation) 218.50M->174.00M 71.121ms
+[38.459s] GC(10) Pause Incremental GC (Collect on allocation) 222.00M->177.50M 76.917ms
+[42.703s] GC(11) Pause Incremental GC (Collect on allocation) 225.50M->181.00M 81.433ms
+[46.948s] GC(12) Pause Incremental GC (Collect on allocation) 229.00M->185.00M 87.469ms
+[51.319s] GC(13) Pause Incremental GC (Collect on allocation) 233.00M->187.50M 79.307ms
+[55.640s] GC(14) Pause Incremental GC (Collect on allocation) 235.50M->191.00M 77.693ms
+[59.976s] GC(15) Pause Incremental GC (Collect on allocation) 239.00M->194.50M 75.949ms
+[64.331s] GC(16) Pause Incremental GC (Collect on allocation) 242.50M->197.50M 76.558ms
+[68.552s] GC(17) Pause Incremental GC (Collect on allocation) 245.50M->201.00M 76.792ms
+[72.802s] GC(18) Pause Incremental GC (Collect on allocation) 249.00M->203.00M 75.322ms
+[77.154s] GC(19) Pause Full GC (Collect on allocation) 251.00M->139.00M 189.373ms
+[81.392s] GC(20) Pause Incremental GC (Collect on allocation) 187.00M->156.00M 56.752ms
+[85.720s] GC(21) Pause Incremental GC (Collect on allocation) 204.00M->161.00M 62.070ms
+[90.049s] GC(22) Pause Incremental GC (Collect on allocation) 209.00M->164.00M 58.017ms
