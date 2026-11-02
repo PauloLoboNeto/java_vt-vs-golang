@@ -1,0 +1,6 @@
+services:
+  java-native:
+    command: ["-XX:+PrintGC"]
+  java-jvm:
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xlog:gc"

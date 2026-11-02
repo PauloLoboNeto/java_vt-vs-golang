@@ -1,0 +1,48 @@
+{
+  "target": "go-fiber",
+  "runs": [
+    {
+      "time_to_ready_ms": 121.48217300000397,
+      "first_io_ms": 5.8560259999467235,
+      "idle_mem_bytes": 3493888,
+      "self_reported_ms": 0.0
+    },
+    {
+      "time_to_ready_ms": 103.0300070000294,
+      "first_io_ms": 6.166953000047215,
+      "idle_mem_bytes": 4857856,
+      "self_reported_ms": 0.0
+    },
+    {
+      "time_to_ready_ms": 108.00182399998448,
+      "first_io_ms": 6.139007000001584,
+      "idle_mem_bytes": 3715072,
+      "self_reported_ms": 0.0
+    }
+  ],
+  "image_size_bytes": 20269052,
+  "time_to_ready_ms": {
+    "median": 108.00182399998448,
+    "p90": 121.48217300000397,
+    "min": 103.0300070000294,
+    "max": 121.48217300000397
+  },
+  "first_io_ms": {
+    "median": 6.139007000001584,
+    "p90": 6.166953000047215,
+    "min": 5.8560259999467235,
+    "max": 6.166953000047215
+  },
+  "idle_mem_bytes": {
+    "median": 3715072,
+    "p90": 4857856,
+    "min": 3493888,
+    "max": 4857856
+  },
+  "self_reported_ms": {
+    "median": 0.0,
+    "p90": 0.0,
+    "min": 0.0,
+    "max": 0.0
+  }
+}

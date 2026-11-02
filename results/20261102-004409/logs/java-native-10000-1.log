@@ -1,0 +1,15 @@
+2026-11-02T00:48:24.098Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting AOT-processed BenchApplication using Java 25.0.4.1.1 with PID 1 (/app started by root in /)
+2026-11-02T00:48:24.098Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+2026-11-02T00:48:24.107Z  INFO 1 --- [java-spring] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-11-02T00:48:24.108Z  INFO 1 --- [java-spring] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-02T00:48:24.108Z  INFO 1 --- [java-spring] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-02T00:48:24.112Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 14 ms
+2026-11-02T00:48:24.127Z  INFO 1 --- [java-spring] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-11-02T00:48:24.128Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 0.039 seconds (process running for 0.043)
+2026-11-02T00:48:24.207Z  INFO 1 --- [java-spring] [omcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T00:48:24.207Z  INFO 1 --- [java-spring] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T00:48:24.207Z  INFO 1 --- [java-spring] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-11-02T00:48:31.067Z ERROR 1 --- [java-spring] [at-handler-6979] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Handler dispatch failed: java.lang.OutOfMemoryError: Garbage-collected heap size exceeded. Consider increasing the maximum Java heap size, for example with '-Xmx'.] with root cause
+
+java.lang.OutOfMemoryError: Garbage-collected heap size exceeded. Consider increasing the maximum Java heap size, for example with '-Xmx'.
+

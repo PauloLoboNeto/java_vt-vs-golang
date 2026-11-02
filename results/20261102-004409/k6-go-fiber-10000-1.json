@@ -1,0 +1,31 @@
+{
+  "target_url": "http://go-fiber:8080/api/io",
+  "vus": 10000,
+  "warmup_s": 30,
+  "duration_s": 60,
+  "window_start_ms": 1793580317648,
+  "window_end_ms": 1793580377648,
+  "requests": 119963,
+  "errors": 0,
+  "errors_transport": 0,
+  "error_rate": 0,
+  "rps": 1999.3833333333334,
+  "ideal_rps": 2000,
+  "latency_ms": {
+    "avg": 5001.102617951225,
+    "min": 5000.099145,
+    "p50": 5001.092548,
+    "p90": 5001.6341098,
+    "p95": 5001.776551399999,
+    "p99": 5002.05878372,
+    "max": 5010.414152
+  },
+  "http_req_blocked_ms": {
+    "p99": 0.13566398999999985,
+    "max": 60.422219
+  },
+  "http_req_connecting_ms": {
+    "p99": 0.09331314999999989,
+    "max": 17.704933
+  }
+}

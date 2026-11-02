@@ -1,0 +1,117 @@
+2026-11-02T02:44:49.156Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting AOT-processed BenchApplication using Java 25.0.4.1.1 with PID 1 (/app started by root in /)
+2026-11-02T02:44:49.156Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+2026-11-02T02:44:49.165Z  INFO 1 --- [java-spring] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-11-02T02:44:49.166Z  INFO 1 --- [java-spring] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-02T02:44:49.166Z  INFO 1 --- [java-spring] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-02T02:44:49.170Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 14 ms
+2026-11-02T02:44:49.185Z  INFO 1 --- [java-spring] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-11-02T02:44:49.186Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 0.039 seconds (process running for 0.043)
+2026-11-02T02:44:49.265Z  INFO 1 --- [java-spring] [omcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T02:44:49.265Z  INFO 1 --- [java-spring] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T02:44:49.265Z  INFO 1 --- [java-spring] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+[1.213s] GC(0) Pause Incremental GC (Collect on allocation) 48.00M->31.50M 36.720ms
+[1.611s] GC(1) Pause Incremental GC (Collect on allocation) 79.50M->73.50M 53.799ms
+[1.974s] GC(2) Pause Incremental GC (Collect on allocation) 121.50M->116.00M 68.362ms
+[2.471s] GC(3) Pause Full GC (Collect on allocation) 164.00M->158.00M 167.850ms
+[2.720s] GC(4) Pause Incremental GC (Collect on allocation) 206.00M->200.00M 37.657ms
+[3.145s] GC(5) Pause Incremental GC (Collect on allocation) 248.00M->242.50M 68.537ms
+[3.527s] GC(6) Pause Incremental GC (Collect on allocation) 290.50M->284.50M 87.788ms
+[3.884s] GC(7) Pause Incremental GC (Collect on allocation) 332.50M->328.00M 91.905ms
+[4.508s] GC(8) Pause Full GC (Collect on allocation) 376.00M->369.50M 336.708ms
+[4.567s] GC(9) Pause Incremental GC (Collect on allocation) 417.50M->411.50M 40.293ms
+[4.968s] GC(10) Pause Incremental GC (Collect on allocation) 459.50M->454.00M 68.747ms
+[5.391s] GC(11) Pause Incremental GC (Collect on allocation) 502.00M->496.00M 86.536ms
+[5.787s] GC(12) Pause Incremental GC (Collect on allocation) 544.00M->537.50M 104.463ms
+[6.238s] GC(13) Pause Incremental GC (Collect on allocation) 585.50M->574.50M 122.414ms
+[6.904s] GC(14) Pause Incremental GC (Collect on allocation) 622.50M->598.00M 147.996ms
+[8.111s] GC(15) Pause Full GC (Collect on allocation) 646.00M->607.50M 623.553ms
+[8.188s] GC(16) Pause Incremental GC (Collect on allocation) 655.50M->637.00M 45.377ms
+[8.419s] GC(17) Pause Incremental GC (Collect on allocation) 685.00M->670.50M 73.573ms
+[9.083s] GC(18) Pause Incremental GC (Collect on allocation) 718.50M->694.50M 107.446ms
+[9.743s] GC(19) Pause Incremental GC (Collect on allocation) 742.50M->719.00M 130.542ms
+[10.459s] GC(20) Pause Incremental GC (Collect on allocation) 767.00M->743.50M 158.090ms
+[11.154s] GC(21) Pause Incremental GC (Collect on allocation) 791.50M->767.50M 184.749ms
+[12.134s] GC(22) Pause Incremental GC (Collect on allocation) 815.50M->783.50M 220.017ms
+[13.359s] GC(23) Pause Incremental GC (Collect on allocation) 831.50M->809.00M 237.885ms
+[13.614s] GC(24) Pause Incremental GC (Collect on allocation) 857.00M->822.50M 214.971ms
+[14.426s] GC(25) Pause Full GC (Collect on allocation) 870.50M->698.50M 802.698ms
+[14.529s] GC(26) Pause Incremental GC (Collect on allocation) 751.50M->724.00M 51.549ms
+[14.620s] GC(27) Pause Incremental GC (Collect on allocation) 777.00M->770.50M 77.406ms
+[15.334s] GC(28) Pause Incremental GC (Collect on allocation) 829.00M->790.50M 128.737ms
+[16.412s] GC(29) Pause Incremental GC (Collect on allocation) 849.00M->811.50M 152.557ms
+[17.421s] GC(30) Pause Incremental GC (Collect on allocation) 870.00M->833.50M 188.560ms
+[19.707s] GC(31) Pause Incremental GC (Collect on allocation) 892.00M->853.50M 219.173ms
+[19.960s] GC(32) Pause Incremental GC (Collect on allocation) 912.00M->859.00M 207.318ms
+[20.199s] GC(33) Pause Incremental GC (Collect on allocation) 917.50M->876.00M 216.483ms
+[20.454s] GC(34) Pause Incremental GC (Collect on allocation) 934.50M->900.00M 213.792ms
+[21.127s] GC(35) Pause Incremental GC (Collect on allocation) 958.50M->913.00M 221.905ms
+[22.942s] GC(36) Pause Full GC (Collect on allocation) 971.50M->695.50M 757.016ms
+[24.542s] GC(37) Pause Incremental GC (Collect on allocation) 754.00M->728.00M 66.941ms
+[25.329s] GC(38) Pause Incremental GC (Collect on allocation) 786.50M->755.00M 107.167ms
+[25.605s] GC(39) Pause Incremental GC (Collect on allocation) 813.50M->788.50M 136.287ms
+[25.828s] GC(40) Pause Incremental GC (Collect on allocation) 847.00M->808.00M 158.405ms
+[26.015s] GC(41) Pause Incremental GC (Collect on allocation) 866.50M->863.00M 176.890ms
+[26.275s] GC(42) Pause Incremental GC (Collect on allocation) 927.50M->914.00M 236.290ms
+[27.000s] GC(43) Pause Incremental GC (Collect on allocation) 978.50M->938.00M 243.411ms
+[30.393s] GC(44) Pause Full GC (Collect on allocation) 1002.50M->710.00M 827.438ms
+[30.509s] GC(45) Pause Incremental GC (Collect on allocation) 774.50M->741.50M 62.496ms
+[30.618s] GC(46) Pause Incremental GC (Collect on allocation) 806.00M->799.50M 92.706ms
+[31.450s] GC(47) Pause Incremental GC (Collect on allocation) 870.50M->836.00M 153.735ms
+[31.706s] GC(48) Pause Incremental GC (Collect on allocation) 907.00M->866.50M 187.537ms
+[31.970s] GC(49) Pause Incremental GC (Collect on allocation) 937.50M->907.50M 214.608ms
+[35.796s] GC(50) Pause Incremental GC (Collect on allocation) 978.50M->932.50M 263.158ms
+[36.110s] GC(51) Pause Incremental GC (Collect on allocation) 1003.50M->961.50M 258.287ms
+[36.764s] GC(52) Pause Incremental GC (Collect on allocation) 1032.50M->980.50M 265.898ms
+[37.072s] GC(53) Pause Incremental GC (Collect on allocation) 1051.50M->985.50M 236.040ms
+[37.916s] GC(54) Pause Full GC (Collect on allocation) 1056.50M->704.00M 826.885ms
+[38.046s] GC(55) Pause Incremental GC (Collect on allocation) 782.50M->761.00M 77.213ms
+[40.990s] GC(56) Pause Incremental GC (Collect on allocation) 839.50M->795.50M 145.783ms
+[41.371s] GC(57) Pause Incremental GC (Collect on allocation) 874.00M->829.00M 170.087ms
+[41.593s] GC(58) Pause Incremental GC (Collect on allocation) 907.50M->898.50M 204.783ms
+[43.262s] GC(59) Pause Incremental GC (Collect on allocation) 985.00M->931.50M 275.218ms
+[43.585s] GC(60) Pause Incremental GC (Collect on allocation) 1018.00M->970.50M 264.633ms
+[46.286s] GC(61) Pause Incremental GC (Collect on allocation) 1057.00M->1019.00M 284.546ms
+[46.931s] GC(62) Pause Incremental GC (Collect on allocation) 1105.50M->1053.00M 284.834ms
+[47.857s] GC(63) Pause Full GC (Collect on allocation) 1139.50M->691.50M 890.086ms
+[48.727s] GC(64) Pause Incremental GC (Collect on allocation) 778.00M->739.00M 103.004ms
+[48.945s] GC(65) Pause Incremental GC (Collect on allocation) 825.50M->789.50M 151.940ms
+[51.540s] GC(66) Pause Incremental GC (Collect on allocation) 876.00M->825.00M 211.100ms
+[53.143s] GC(67) Pause Incremental GC (Collect on allocation) 911.50M->880.00M 240.095ms
+[53.487s] GC(68) Pause Incremental GC (Collect on allocation) 966.50M->915.00M 275.171ms
+[54.321s] GC(69) Pause Incremental GC (Collect on allocation) 1001.50M->934.00M 248.352ms
+[54.627s] GC(70) Pause Incremental GC (Collect on allocation) 1020.50M->995.00M 274.520ms
+[56.857s] GC(71) Pause Incremental GC (Collect on allocation) 1081.50M->1038.50M 295.564ms
+[58.822s] GC(72) Pause Incremental GC (Collect on allocation) 1125.00M->1071.50M 286.367ms
+[59.151s] GC(73) Pause Incremental GC (Collect on allocation) 1158.00M->1130.00M 287.120ms
+[60.038s] GC(74) Pause Incremental GC (Collect on allocation) 1216.50M->1146.50M 296.013ms
+[60.951s] GC(75) Pause Full GC (Collect on allocation) 1233.00M->695.50M 878.892ms
+[61.407s] GC(76) Pause Incremental GC (Collect on allocation) 782.00M->764.50M 87.812ms
+[64.360s] GC(77) Pause Incremental GC (Collect on allocation) 851.00M->797.50M 174.167ms
+[64.606s] GC(78) Pause Incremental GC (Collect on allocation) 884.00M->848.00M 193.283ms
+[66.283s] GC(79) Pause Incremental GC (Collect on allocation) 934.50M->865.50M 244.618ms
+[66.560s] GC(80) Pause Incremental GC (Collect on allocation) 952.00M->911.00M 239.696ms
+[66.877s] GC(81) Pause Incremental GC (Collect on allocation) 997.50M->977.00M 280.853ms
+[69.921s] GC(82) Pause Incremental GC (Collect on allocation) 1063.50M->1000.50M 271.773ms
+[70.245s] GC(83) Pause Incremental GC (Collect on allocation) 1087.00M->1062.00M 280.023ms
+[70.582s] GC(84) Pause Incremental GC (Collect on allocation) 1148.50M->1124.00M 293.143ms
+[72.186s] GC(85) Pause Incremental GC (Collect on allocation) 1210.50M->1157.50M 303.395ms
+[72.548s] GC(86) Pause Incremental GC (Collect on allocation) 1244.00M->1202.50M 297.501ms
+[75.932s] GC(87) Pause Full GC (Collect on allocation) 1289.00M->713.00M 660.253ms
+[76.131s] GC(88) Pause Incremental GC (Collect on allocation) 799.50M->748.50M 108.045ms
+[76.801s] GC(89) Pause Incremental GC (Collect on allocation) 835.00M->793.50M 169.786ms
+[77.810s] GC(90) Pause Incremental GC (Collect on allocation) 880.00M->831.00M 220.184ms
+[81.225s] GC(91) Pause Incremental GC (Collect on allocation) 917.50M->873.50M 268.658ms
+[81.537s] GC(92) Pause Incremental GC (Collect on allocation) 960.00M->869.50M 228.059ms
+[81.833s] GC(93) Pause Incremental GC (Collect on allocation) 956.00M->923.50M 267.891ms
+[82.168s] GC(94) Pause Incremental GC (Collect on allocation) 1010.00M->966.00M 280.686ms
+[82.862s] GC(95) Pause Incremental GC (Collect on allocation) 1052.50M->1026.50M 294.505ms
+[83.197s] GC(96) Pause Incremental GC (Collect on allocation) 1113.00M->1076.50M 269.504ms
+[86.518s] GC(97) Pause Incremental GC (Collect on allocation) 1163.00M->1133.50M 285.207ms
+[87.573s] GC(98) Pause Incremental GC (Collect on allocation) 1220.00M->1155.00M 274.787ms
+[87.879s] GC(99) Pause Incremental GC (Collect on allocation) 1241.50M->1207.00M 255.660ms
+[88.486s] GC(100) Pause Full GC (Collect on allocation) 1293.50M->694.50M 585.772ms
+[88.579s] GC(101) Pause Incremental GC (Collect on allocation) 781.00M->775.00M 76.506ms
+[88.835s] GC(102) Pause Incremental GC (Collect on allocation) 870.50M->823.50M 154.840ms
+[89.043s] GC(103) Pause Incremental GC (Collect on allocation) 919.00M->905.00M 181.481ms
+[93.146s] GC(104) Pause Incremental GC (Collect on allocation) 1000.50M->957.50M 236.522ms
+[94.274s] GC(105) Pause Incremental GC (Collect on allocation) 1053.00M->959.50M 195.065ms

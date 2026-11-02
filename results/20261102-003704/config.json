@@ -1,0 +1,8 @@
+{
+  "WARMUP": "30",
+  "DURATION": "60",
+  "TARGETS": "go-fiber java-jvm java-native",
+  "LEVELS": "1000",
+  "REPS": "1",
+  "STARTUP_RUNS": "3"
+}
