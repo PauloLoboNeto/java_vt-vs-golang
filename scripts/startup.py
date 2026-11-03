@@ -16,6 +16,13 @@ TARGETS = {
     "go-fiber": ("go", 8081),
     "java-jvm": ("jvm", 8082),
     "java-native": ("native", 8083),
+    "rust-axum": ("rust", 8084),
+    "go-fiber-opt": ("go-opt", 8085),
+    "java-jvm-opt": ("jvm-opt", 8086),
+    "java-native-opt": ("native-opt", 8087),
+    "rust-axum-opt": ("rust-opt", 8088),
+    "java-native-g1": ("native-g1", 8089),
+    "java-jvm-zgc": ("jvm-zgc", 8090),
 }
 READY_TIMEOUT_S = 60
 

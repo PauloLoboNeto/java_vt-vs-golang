@@ -1,16 +1,24 @@
 #!/usr/bin/env bash
-# Executa uma rodada de carga: load.sh <alvo> <vus> <rep> <dir>, com dir dentro de results/.
+# Executa uma rodada de carga: load.sh <alvo> <nivel> <rep> <dir>, com dir dentro de results/.
+# O nível é o número de VUs ou, com MODE=rate, a taxa em req/s.
 set -uo pipefail
 
 TARGET=$1 VUS=$2 REP=$3 DIR=$4
 cd "$(dirname "$0")/.."
-export VUS WARMUP="${WARMUP:-30}" DURATION="${DURATION:-180}"
+export VUS WARMUP="${WARMUP:-30}" DURATION="${DURATION:-180}" MODE="${MODE:-vus}"
 export BENCH_UID="$(id -u)" BENCH_GID="$(id -g)"
 
 case "$TARGET" in
   go-fiber)    PROFILE=go;     PORT=8081 ;;
   java-jvm)    PROFILE=jvm;    PORT=8082 ;;
   java-native) PROFILE=native; PORT=8083 ;;
+  rust-axum)   PROFILE=rust;   PORT=8084 ;;
+  go-fiber-opt)    PROFILE=go-opt;     PORT=8085 ;;
+  java-jvm-opt)    PROFILE=jvm-opt;    PORT=8086 ;;
+  java-native-opt) PROFILE=native-opt; PORT=8087 ;;
+  rust-axum-opt)   PROFILE=rust-opt;   PORT=8088 ;;
+  java-native-g1)  PROFILE=native-g1;  PORT=8089 ;;
+  java-jvm-zgc)    PROFILE=jvm-zgc;    PORT=8090 ;;
   *) echo "alvo desconhecido: $TARGET" >&2; exit 2 ;;
 esac
 
@@ -45,7 +53,7 @@ for pair in "$CONTAINER:$TARGET" "bench-mock-api:mock-api" "bench-k6:k6"; do
 done
 
 docker compose --profile tools run --rm -T --no-deps --name bench-k6 \
-  -e TARGET_URL="http://$TARGET:8080/api/io" -e VUS -e WARMUP -e DURATION \
+  -e TARGET_URL="http://$TARGET:8080/api/io" -e VUS -e WARMUP -e DURATION -e MODE \
   -e OUT="/$DIR/k6-$TAG.json" \
   k6 run --quiet /scripts/io.js 2>&1 | tee "$DIR/logs/k6-$TAG.log"
 K6_STATUS=${PIPESTATUS[0]}

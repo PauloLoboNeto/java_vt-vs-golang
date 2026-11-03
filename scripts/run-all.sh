@@ -3,13 +3,14 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
-TARGETS="${TARGETS:-go-fiber java-jvm java-native}"
+TARGETS="${TARGETS:-go-fiber java-jvm java-native rust-axum}"
 LEVELS="${LEVELS:-1000 5000 10000}"
 REPS="${REPS:-3}"
 WARMUP="${WARMUP:-30}"
 DURATION="${DURATION:-180}"
 STARTUP_RUNS="${STARTUP_RUNS:-10}"
-export WARMUP DURATION
+MODE="${MODE:-vus}"
+export WARMUP DURATION MODE
 export BENCH_UID="$(id -u)" BENCH_GID="$(id -g)"
 
 TS="$(date -u +%Y%m%d-%H%M%S)"
@@ -39,6 +40,13 @@ for t in $TARGETS; do
     go-fiber) profiles+=(--profile go) ;;
     java-jvm) profiles+=(--profile jvm) ;;
     java-native) profiles+=(--profile native) ;;
+    rust-axum) profiles+=(--profile rust) ;;
+    go-fiber-opt) profiles+=(--profile go-opt) ;;
+    java-jvm-opt) profiles+=(--profile jvm-opt) ;;
+    java-native-opt) profiles+=(--profile native-opt) ;;
+    rust-axum-opt) profiles+=(--profile rust-opt) ;;
+    java-native-g1) profiles+=(--profile native-g1) ;;
+    java-jvm-zgc) profiles+=(--profile jvm-zgc) ;;
     *) echo "alvo desconhecido: $t" >&2; exit 2 ;;
   esac
 done
@@ -56,13 +64,14 @@ import dockerapi
 d = sys.argv[1]
 json.dump({"info": dockerapi.info(), "version": dockerapi.version()},
           open(f"{d}/docker-info.json", "w"), indent=2)
-json.dump({k: os.environ[k] for k in ("WARMUP", "DURATION")} | {
+json.dump({k: os.environ[k] for k in ("WARMUP", "DURATION", "MODE")} | {
     "TARGETS": os.environ["CFG_TARGETS"], "LEVELS": os.environ["CFG_LEVELS"],
     "REPS": os.environ["CFG_REPS"], "STARTUP_RUNS": os.environ["CFG_STARTUP_RUNS"],
 }, open(f"{d}/config.json", "w"), indent=2)
 PY
 
-for t in $TARGETS; do
+# STARTUP_RUNS=0 pula a medição de startup, que não depende do modo de carga.
+[ "$STARTUP_RUNS" -gt 0 ] && for t in $TARGETS; do
   echo "== startup: $t"
   python3 scripts/startup.py "$t" "$STARTUP_RUNS" "$DIR/startup-$t.json" || \
     echo "startup falhou: $t" | tee -a "$DIR/failures.log"
@@ -83,7 +92,7 @@ for ((rep = 1; rep <= REPS; rep++)); do
   done
 done
 
-docker compose --profile go --profile jvm --profile native --profile tools down >/dev/null 2>&1
+docker compose --profile go --profile jvm --profile native --profile rust --profile go-opt --profile jvm-opt --profile native-opt --profile rust-opt --profile native-g1 --profile jvm-zgc --profile tools down >/dev/null 2>&1
 
 # Sem matplotlib o relatório sai só com as tabelas.
 PY=python3

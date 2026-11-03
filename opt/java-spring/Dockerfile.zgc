@@ -1,0 +1,14 @@
+# Mesmo código e mesma JVM do alvo otimizado, com ZGC no lugar do G1.
+FROM maven:3.10.0-eclipse-temurin-27 AS build
+WORKDIR /src
+COPY pom.xml ./
+RUN mvn -q -B dependency:go-offline
+COPY src ./src
+RUN mvn -q -B -DskipTests package
+
+FROM eclipse-temurin:27-jre
+WORKDIR /opt/app
+COPY --from=build /src/target/app.jar /tmp/app.jar
+RUN java -Djarmode=tools -jar /tmp/app.jar extract --destination /opt/app && rm /tmp/app.jar
+RUN java -XX:+UseZGC -XX:+UseCompactObjectHeaders -XX:AOTCacheOutput=/opt/app/app.aot -Dspring.context.exit=onRefresh -jar /opt/app/app.jar
+ENTRYPOINT ["java","-XX:MaxRAMPercentage=60","-XX:+UseZGC","-XX:+UseCompactObjectHeaders","-XX:AOTCache=/opt/app/app.aot","-XX:+PrintCommandLineFlags","-jar","/opt/app/app.jar"]

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Gera report.md, report.html e charts/*.png: generate.py <dir>. Sem matplotlib, só tabelas."""
+"""Gera report.md, report.html e charts/*.png: generate.py <dir> [referências...].
+
+As referências são rodadas anteriores, usadas só para os alvos ausentes em <dir>. Elas entram nas
+tabelas e gráficos dos comparativos, mas não nas seções de sanidade e de rodadas. Sem matplotlib, só tabelas.
+"""
 import base64
 import csv
 import glob
@@ -21,11 +25,30 @@ TARGETS = {
     "go-fiber": {"label": "Go (Fiber)", "short": "Go", "color": "#2a78d6"},
     "java-jvm": {"label": "Java JVM (JDK 27)", "short": "JVM", "color": "#eb6834"},
     "java-native": {"label": "Java Native Image (JDK 25)", "short": "Native", "color": "#1baf7a"},
+    "rust-axum": {"label": "Rust (Axum)", "short": "Rust", "color": "#8e5bd0"},
+    "go-fiber-opt": {"label": "Go (Fiber) otimizado", "short": "Go opt", "color": "#0f3f86"},
+    "java-jvm-opt": {"label": "Java JVM otimizado", "short": "JVM opt", "color": "#9c3c13"},
+    "java-native-opt": {"label": "Java Native Image otimizado", "short": "Native opt", "color": "#0c6b49"},
+    "rust-axum-opt": {"label": "Rust (Axum) otimizado", "short": "Rust opt", "color": "#552a8c"},
+    "java-jvm-zgc": {"label": "Java JVM otimizado com ZGC", "short": "JVM ZGC", "color": "#d9a400"},
+    "java-native-g1": {"label": "Java Native otimizado com G1 (Oracle)", "short": "Native G1", "color": "#39a0a8"},
 }
 COMPARISONS = [
     ("A", "Go vs Java na JVM", "go-fiber", "java-jvm"),
     ("B", "Go vs Java em Native Image", "go-fiber", "java-native"),
+    ("C", "Go vs Rust", "go-fiber", "rust-axum"),
+    ("D", "Go: padrão vs otimizado", "go-fiber", "go-fiber-opt"),
+    ("E", "JVM: padrão vs otimizado", "java-jvm", "java-jvm-opt"),
+    ("F", "Native: padrão vs otimizado", "java-native", "java-native-opt"),
+    ("G", "Rust: padrão vs otimizado", "rust-axum", "rust-axum-opt"),
+    ("H", "Otimizados: Go vs JVM", "go-fiber-opt", "java-jvm-opt"),
+    ("I", "Otimizados: Go vs Native", "go-fiber-opt", "java-native-opt"),
+    ("J", "Otimizados: Go vs Rust", "go-fiber-opt", "rust-axum-opt"),
+    ("K", "JVM otimizada: G1 vs ZGC", "java-jvm-opt", "java-jvm-zgc"),
+    ("L", "Native otimizado: Serial (CE) vs G1 (Oracle)", "java-native-opt", "java-native-g1"),
 ]
+# Nome do nível de carga: VUs ou req/s, conforme o modo da rodada.
+LEVEL = {"name": "VUs", "axis": "VUs simultâneos"}
 BG, INK, MUTED, GRID = "#fcfcfb", "#1f1f1e", "#6b6b68", "#e6e6e2"
 LINE_PT = 1.5  # 2px em 96 dpi
 SATURATION_PCT = 320  # 80% dos 4 vCPU de mock-api e k6
@@ -154,12 +177,14 @@ def load_startup(directory):
 def sanity_flags(rounds):
     flags = []
     for r in rounds:
-        k6, where = r["k6"], f"{TARGETS[r['target']]['short']} {num(r['vus'])} VUs, rep {r['rep']}"
+        k6, where = r["k6"], f"{TARGETS[r['target']]['short']} {num(r['vus'])} {LEVEL['name']}, rep {r['rep']}"
         for name, st in (("mock-api", r["mock"]), ("k6", r["k6_stats"])):
             if st["cpu_avg"] is not None and st["cpu_avg"] > SATURATION_PCT:
                 flags.append((where, f"{name} saturado: CPU média de {num(st['cpu_avg'], 1)}%; a rodada é inválida"))
             elif st["cpu_peak"] is not None and st["cpu_peak"] > SATURATION_PCT:
                 flags.append((where, f"{name} com pico de CPU de {num(st['cpu_peak'], 1)}% (média de {num(st['cpu_avg'], 1)}%)"))
+        if k6.get("dropped_iterations"):
+            flags.append((where, f"{num(k6['dropped_iterations'])} iterações descartadas pelo k6"))
         if k6["errors"] > 0:
             flags.append((where, f"{num(k6['errors'])} erros ({pct(k6['error_rate'])}), "
                                  f"{num(k6.get('errors_transport', 0))} de transporte"))
@@ -215,12 +240,23 @@ def comparisons_with_data(agg):
     return [c for c in COMPARISONS if c[2] in targets and c[3] in targets]
 
 
+def panel_grid(count):
+    """Grade de até 2 colunas, para os gráficos continuarem legíveis com muitos comparativos."""
+    cols = min(2, count)
+    rows = (count + cols - 1) // cols
+    fig, axes = plt.subplots(rows, cols, figsize=(6.2 * cols, 4.2 * rows), facecolor=BG, squeeze=False)
+    flat = [ax for row in axes for ax in row]
+    for ax in flat[count:]:
+        ax.set_visible(False)
+    return fig, flat
+
+
 def metric_chart(agg, key, title, unit, filename, charts_dir, scale=1.0, decimals=0):
     comps = comparisons_with_data(agg)
     if not comps:
         return None
-    fig, axes = plt.subplots(1, len(comps), figsize=(6.2 * len(comps), 4.2), facecolor=BG, squeeze=False)
-    for ax, (cid, cname, *targets) in zip(axes[0], comps):
+    fig, panels = panel_grid(len(comps))
+    for ax, (cid, cname, *targets) in zip(panels, comps):
         style_axes(ax)
         levels = sorted({v for t, v in agg if t in targets})
         xs = list(range(len(levels)))
@@ -241,7 +277,7 @@ def metric_chart(agg, key, title, unit, filename, charts_dir, scale=1.0, decimal
         ax.set_xlim(-0.2, max(xs) + 0.75)
         ax.set_ylim(bottom=0)
         ax.set_ylim(0, ax.get_ylim()[1] * 1.08)
-        ax.set_xlabel("VUs simultâneos", color=MUTED, fontsize=9)
+        ax.set_xlabel(LEVEL["axis"], color=MUTED, fontsize=9)
         ax.set_ylabel(unit, color=MUTED, fontsize=9)
         ax.set_title(f"Comparativo {cid}: {cname}", color=INK, fontsize=10, loc="left")
         ax.legend(frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=2, labelcolor=INK)
@@ -268,13 +304,15 @@ def median_round(rounds, target, vus, metric="mem_peak"):
 
 
 def timeseries_chart(rounds, agg, field, title, unit, filename, charts_dir, scale=1.0, decimals=0):
-    comps = comparisons_with_data(agg)
+    # As séries só existem na rodada atual: referências não têm painel próprio.
+    current = {r["target"] for r in rounds}
+    comps = [c for c in comparisons_with_data(agg) if current & set(c[2:])]
     if not comps:
         return None
     top = max(v for _, v in agg)
-    fig, axes = plt.subplots(1, len(comps), figsize=(6.2 * len(comps), 4.2), facecolor=BG, squeeze=False)
+    fig, panels = panel_grid(len(comps))
     drew = False
-    for ax, (cid, cname, *targets) in zip(axes[0], comps):
+    for ax, (cid, cname, *targets) in zip(panels, comps):
         style_axes(ax)
         labels = []
         warmup, last_x = None, 1
@@ -301,7 +339,7 @@ def timeseries_chart(rounds, agg, field, title, unit, filename, charts_dir, scal
             ax.axvline(warmup, color=MUTED, linewidth=1, linestyle=(0, (4, 3)))
             ax.annotate("fim do warm-up", xy=(warmup, ax.get_ylim()[1] * 0.985), xytext=(4, 0),
                         textcoords="offset points", fontsize=8, color=MUTED, va="top")
-        ax.set_xlabel(f"Segundos desde o início da carga, {num(top)} VUs", color=MUTED, fontsize=9)
+        ax.set_xlabel(f"Segundos desde o início da carga, {num(top)} {LEVEL['name']}", color=MUTED, fontsize=9)
         ax.set_ylabel(unit, color=MUTED, fontsize=9)
         ax.set_title(f"Comparativo {cid}: {cname}", color=INK, fontsize=10, loc="left")
         ax.legend(frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=2, labelcolor=INK)
@@ -320,12 +358,12 @@ def startup_chart(startup, charts_dir):
     order = [t for t in TARGETS if t in startup][::-1]
     panels = [("time_to_ready_ms", "Tempo até ficar pronto (ms)", 1.0, 0),
               ("idle_mem_bytes", "Memória parada (MiB)", 1 / MIB, 1)]
-    fig, axes = plt.subplots(1, 2, figsize=(11, 2.9), facecolor=BG)
+    fig, axes = plt.subplots(1, 2, figsize=(11, 1.6 + 0.65 * len(order)), facecolor=BG)
     for ax, (key, title, scale, decimals) in zip(axes, panels):
         style_axes(ax)
         ax.grid(axis="y", visible=False)
         ax.grid(axis="x", color=GRID, linewidth=0.75)
-        ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: num(v)))
+        ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: num(v, 0 if v == int(v) else 1)))
         values = [startup[t][key]["median"] * scale for t in order]
         positions = list(range(len(order)))
         bars = ax.barh(positions, values, height=0.55, color=[TARGETS[t]["color"] for t in order])
@@ -338,8 +376,8 @@ def startup_chart(startup, charts_dir):
         ax.set_title(f"{title}, mediana", color=INK, fontsize=10, loc="left")
     handles = [plt.Rectangle((0, 0), 1, 1, color=TARGETS[t]["color"]) for t in order[::-1]]
     fig.legend(handles, [TARGETS[t]["label"] for t in order[::-1]], frameon=False, fontsize=8.5,
-               loc="lower center", ncol=3, labelcolor=INK)
-    fig.tight_layout(rect=(0, 0.1, 1, 1))
+               loc="lower center", ncol=min(4, len(order)), labelcolor=INK)
+    fig.tight_layout(rect=(0, 0.16 if len(order) > 4 else 0.1, 1, 1))
     fig.savefig(os.path.join(charts_dir, "startup.png"), dpi=150, facecolor=BG)
     plt.close(fig)
     return "startup.png"
@@ -399,17 +437,21 @@ def resource_rows(agg, startup, targets):
     return rows
 
 
-LAT_HEAD = ["VUs", "Alvo", "req/s real", "req/s ideal", "Erros", "p50 (ms)", "p90 (ms)", "p99 (ms)", "max (ms)", "Overhead p99 (ms)"]
-RES_HEAD = ["VUs", "Alvo", "Memória parada (MiB)", "Memória média (MiB)", "Memória pico (MiB)", "CPU média (%)", "CPU pico (%)", "CPU-s por 1.000 req", "OOM kill", "OOM de heap"]
+LAT_HEAD = ["Nível", "Alvo", "req/s real", "req/s ideal", "Erros", "p50 (ms)", "p90 (ms)", "p99 (ms)", "max (ms)", "Overhead p99 (ms)"]
+RES_HEAD = ["Nível", "Alvo", "Memória parada (MiB)", "Memória média (MiB)", "Memória pico (MiB)", "CPU média (%)", "CPU pico (%)", "CPU-s por 1.000 req", "OOM kill", "OOM de heap"]
 
 
 def build_blocks(directory, rounds, agg, startup, charts):
-    b = [("h1", "Benchmark de I/O: Java com virtual threads vs Go com Fiber")]
+    b = [("h1", "Benchmark de I/O: Java com virtual threads, Go com Fiber e Rust com Axum")]
+    if LEVEL["name"] != "VUs":
+        b.append(("p", "**Carga por taxa:** o nível é a taxa em req/s, constante mesmo se o alvo ficar lento (k6 `constant-arrival-rate`)."))
+    else:
+        b.append(("p", "**Carga por VUs:** o nível é o número de usuários virtuais simultâneos."))
     b.append(("p", "Cada requisição chama uma API externa com 5s de latência fixa e devolve a resposta, sem trabalho de CPU "
                    "no handler. Os valores são a **mediana das repetições**, restritos à janela medida (sem warm-up). "
                    "CPU em % de 1 core, com máximo de 200%. CPU-s por 1.000 requisições conta só respostas 200. "
                    "O traço indica ausência de dado: nenhuma resposta 200 ou alvo já encerrado na janela. "
-                   "O Native Image usa JDK 25, e a variante JVM usa JDK 27."))
+                   "O Native Image usa JDK 25, e a variante JVM usa JDK 27, quando presentes nesta rodada."))
 
     env = environment_rows(directory)
     if env:
@@ -436,8 +478,8 @@ def build_blocks(directory, rounds, agg, startup, charts):
         b.append(("table", ["Alvo", "Pronto, mediana (ms)", "Pronto, p90 (ms)", "Autodeclarado (ms)", "1ª requisição (ms além dos 5s)",
                             "Memória parada (MiB)", "Imagem (MB)", "Execuções"], rows))
         b.append(("p", "O tempo até ficar pronto é medido de fora, do start do container até o primeiro `/health` com 200, e "
-                       "inclui o custo do Docker. O tempo autodeclarado do Go parte de uma variável de pacote e não inclui o "
-                       "início do runtime, por isso não é comparável ao do Java."))
+                       "inclui o custo do Docker. Os tempos autodeclarados do Go e do Rust partem do código do programa e não "
+                       "incluem o início do runtime, por isso não são comparáveis ao do Java."))
         if charts.get("startup"):
             b.append(("img", charts["startup"], "Barras de startup: tempo até ficar pronto e memória parada por alvo"))
 
@@ -456,6 +498,10 @@ def build_blocks(directory, rounds, agg, startup, charts):
             if charts.get(key):
                 b.append(("img", charts[key], alt))
 
+    if len(sys.argv) > 2:
+        b.append(("p", "Os alvos ausentes nesta rodada vêm das rodadas de referência: "
+                       + ", ".join(f"`{os.path.basename(p.rstrip('/'))}`" for p in sys.argv[2:])
+                       + ". As seções abaixo cobrem só a rodada atual."))
     b.append(("h2", "Sanidade do ambiente"))
     flags = sanity_flags(rounds)
     failures = os.path.join(directory, "failures.log")
@@ -474,7 +520,7 @@ def build_blocks(directory, rounds, agg, startup, charts):
             for r in sorted(rounds, key=lambda r: (r["vus"], r["target"], r["rep"]))]
     if rows:
         b.append(("h3", "Consumo de mock-api e k6 por rodada"))
-        b.append(("table", ["VUs", "Alvo", "Rep", "mock-api CPU média (%)", "mock-api CPU pico (%)", "k6 CPU média (%)", "k6 CPU pico (%)", "k6 memória pico (MiB)"], rows))
+        b.append(("table", ["Nível", "Alvo", "Rep", "mock-api CPU média (%)", "mock-api CPU pico (%)", "k6 CPU média (%)", "k6 CPU pico (%)", "k6 memória pico (MiB)"], rows))
 
     rows = [[num(r["vus"]), TARGETS[r["target"]]["short"], num(r["rep"]), num(r["k6"]["requests"]), num(r["k6"]["rps"], 1),
              num(r["k6"]["errors"]), num(r["k6"]["latency_ms"]["p50"], 1), num(r["k6"]["latency_ms"]["p99"], 1), num(r["k6"]["latency_ms"]["max"], 1),
@@ -484,7 +530,7 @@ def build_blocks(directory, rounds, agg, startup, charts):
             for r in sorted(rounds, key=lambda r: (r["vus"], r["target"], r["rep"]))]
     if rows:
         b.append(("h2", "Todas as rodadas"))
-        b.append(("table", ["VUs", "Alvo", "Rep", "Requisições", "req/s", "Erros", "p50 (ms)", "p99 (ms)", "max (ms)", "Mem. média (MiB)", "Mem. pico (MiB)",
+        b.append(("table", ["Nível", "Alvo", "Rep", "Requisições", "req/s", "Erros", "p50 (ms)", "p99 (ms)", "max (ms)", "Mem. média (MiB)", "Mem. pico (MiB)",
                             "CPU média (%)", "CPU-s/1.000", "Blocked p99 (ms)", "Blocked max (ms)", "OOM"], rows))
     return b
 
@@ -614,8 +660,17 @@ def to_html(blocks, charts_dir):
 def main():
     directory = sys.argv[1]
     rounds = load_rounds(directory)
+    if any(r["k6"].get("mode") == "rate" for r in rounds):
+        LEVEL.update(name="req/s", axis="Taxa de chegada (req/s)")
     agg = aggregate(rounds)
     startup = load_startup(directory)
+    # Sem sobrescrever a rodada atual: referências só preenchem alvos ausentes.
+    for reference in sys.argv[2:]:
+        for key, value in aggregate(load_rounds(reference)).items():
+            if key[0] not in {t for t, _ in aggregate(rounds)}:
+                agg.setdefault(key, value)
+        for target, value in load_startup(reference).items():
+            startup.setdefault(target, value)
     charts_dir = os.path.join(directory, "charts")
     charts = make_charts(rounds, agg, startup, charts_dir)
     blocks = build_blocks(directory, rounds, agg, startup, charts)
