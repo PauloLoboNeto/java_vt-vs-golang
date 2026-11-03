@@ -1,0 +1,3 @@
+ Container bench-k6 Creating 
+ Container bench-k6 Created 
+alvo=http://go-fiber:8080/api/io vus=100 reqs=18000 erros=0 rps=100.0/100 descartadas=0 p50=5001.092708 p99=5001.95166202 max=5002.336224

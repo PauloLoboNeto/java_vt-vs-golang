@@ -1,0 +1,16 @@
+# A variante -ol9 usa glibc 2.34, compatível com o distroless Debian 12 (2.36).
+FROM ghcr.io/graalvm/native-image-community:25i4-25.0.4.1.1-ol9 AS build
+# A imagem da GraalVM não traz Maven: copiamos o de uma imagem oficial.
+COPY --from=maven:3.10.0-eclipse-temurin-25 /usr/share/maven /usr/share/maven
+ENV PATH="/usr/share/maven/bin:${PATH}"
+WORKDIR /src
+COPY pom.xml ./
+COPY src ./src
+RUN mvn -q -B -Pnative -DskipTests native:compile
+
+FROM gcr.io/distroless/base-debian12
+COPY --from=build /src/target/java-spring /app
+# O binário liga dinamicamente à libz, ausente tanto no distroless base quanto
+# no cc. Trazemos só essa biblioteca do builder.
+COPY --from=build /usr/lib64/libz.so.1 /usr/lib/x86_64-linux-gnu/libz.so.1
+ENTRYPOINT ["/app"]

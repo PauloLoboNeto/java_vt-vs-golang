@@ -1,0 +1,16 @@
+-XX:+AOTAdapterCaching -XX:AOTCache=/opt/app/app.aot -XX:-AOTInvokeDynamicLinking -XX:-AOTRecordTraining -XX:+AOTReplayTraining -XX:+AOTStubCaching -XX:InitialHeapSize=6815736 -XX:MaxHeapSize=644245094 -XX:MaxRAMPercentage=60.000000 -XX:MinHeapSize=6815736 -XX:+PrintCommandLineFlags -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:-THPStackMitigation -XX:+UseCompactObjectHeaders -XX:-UseCompressedOops -XX:+UseZGC -XX:ZOldGCThreads=1 -XX:ZYoungGCThreads=1 
+2026-11-02T23:34:50.958Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting BenchApplication v1.0.0 using Java 27 with PID 1 (/opt/app/app.jar started by root in /opt/app)
+2026-11-02T23:34:50.959Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+2026-11-02T23:34:51.459Z  INFO 1 --- [java-spring] [           main] o.s.b.j.s.JettyServletWebServerFactory   : Server initialized with port: 8080
+2026-11-02T23:34:51.460Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : jetty-12.1.14; built: 2026-10-02T05:48:05.032Z; git: 15cecbd757a2f6b0fdc6a8944f4c6d0020b17da0; jvm 27+35
+2026-11-02T23:34:51.465Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 483 ms
+2026-11-02T23:34:51.472Z  INFO 1 --- [java-spring] [           main] o.e.j.session.DefaultSessionIdManager    : Session workerName=node0
+2026-11-02T23:34:51.473Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.handler.ContextHandler  : Started osbjs.JettyEmbeddedWebAppContext@3b94d659{application,/,b=file:///tmp/jetty-docbase.8080.12282330121398864531/,a=AVAILABLE,h=oeje11s.SessionHandler@24b1d79b{STARTED}}
+2026-11-02T23:34:51.474Z  INFO 1 --- [java-spring] [           main] o.e.j.e.servlet.ServletContextHandler    : Started osbjs.JettyEmbeddedWebAppContext@3b94d659{application,/,b=file:///tmp/jetty-docbase.8080.12282330121398864531/,a=AVAILABLE,h=oeje11s.SessionHandler@24b1d79b{STARTED}}
+2026-11-02T23:34:51.474Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : Started oejs.Server@68ceda24{STARTING}[12.1.14,sto=0] @14ms
+2026-11-02T23:34:51.666Z  INFO 1 --- [java-spring] [           main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T23:34:51.666Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T23:34:51.667Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-02T23:34:51.673Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.AbstractConnector       : Started oejs.ServerConnector@38c5cc4c{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-11-02T23:34:51.674Z  INFO 1 --- [java-spring] [           main] o.s.boot.jetty.JettyWebServer            : Jetty started on port 8080 (http/1.1) with context path '/'
+2026-11-02T23:34:51.678Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 0.834 seconds (process running for 0.973)

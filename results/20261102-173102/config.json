@@ -1,0 +1,8 @@
+{
+  "WARMUP": "30",
+  "DURATION": "180",
+  "TARGETS": "go-fiber rust-axum",
+  "LEVELS": "1000 5000 10000",
+  "REPS": "3",
+  "STARTUP_RUNS": "10"
+}

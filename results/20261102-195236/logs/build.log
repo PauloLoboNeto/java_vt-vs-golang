@@ -1,0 +1,412 @@
+--progress is a global compose flag, better use `docker compose --progress xx build ...
+ Image bench/java-jvm-zgc Building 
+ Image bench/java-jvm-opt Building 
+ Image bench/java-native-opt Building 
+ Image bench/rust-axum-opt Building 
+ Image bench/go-fiber-opt Building 
+ Image bench/mock-api Building 
+ Image bench/java-native-g1 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.80kB done
+#1 DONE 0.0s
+
+#2 [go-fiber-opt internal] load build definition from Dockerfile
+#2 transferring dockerfile: 420B done
+#2 DONE 0.0s
+
+#3 [java-jvm-zgc internal] load build definition from Dockerfile.zgc
+#3 transferring dockerfile: 782B done
+#3 DONE 0.0s
+
+#4 [rust-axum-opt internal] load build definition from Dockerfile
+#4 transferring dockerfile: 529B done
+#4 DONE 0.0s
+
+#5 [java-native-g1 internal] load build definition from Dockerfile.native-g1
+#5 transferring dockerfile: 807B done
+#5 DONE 0.0s
+
+#6 [mock-api internal] load build definition from Dockerfile
+#6 transferring dockerfile: 255B done
+#6 DONE 0.0s
+
+#7 [java-jvm-opt internal] load build definition from Dockerfile.jvm
+#7 transferring dockerfile: 767B done
+#7 DONE 0.1s
+
+#8 [go-fiber-opt internal] load metadata for docker.io/library/golang:1.27.3
+#8 DONE 0.1s
+
+#9 [java-native-opt internal] load build definition from Dockerfile.native
+#9 transferring dockerfile: 796B done
+#9 DONE 0.1s
+
+#10 [rust-axum-opt internal] load metadata for docker.io/library/rust:1.99.1-slim-bookworm
+#10 DONE 0.1s
+
+#11 [java-native-opt internal] load metadata for ghcr.io/graalvm/native-image-community:25i4-25.0.4.1.1-ol9
+#11 DONE 0.0s
+
+#12 [java-native-g1 internal] load metadata for container-registry.oracle.com/graalvm/native-image:25-ol9
+#12 DONE 0.1s
+
+#13 [java-native-g1 internal] load metadata for docker.io/library/maven:3.10.0-eclipse-temurin-25
+#13 DONE 0.1s
+
+#14 [java-jvm-opt internal] load metadata for docker.io/library/maven:3.10.0-eclipse-temurin-27
+#14 DONE 0.2s
+
+#15 [java-jvm-opt internal] load metadata for docker.io/library/eclipse-temurin:27-jre
+#15 DONE 0.2s
+
+#16 [java-native-opt internal] load .dockerignore
+#16 transferring context: 48B done
+#16 DONE 0.0s
+
+#17 [java-native-g1 internal] load build context
+#17 DONE 0.0s
+
+#18 [go-fiber-opt internal] load metadata for gcr.io/distroless/static-debian12:latest
+#18 DONE 0.3s
+
+#19 [rust-axum-opt internal] load metadata for gcr.io/distroless/cc-debian12:latest
+#19 DONE 0.2s
+
+#20 [java-jvm-opt stage-1 1/5] FROM docker.io/library/eclipse-temurin:27-jre@sha256:0dd0465f90d398fa3226b56a3973f5d3c47ac323934dceebdab45ac8910bee6e
+#20 resolve docker.io/library/eclipse-temurin:27-jre@sha256:0dd0465f90d398fa3226b56a3973f5d3c47ac323934dceebdab45ac8910bee6e 0.1s done
+#20 DONE 0.1s
+
+#21 [java-jvm-opt build 1/6] FROM docker.io/library/maven:3.10.0-eclipse-temurin-27@sha256:bd2c0a2c430f787b7b6887826b6b1a43fe48f1e3ca4196b9ab886567bf54de58
+#21 resolve docker.io/library/maven:3.10.0-eclipse-temurin-27@sha256:bd2c0a2c430f787b7b6887826b6b1a43fe48f1e3ca4196b9ab886567bf54de58 0.1s done
+#21 DONE 0.1s
+
+#22 [go-fiber-opt internal] load .dockerignore
+#22 transferring context: 2B done
+#22 DONE 0.0s
+
+#23 [java-native-opt internal] load metadata for gcr.io/distroless/base-debian12:latest
+#23 DONE 0.2s
+
+#24 [mock-api internal] load .dockerignore
+#24 transferring context: 2B done
+#24 DONE 0.0s
+
+#25 [rust-axum-opt internal] load .dockerignore
+#25 transferring context: 47B done
+#25 DONE 0.0s
+
+#26 [go-fiber-opt internal] load build context
+#26 DONE 0.0s
+
+#27 [mock-api internal] load build context
+#27 DONE 0.0s
+
+#28 [rust-axum-opt internal] load build context
+#28 DONE 0.0s
+
+#17 [java-native-opt internal] load build context
+#17 transferring context: 486B done
+#17 DONE 0.0s
+
+#29 [java-jvm-opt stage-1 5/5] RUN java -XX:+UseCompactObjectHeaders -XX:AOTCacheOutput=/opt/app/app.aot -Dspring.context.exit=onRefresh -jar /opt/app/app.jar
+#29 CACHED
+
+#30 [java-jvm-opt stage-1 3/5] COPY --from=build /src/target/app.jar /tmp/app.jar
+#30 CACHED
+
+#31 [java-jvm-opt build 2/6] WORKDIR /src
+#31 CACHED
+
+#32 [java-jvm-opt build 3/6] COPY pom.xml ./
+#32 CACHED
+
+#33 [java-jvm-opt build 4/6] RUN mvn -q -B dependency:go-offline
+#33 CACHED
+
+#34 [java-jvm-opt stage-1 2/5] WORKDIR /opt/app
+#34 CACHED
+
+#35 [java-jvm-opt build 5/6] COPY src ./src
+#35 CACHED
+
+#36 [java-jvm-opt build 6/6] RUN mvn -q -B -DskipTests package
+#36 CACHED
+
+#37 [java-jvm-opt stage-1 4/5] RUN java -Djarmode=tools -jar /tmp/app.jar extract --destination /opt/app && rm /tmp/app.jar
+#37 CACHED
+
+#38 [java-jvm-opt] exporting to image
+#38 exporting layers done
+#38 exporting manifest sha256:394b21782bfe1c8535445a36aac1a77de280c60b2087938d177c606ee0c6a792 0.0s done
+#38 exporting config sha256:e57cd83e9960031a795e38773f1db301513571badfd54f2dc363d4175540468f 0.0s done
+#38 ...
+
+#39 [go-fiber-opt stage-1 1/2] FROM gcr.io/distroless/static-debian12:latest@sha256:d75cdd72874d4790092fcb1b058493ecf6bb5bf2b2b897045b00ff01d91843f2
+#39 resolve gcr.io/distroless/static-debian12:latest@sha256:d75cdd72874d4790092fcb1b058493ecf6bb5bf2b2b897045b00ff01d91843f2 0.1s done
+#39 DONE 0.1s
+
+#40 [java-native-g1 stage-1 1/3] FROM gcr.io/distroless/cc-debian12:latest@sha256:e5d81ddde149641e2a9ba55be4545bc125c67de07508b03ba4c22e6eb0ded5aa
+#40 resolve gcr.io/distroless/cc-debian12:latest@sha256:e5d81ddde149641e2a9ba55be4545bc125c67de07508b03ba4c22e6eb0ded5aa 0.1s done
+#40 DONE 0.1s
+
+#41 [java-native-g1] FROM docker.io/library/maven:3.10.0-eclipse-temurin-25@sha256:9d329e21adce7c0cc53f2fd21e73c127a247c73287b8503196136ec5cff52328
+#41 resolve docker.io/library/maven:3.10.0-eclipse-temurin-25@sha256:9d329e21adce7c0cc53f2fd21e73c127a247c73287b8503196136ec5cff52328 0.1s done
+#41 DONE 0.1s
+
+#42 [java-native-g1 build 1/6] FROM container-registry.oracle.com/graalvm/native-image:25-ol9@sha256:0f64c4643bd9531afaf00fbeeaec8c3fd9b6410ca2e82bb0f7081c130bc0d2be
+#42 resolve container-registry.oracle.com/graalvm/native-image:25-ol9@sha256:0f64c4643bd9531afaf00fbeeaec8c3fd9b6410ca2e82bb0f7081c130bc0d2be 0.1s done
+#42 DONE 0.1s
+
+#43 [mock-api build 1/6] FROM docker.io/library/golang:1.27.3@sha256:2920bb124f1a2e12a1d39f0cab756ae0068441ee1da7655dec7f5e374944095b
+#43 resolve docker.io/library/golang:1.27.3@sha256:2920bb124f1a2e12a1d39f0cab756ae0068441ee1da7655dec7f5e374944095b 0.1s done
+#43 DONE 0.1s
+
+#44 [java-native-opt build 1/6] FROM ghcr.io/graalvm/native-image-community:25i4-25.0.4.1.1-ol9@sha256:603a9397a4803115708ec69d19bb3d161187cfb6d394010bf707d1e84ed8a146
+#44 resolve ghcr.io/graalvm/native-image-community:25i4-25.0.4.1.1-ol9@sha256:603a9397a4803115708ec69d19bb3d161187cfb6d394010bf707d1e84ed8a146 0.1s done
+#44 DONE 0.1s
+
+#45 [java-native-opt stage-1 1/3] FROM gcr.io/distroless/base-debian12:latest@sha256:fabbf1c0c357a3d42550111351daed089b20a2c954df13ee2fcff60602515e84
+#45 resolve gcr.io/distroless/base-debian12:latest@sha256:fabbf1c0c357a3d42550111351daed089b20a2c954df13ee2fcff60602515e84 0.1s done
+#45 DONE 0.1s
+
+#46 [rust-axum-opt build 1/5] FROM docker.io/library/rust:1.99.1-slim-bookworm@sha256:24707e70a4f1e23d9a7b25202ec43126d28a52294b96aad5c670df1fd1f1d400
+#46 resolve docker.io/library/rust:1.99.1-slim-bookworm@sha256:24707e70a4f1e23d9a7b25202ec43126d28a52294b96aad5c670df1fd1f1d400 0.1s done
+#46 DONE 0.2s
+
+#47 [java-native-opt build 3/6] WORKDIR /src
+#47 CACHED
+
+#48 [java-native-opt stage-1 2/3] COPY --from=build /src/target/java-spring /app
+#48 CACHED
+
+#49 [java-native-opt build 5/6] COPY src ./src
+#49 CACHED
+
+#50 [java-native-opt build 4/6] COPY pom.xml ./
+#50 CACHED
+
+#51 [java-native-opt build 6/6] RUN mvn -q -B -Pnative -DskipTests native:compile
+#51 CACHED
+
+#52 [java-native-opt build 2/6] COPY --from=maven:3.10.0-eclipse-temurin-25 /usr/share/maven /usr/share/maven
+#52 CACHED
+
+#53 [java-native-g1 build 6/6] RUN mvn -q -B -Pnative -DskipTests native:compile
+#53 CACHED
+
+#54 [java-native-g1 build 5/6] COPY src ./src
+#54 CACHED
+
+#55 [java-native-g1 build 3/6] WORKDIR /src
+#55 CACHED
+
+#56 [java-native-g1 build 2/6] COPY --from=maven:3.10.0-eclipse-temurin-25 /usr/share/maven /usr/share/maven
+#56 CACHED
+
+#57 [java-native-g1 build 4/6] COPY pom.xml ./
+#57 CACHED
+
+#58 [java-native-g1 stage-1 2/3] COPY --from=build /src/target/java-spring /app
+#58 CACHED
+
+#59 [java-native-opt stage-1 3/3] COPY --from=build /usr/lib64/libz.so.1 /usr/lib/x86_64-linux-gnu/libz.so.1
+#59 CACHED
+
+#60 [java-native-g1 stage-1 3/3] COPY --from=build /usr/lib64/libz.so.1 /usr/lib/x86_64-linux-gnu/libz.so.1
+#60 CACHED
+
+#27 [mock-api internal] load build context
+#27 transferring context: 54B done
+#27 DONE 0.0s
+
+#28 [rust-axum-opt internal] load build context
+#28 transferring context: 116B done
+#28 DONE 0.0s
+
+#26 [go-fiber-opt internal] load build context
+#26 transferring context: 81B done
+#26 DONE 0.0s
+
+#38 [java-jvm-opt] exporting to image
+#38 exporting attestation manifest sha256:b520e2caad26518956d14c0e2d76d48f3ccaeb9018934558f77bf98cc1b81cbe 0.0s done
+#38 exporting manifest list sha256:23b2f5a0336cfb1dbcd9f603a8f756537d03a0c6ffb2371d2849bcfcfa6e144e
+#38 exporting manifest list sha256:23b2f5a0336cfb1dbcd9f603a8f756537d03a0c6ffb2371d2849bcfcfa6e144e 0.0s done
+#38 naming to docker.io/bench/java-jvm-opt:latest 0.0s done
+#38 unpacking to docker.io/bench/java-jvm-opt:latest 0.0s done
+#38 DONE 0.2s
+
+#61 [mock-api build 4/4] RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /app .
+#61 CACHED
+
+#62 [mock-api build 3/4] COPY go.mod main.go ./
+#62 CACHED
+
+#63 [mock-api stage-1 2/2] COPY --from=build /app /app
+#63 CACHED
+
+#64 [rust-axum-opt build 5/5] RUN cargo build --release --locked
+#64 CACHED
+
+#65 [rust-axum-opt build 4/5] COPY src ./src
+#65 CACHED
+
+#66 [rust-axum-opt build 2/5] WORKDIR /src
+#66 CACHED
+
+#67 [rust-axum-opt build 3/5] COPY Cargo.toml Cargo.lock ./
+#67 CACHED
+
+#68 [rust-axum-opt stage-1 2/2] COPY --from=build /src/target/release/rust-axum /app
+#68 CACHED
+
+#69 [go-fiber-opt build 4/6] RUN go mod download
+#69 CACHED
+
+#70 [go-fiber-opt build 6/6] RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /app .
+#70 CACHED
+
+#71 [go-fiber-opt build 5/6] COPY main.go ./
+#71 CACHED
+
+#72 [go-fiber-opt build 2/6] WORKDIR /src
+#72 CACHED
+
+#73 [go-fiber-opt build 3/6] COPY go.mod go.sum ./
+#73 CACHED
+
+#74 [go-fiber-opt stage-1 2/2] COPY --from=build /app /app
+#74 CACHED
+
+#75 [rust-axum-opt] exporting to image
+#75 exporting layers done
+#75 exporting manifest sha256:5d8c890eb11af995fa8f9c1465b8d4d0bbe1d1d6a031e45c7e63cc114cd6f772 0.0s done
+#75 exporting config sha256:0ca7788b651415fd56d0d0907219e16acbe8eaa51437d122c080f171d3811faa 0.0s done
+#75 exporting attestation manifest sha256:ddba84188e63519986e4034caaf628d28f2a404b093de916a2595fe8c1f44235
+#75 exporting attestation manifest sha256:ddba84188e63519986e4034caaf628d28f2a404b093de916a2595fe8c1f44235 0.1s done
+#75 exporting manifest list sha256:fe5d2181869f9fb8d5011e9755c4a6a0ade772073d2c5a8d4852404977ede7fe 0.0s done
+#75 naming to docker.io/bench/rust-axum-opt:latest 0.0s done
+#75 unpacking to docker.io/bench/rust-axum-opt:latest
+#75 unpacking to docker.io/bench/rust-axum-opt:latest 0.0s done
+#75 DONE 0.3s
+
+#76 [java-native-opt] exporting to image
+#76 exporting layers done
+#76 exporting manifest sha256:8e8af530deb5bbaf20bade6859a7704927a30305c1d964609e65efee31574138 0.0s done
+#76 exporting config sha256:1ec8a47f7c3cbfb96eeaa814d2556aea99a17e9db48f7539de73aef14448f284 0.0s done
+#76 exporting attestation manifest sha256:5fdedd6a9f6ccd0407b4be51c035ad821c4162505029afe0c6844018ee3dd254 0.1s done
+#76 exporting manifest list sha256:71ef0e325962832052b40819e8b13a4b36c051f3c972f0ad2dd323298739a6f0 0.1s done
+#76 naming to docker.io/bench/java-native-opt:latest 0.0s done
+#76 unpacking to docker.io/bench/java-native-opt:latest 0.0s done
+#76 DONE 0.4s
+
+#77 [mock-api] exporting to image
+#77 exporting layers done
+#77 exporting manifest sha256:877a8bb86d9b8ec1cfb4e38b0d863e676df71a2cf21faa510f4f7d5053556368 done
+#77 exporting config sha256:c8ebec5da56a56fcfbbfdfb89877e1a41b34bc2017b0828b36892c71fe992bf6 0.0s done
+#77 exporting attestation manifest sha256:5e24f079e9a3402064be7829d842fdd143f5e9920032b99b958c47ccfe924387 0.1s done
+#77 exporting manifest list sha256:25ff7ffbdd31ed9936b44a5ccad0a78677cbe319a502911da15903755ace695f 0.1s done
+#77 naming to docker.io/bench/mock-api:latest 0.0s done
+#77 unpacking to docker.io/bench/mock-api:latest 0.0s done
+#77 DONE 0.3s
+
+#78 [go-fiber-opt] exporting to image
+#78 exporting layers done
+#78 exporting manifest sha256:94ab637d4b34222ec77a9a2bdc33e06c13ff830b41d84ef6810b7043622cf9d7 0.0s done
+#78 exporting config sha256:b5256b55c73d394b04c0d532c35afdf71f5bbd0e26ad2d8a617005cf30725921 0.0s done
+#78 exporting attestation manifest sha256:f4821eaa6559f005d686ec6888879179d6c66369550cd2701cc0ef6b97fab7ca 0.1s done
+#78 exporting manifest list sha256:f549ef141ad4a598b3fef3218cab4cb8ba3fddcce425de83d1f326e6cec9f076 0.0s done
+#78 naming to docker.io/bench/go-fiber-opt:latest 0.0s done
+#78 unpacking to docker.io/bench/go-fiber-opt:latest 0.0s done
+#78 DONE 0.3s
+
+#79 [java-native-g1] exporting to image
+#79 exporting layers done
+#79 exporting manifest sha256:17d5edd5d8fbfdc6a7a19ee45b12ede23d2ce78dabd2c6e37a8240a9c6aeceab 0.0s done
+#79 exporting config sha256:3e6c4351e7b5cf5e1b6740b6539acb50f284c8dcebc20c1efe04203515690768 0.0s done
+#79 exporting attestation manifest sha256:12d52ef3a82de0afb8ba2e02f79ee3437c7970798cf5331dbabda41f3a15c2b8 0.1s done
+#79 exporting manifest list sha256:cfbb25bbb2cfd952ecf0c0c38aff5b5c020cae46fba28b892a06a35f46b767d8 0.1s done
+#79 naming to docker.io/bench/java-native-g1:latest 0.0s done
+#79 unpacking to docker.io/bench/java-native-g1:latest
+#79 ...
+
+#80 [rust-axum-opt] resolving provenance for metadata file
+#80 DONE 0.1s
+
+#81 [java-native-opt] resolving provenance for metadata file
+#81 DONE 0.1s
+
+#82 [java-jvm-opt] resolving provenance for metadata file
+#82 DONE 0.1s
+
+#83 [go-fiber-opt] resolving provenance for metadata file
+#83 DONE 0.0s
+
+#84 [mock-api] resolving provenance for metadata file
+#84 DONE 0.0s
+
+#85 [java-jvm-zgc stage-1 5/5] RUN java -XX:+UseZGC -XX:+UseCompactObjectHeaders -XX:AOTCacheOutput=/opt/app/app.aot -Dspring.context.exit=onRefresh -jar /opt/app/app.jar
+#85 1.027 [0.817s][warning][aot] class org/springframework/core/type/classreading/ClassFileMetadataReaderFactory cannot be archived because it was not defined from /opt/app/lib/spring-core-7.0.10.jar as claimed
+#85 1.046 2026-11-02T19:52:38.312Z  INFO 7 --- [java-spring] [           main] bench.BenchApplication                   : Starting BenchApplication v1.0.0 using Java 27 with PID 7 (/opt/app/app.jar started by root in /opt/app)
+#85 1.047 2026-11-02T19:52:38.317Z  INFO 7 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+#85 1.159 [0.950s][warning][aot] class org/springframework/core/type/classreading/ClassFileMetadataReader cannot be archived because it was not defined from /opt/app/lib/spring-core-7.0.10.jar as claimed
+#85 ...
+
+#79 [java-native-g1] exporting to image
+#79 unpacking to docker.io/bench/java-native-g1:latest 0.7s done
+#79 DONE 1.1s
+
+#85 [java-jvm-zgc stage-1 5/5] RUN java -XX:+UseZGC -XX:+UseCompactObjectHeaders -XX:AOTCacheOutput=/opt/app/app.aot -Dspring.context.exit=onRefresh -jar /opt/app/app.jar
+#85 1.160 [0.950s][warning][aot] class org/springframework/core/type/classreading/ClassFileAnnotationMetadata cannot be archived because it was not defined from /opt/app/lib/spring-core-7.0.10.jar as claimed
+#85 1.160 [0.951s][warning][aot] class org/springframework/core/type/classreading/ClassFileAnnotationMetadata$Builder cannot be archived because it was not defined from /opt/app/lib/spring-core-7.0.10.jar as claimed
+#85 1.165 [0.955s][warning][aot] class org/springframework/core/type/classreading/ClassFileMethodMetadata cannot be archived because it was not defined from /opt/app/lib/spring-core-7.0.10.jar as claimed
+#85 1.166 [0.956s][warning][aot] class org/springframework/core/type/classreading/ClassFileMethodMetadata$Source cannot be archived because it was not defined from /opt/app/lib/spring-core-7.0.10.jar as claimed
+#85 1.169 [0.960s][warning][aot] class org/springframework/core/type/classreading/ClassFileAnnotationDelegate cannot be archived because it was not defined from /opt/app/lib/spring-core-7.0.10.jar as claimed
+#85 1.171 [0.961s][warning][aot] class org/springframework/core/type/classreading/ClassFileAnnotationDelegate$Source cannot be archived because it was not defined from /opt/app/lib/spring-core-7.0.10.jar as claimed
+#85 ...
+
+#86 [java-native-g1] resolving provenance for metadata file
+#86 DONE 0.0s
+
+#85 [java-jvm-zgc stage-1 5/5] RUN java -XX:+UseZGC -XX:+UseCompactObjectHeaders -XX:AOTCacheOutput=/opt/app/app.aot -Dspring.context.exit=onRefresh -jar /opt/app/app.jar
+#85 2.018 2026-11-02T19:52:39.287Z  INFO 7 --- [java-spring] [           main] o.s.b.j.s.JettyServletWebServerFactory   : Server initialized with port: 8080
+#85 2.024 2026-11-02T19:52:39.293Z  INFO 7 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : jetty-12.1.14; built: 2026-10-02T05:48:05.032Z; git: 15cecbd757a2f6b0fdc6a8944f4c6d0020b17da0; jvm 27+35
+#85 2.048 2026-11-02T19:52:39.318Z  INFO 7 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 945 ms
+#85 2.107 2026-11-02T19:52:39.376Z  INFO 7 --- [java-spring] [           main] o.e.j.session.DefaultSessionIdManager    : Session workerName=node0
+#85 2.113 2026-11-02T19:52:39.382Z  INFO 7 --- [java-spring] [           main] o.e.jetty.server.handler.ContextHandler  : Started osbjs.JettyEmbeddedWebAppContext@1b4c5a43{application,/,b=file:///tmp/jetty-docbase.8080.257165201003046125/,a=AVAILABLE,h=oeje11s.SessionHandler@32d71775{STARTED}}
+#85 2.113 2026-11-02T19:52:39.383Z  INFO 7 --- [java-spring] [           main] o.e.j.e.servlet.ServletContextHandler    : Started osbjs.JettyEmbeddedWebAppContext@1b4c5a43{application,/,b=file:///tmp/jetty-docbase.8080.257165201003046125/,a=AVAILABLE,h=oeje11s.SessionHandler@32d71775{STARTED}}
+#85 2.114 2026-11-02T19:52:39.383Z  INFO 7 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : Started oejs.Server@1c3077c5{STARTING}[12.1.14,sto=0] @91ms
+#85 2.530 [2.320s][warning][aot] Preload Warning: Verification failed for org.springframework.core.ReactiveAdapterRegistry$ReactorAdapter because a java.lang.NoClassDefFoundError was thrown: reactor/core/CorePublisher
+#85 2.599 [2.389s][warning][aot] Preload Warning: Verification failed for org.springframework.boot.logging.log4j2.Log4J2LoggingSystem because a java.lang.NoClassDefFoundError was thrown: org/apache/logging/log4j/core/Filter
+#85 2.629 [2.419s][warning][aot] Preload Warning: Verification failed for org.springframework.web.servlet.view.freemarker.FreeMarkerView because a java.lang.NoClassDefFoundError was thrown: freemarker/core/ParseException
+#85 2.726 [2.517s][warning][aot] Skipping org/springframework/web/servlet/view/freemarker/FreeMarkerView: Failed verification
+#85 2.734 [2.524s][warning][aot] Skipping org/springframework/core/ReactiveAdapterRegistry$ReactorAdapter: Failed verification
+#85 2.779 [2.569s][warning][aot] Skipping org/springframework/boot/logging/log4j2/Log4J2LoggingSystem: Failed verification
+#85 4.182 Temporary AOTConfiguration recorded: /opt/app/app.aot.config
+#85 4.182 Launching child process /opt/java/openjdk/bin/java to assemble AOT cache /opt/app/app.aot using configuration /opt/app/app.aot.config
+#85 4.187 Picked up JAVA_TOOL_OPTIONS: -Djava.class.path=/opt/app/app.jar -XX:+UseZGC -XX:+UseCompactObjectHeaders -Dspring.context.exit=onRefresh -XX:AOTCacheOutput=/opt/app/app.aot -XX:AOTConfiguration=/opt/app/app.aot.config -XX:AOTMode=create
+#85 4.248 Reading AOTConfiguration /opt/app/app.aot.config and writing AOTCache /opt/app/app.aot
+#85 6.320 AOTCache creation is complete: /opt/app/app.aot 66809856 bytes
+#85 6.343 Removed temporary AOT configuration file /opt/app/app.aot.config
+#85 DONE 7.3s
+
+#87 [java-jvm-zgc] exporting to image
+#87 exporting layers
+#87 exporting layers 2.1s done
+#87 exporting manifest sha256:b3d2a78da23bd62aef0a74e969b42dc4b8d7cf34ed96dcff952fcbf8dd2033da 0.0s done
+#87 exporting config sha256:92fd0399d5b9d880adcbe25380f35aa9027448478ebe587ba55e64316bdd8d7f 0.0s done
+#87 exporting attestation manifest sha256:3d65fdf7ff48db461fb8af2af0254bd527e016ab47169ae79e4064e19713c764 0.0s done
+#87 exporting manifest list sha256:2b5d6e00b280bbd1452d1ef1fedfacc47577f7e96caeb50d132d02e1088eba97 0.0s done
+#87 naming to docker.io/bench/java-jvm-zgc:latest done
+#87 unpacking to docker.io/bench/java-jvm-zgc:latest
+#87 unpacking to docker.io/bench/java-jvm-zgc:latest 0.4s done
+#87 DONE 2.5s
+
+#88 [java-jvm-zgc] resolving provenance for metadata file
+#88 DONE 0.0s
+ Image bench/java-jvm-zgc Built 
+ Image bench/java-native-opt Built 
+ Image bench/java-native-g1 Built 
+ Image bench/rust-axum-opt Built 
+ Image bench/mock-api Built 
+ Image bench/go-fiber-opt Built 
+ Image bench/java-jvm-opt Built 

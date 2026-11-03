@@ -1,0 +1,49 @@
+== carga: rep=2 vus=10000 alvo=java-jvm-zgc (01:00:19)
+alvo=http://java-jvm-zgc:8080/api/io vus=10000 reqs=354409 erros=0 rps=1968.9/2000 descartadas=0 p50=5014.331077 p99=5614.9107302 max=6343.030825
+== carga: rep=2 vus=10000 alvo=java-native-opt (01:04:05)
+alvo=http://java-native-opt:8080/api/io vus=10000 reqs=284875 erros=0 rps=1582.6/2000 descartadas=0 p50=6211.927823 p99=8376.66156432 max=9738.133618
+== carga: rep=2 vus=10000 alvo=java-native-g1 (01:07:49)
+alvo=http://java-native-g1:8080/api/io vus=10000 reqs=359274 erros=0 rps=1996.0/2000 descartadas=0 p50=5005.1891395 p99=5101.3509141 max=5197.73588
+== carga: rep=2 vus=10000 alvo=rust-axum-opt (01:11:33)
+alvo=http://rust-axum-opt:8080/api/io vus=10000 reqs=359896 erros=0 rps=1999.4/2000 descartadas=0 p50=5001.177467 p99=5002.21350355 max=5014.329599
+== carga: rep=2 vus=10000 alvo=go-fiber-opt (01:15:17)
+alvo=http://go-fiber-opt:8080/api/io vus=10000 reqs=359914 erros=0 rps=1999.5/2000 descartadas=0 p50=5001.159892 p99=5002.13872828 max=5013.312654
+== carga: rep=3 vus=1000 alvo=java-jvm-zgc (01:19:00)
+alvo=http://java-jvm-zgc:8080/api/io vus=1000 reqs=35981 erros=0 rps=199.9/200 descartadas=0 p50=5002.30396 p99=5003.8275732 max=5007.203005
+== carga: rep=3 vus=1000 alvo=java-native-opt (01:22:43)
+alvo=http://java-native-opt:8080/api/io vus=1000 reqs=35975 erros=0 rps=199.9/200 descartadas=0 p50=5002.58198 p99=5065.9708365199995 max=5188.667019
+== carga: rep=3 vus=1000 alvo=java-native-g1 (01:26:25)
+alvo=http://java-native-g1:8080/api/io vus=1000 reqs=35975 erros=0 rps=199.9/200 descartadas=0 p50=5002.302153 p99=5003.57041664 max=5031.048996
+== carga: rep=3 vus=1000 alvo=rust-axum-opt (01:30:07)
+alvo=http://rust-axum-opt:8080/api/io vus=1000 reqs=35983 erros=0 rps=199.9/200 descartadas=0 p50=5001.315484 p99=5002.12671622 max=5002.659704
+== carga: rep=3 vus=1000 alvo=go-fiber-opt (01:33:48)
+alvo=http://go-fiber-opt:8080/api/io vus=1000 reqs=35991 erros=0 rps=199.9/200 descartadas=0 p50=5001.27902 p99=5002.0898182 max=5002.858258
+== carga: rep=3 vus=1000 alvo=java-jvm-opt (01:37:30)
+alvo=http://java-jvm-opt:8080/api/io vus=1000 reqs=35974 erros=0 rps=199.9/200 descartadas=0 p50=5002.3538745000005 p99=5003.706509000001 max=5033.58633
+== carga: rep=3 vus=5000 alvo=java-jvm-zgc (01:41:13)
+alvo=http://java-jvm-zgc:8080/api/io vus=5000 reqs=179876 erros=0 rps=999.3/1000 descartadas=0 p50=5002.418810499999 p99=5005.340598000001 max=5012.958838
+== carga: rep=3 vus=5000 alvo=java-native-opt (01:44:57)
+alvo=http://java-native-opt:8080/api/io vus=5000 reqs=176122 erros=0 rps=978.5/1000 descartadas=0 p50=5039.70313 p99=5665.47086226 max=5988.47738
+== carga: rep=3 vus=5000 alvo=java-native-g1 (01:48:39)
+alvo=http://java-native-g1:8080/api/io vus=5000 reqs=179795 erros=0 rps=998.9/1000 descartadas=0 p50=5002.778273 p99=5072.770385700001 max=5118.88827
+== carga: rep=3 vus=5000 alvo=rust-axum-opt (01:52:21)
+alvo=http://rust-axum-opt:8080/api/io vus=5000 reqs=179967 erros=0 rps=999.8/1000 descartadas=0 p50=5001.206505 p99=5002.111777360001 max=5010.083502
+== carga: rep=3 vus=5000 alvo=go-fiber-opt (01:56:04)
+alvo=http://go-fiber-opt:8080/api/io vus=5000 reqs=179947 erros=0 rps=999.7/1000 descartadas=0 p50=5001.17519 p99=5002.0800112 max=5009.18714
+== carga: rep=3 vus=5000 alvo=java-jvm-opt (01:59:46)
+alvo=http://java-jvm-opt:8080/api/io vus=5000 reqs=179846 erros=0 rps=999.1/1000 descartadas=0 p50=5002.522761 p99=5058.703098649999 max=5089.968033
+== carga: rep=3 vus=10000 alvo=java-jvm-zgc (02:03:29)
+alvo=http://java-jvm-zgc:8080/api/io vus=10000 reqs=314874 erros=0 rps=1749.3/2000 descartadas=0 p50=5612.553261 p99=6958.64642222 max=7439.409524
+== carga: rep=3 vus=10000 alvo=java-native-opt (02:07:13)
+alvo=http://java-native-opt:8080/api/io vus=10000 reqs=301986 erros=0 rps=1677.7/2000 descartadas=0 p50=5859.970058999999 p99=8291.9413595 max=8947.729313
+== carga: rep=3 vus=10000 alvo=java-native-g1 (02:10:56)
+alvo=http://java-native-g1:8080/api/io vus=10000 reqs=358986 erros=0 rps=1994.4/2000 descartadas=0 p50=5005.8850985 p99=5108.54556435 max=5166.889001
+== carga: rep=3 vus=10000 alvo=rust-axum-opt (02:14:39)
+alvo=http://rust-axum-opt:8080/api/io vus=10000 reqs=359890 erros=0 rps=1999.4/2000 descartadas=0 p50=5001.193291 p99=5002.24958111 max=5012.214414
+== carga: rep=3 vus=10000 alvo=go-fiber-opt (02:18:22)
+alvo=http://go-fiber-opt:8080/api/io vus=10000 reqs=359908 erros=0 rps=1999.5/2000 descartadas=0 p50=5001.158982 p99=5002.19622627 max=5013.152175
+== carga: rep=3 vus=10000 alvo=java-jvm-opt (02:22:05)
+alvo=http://java-jvm-opt:8080/api/io vus=10000 reqs=359896 erros=0 rps=1999.4/2000 descartadas=0 p50=5003.202636 p99=5117.0420911 max=5717.397914
+relatório: results/20261102-215054/report.md e report.html
+concluído: results/20261102-215054
+FIM-TUDO

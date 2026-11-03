@@ -1,0 +1,14 @@
+[package]
+name = "rust-axum"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = { version = "=0.8.9", default-features = false, features = ["http1", "tokio"] }
+# Sem as features padrão: só HTTP/1.1 e sem TLS, como no Go.
+reqwest = { version = "=0.13.5", default-features = false }
+tokio = { version = "=1.54.1", features = ["macros", "net", "rt-multi-thread", "signal"] }
+
+[profile.release]
+# Equivalente ao -ldflags="-s -w" do Go. O resto fica no padrão do Cargo.
+strip = true

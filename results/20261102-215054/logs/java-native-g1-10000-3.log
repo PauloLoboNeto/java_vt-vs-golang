@@ -1,0 +1,15 @@
+2026-11-03T02:10:57.099Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting AOT-processed BenchApplication using Java 25.0.5.0.3 with PID 1 (/app started by root in /)
+2026-11-03T02:10:57.099Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+2026-11-03T02:10:57.109Z  INFO 1 --- [java-spring] [           main] o.s.b.j.s.JettyServletWebServerFactory   : Server initialized with port: 8080
+2026-11-03T02:10:57.109Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : jetty-12.1.14; built: 2026-10-02T05:48:05.032Z; git: 15cecbd757a2f6b0fdc6a8944f4c6d0020b17da0; jvm 25.0.5.0.3+1-LTS-jvmci-b01
+2026-11-03T02:10:57.110Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 11 ms
+2026-11-03T02:10:57.112Z  INFO 1 --- [java-spring] [           main] o.e.j.session.DefaultSessionIdManager    : Session workerName=node0
+2026-11-03T02:10:57.112Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.handler.ContextHandler  : Started osbjs.JettyEmbeddedWebAppContext@37396be1{application,/,b=file:///tmp/jetty-docbase.8080.12518590405604286733/,a=AVAILABLE,h=oeje11s.SessionHandler@5eb0a6bf{STARTED}}
+2026-11-03T02:10:57.112Z  INFO 1 --- [java-spring] [           main] o.e.j.e.servlet.ServletContextHandler    : Started osbjs.JettyEmbeddedWebAppContext@37396be1{application,/,b=file:///tmp/jetty-docbase.8080.12518590405604286733/,a=AVAILABLE,h=oeje11s.SessionHandler@5eb0a6bf{STARTED}}
+2026-11-03T02:10:57.112Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : Started oejs.Server@5a6c67f1{STARTING}[12.1.14,sto=0] @3ms
+2026-11-03T02:10:57.126Z  INFO 1 --- [java-spring] [           main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-03T02:10:57.126Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-03T02:10:57.126Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-11-03T02:10:57.127Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.AbstractConnector       : Started oejs.ServerConnector@3be23fe{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-11-03T02:10:57.127Z  INFO 1 --- [java-spring] [           main] o.s.boot.jetty.JettyWebServer            : Jetty started on port 8080 (http/1.1) with context path '/'
+2026-11-03T02:10:57.127Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 0.037 seconds (process running for 0.041)

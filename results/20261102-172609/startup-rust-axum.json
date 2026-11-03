@@ -1,0 +1,48 @@
+{
+  "target": "rust-axum",
+  "runs": [
+    {
+      "time_to_ready_ms": 139.80014499998106,
+      "first_io_ms": 6.766550999998799,
+      "idle_mem_bytes": 3297280,
+      "self_reported_ms": 0.0
+    },
+    {
+      "time_to_ready_ms": 125.38774200001512,
+      "first_io_ms": 6.207681000006232,
+      "idle_mem_bytes": 2191360,
+      "self_reported_ms": 0.0
+    },
+    {
+      "time_to_ready_ms": 109.09513999999376,
+      "first_io_ms": 6.280406000001676,
+      "idle_mem_bytes": 1646592,
+      "self_reported_ms": 0.0
+    }
+  ],
+  "image_size_bytes": 40411967,
+  "time_to_ready_ms": {
+    "median": 125.38774200001512,
+    "p90": 139.80014499998106,
+    "min": 109.09513999999376,
+    "max": 139.80014499998106
+  },
+  "first_io_ms": {
+    "median": 6.280406000001676,
+    "p90": 6.766550999998799,
+    "min": 6.207681000006232,
+    "max": 6.766550999998799
+  },
+  "idle_mem_bytes": {
+    "median": 2191360,
+    "p90": 3297280,
+    "min": 1646592,
+    "max": 3297280
+  },
+  "self_reported_ms": {
+    "median": 0.0,
+    "p90": 0.0,
+    "min": 0.0,
+    "max": 0.0
+  }
+}

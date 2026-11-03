@@ -1,0 +1,60 @@
+-XX:-AOTAdapterCaching -XX:-AOTInvokeDynamicLinking -XX:-AOTRecordTraining -XX:-AOTReplayTraining -XX:-AOTStubCaching -XX:InitialHeapSize=6815736 -XX:MaxHeapSize=751619276 -XX:MaxRAMPercentage=70.000000 -XX:MinHeapSize=6815736 -XX:+PrintCommandLineFlags -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:-THPStackMitigation -XX:-UseCompressedOops -XX:+UseZGC -XX:ZOldGCThreads=1 -XX:ZYoungGCThreads=1 
+[0.006s][info][gc] Using The Z Garbage Collector
+2026-11-02T19:32:04.758Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting BenchApplication v1.0.0 using Java 27 with PID 1 (/opt/app/app.jar started by root in /opt/app)
+2026-11-02T19:32:04.760Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+[0.987s][info][gc] GC(0) Major Collection (Warmup)
+[1.041s][info][gc] GC(0) Major Collection (Warmup) 72M(10%)->20M(3%) 0.054s
+2026-11-02T19:32:05.816Z  INFO 1 --- [java-spring] [           main] o.s.b.j.s.JettyServletWebServerFactory   : Server initialized with port: 8080
+2026-11-02T19:32:05.819Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : jetty-12.1.14; built: 2026-10-02T05:48:05.032Z; git: 15cecbd757a2f6b0fdc6a8944f4c6d0020b17da0; jvm 27+35
+2026-11-02T19:32:05.844Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1000 ms
+2026-11-02T19:32:05.882Z  INFO 1 --- [java-spring] [           main] o.e.j.session.DefaultSessionIdManager    : Session workerName=node0
+2026-11-02T19:32:05.887Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.handler.ContextHandler  : Started osbjs.JettyEmbeddedWebAppContext@36480b2d{application,/,b=file:///tmp/jetty-docbase.8080.4442648820981249134/,a=AVAILABLE,h=oeje11s.SessionHandler@27d33393{STARTED}}
+2026-11-02T19:32:05.888Z  INFO 1 --- [java-spring] [           main] o.e.j.e.servlet.ServletContextHandler    : Started osbjs.JettyEmbeddedWebAppContext@36480b2d{application,/,b=file:///tmp/jetty-docbase.8080.4442648820981249134/,a=AVAILABLE,h=oeje11s.SessionHandler@27d33393{STARTED}}
+2026-11-02T19:32:05.888Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : Started oejs.Server@41eb94bc{STARTING}[12.1.14,sto=0] @69ms
+[1.971s][info][gc] GC(1) Major Collection (Metadata GC Threshold)
+[2.046s][info][gc] GC(1) Major Collection (Metadata GC Threshold) 90M(13%)->46M(6%) 0.076s
+2026-11-02T19:32:06.465Z  INFO 1 --- [java-spring] [           main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T19:32:06.465Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T19:32:06.466Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-02T19:32:06.472Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.AbstractConnector       : Started oejs.ServerConnector@5e230fc6{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-11-02T19:32:06.474Z  INFO 1 --- [java-spring] [           main] o.s.boot.jetty.JettyWebServer            : Jetty started on port 8080 (http/1.1) with context path '/'
+2026-11-02T19:32:06.478Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 2.144 seconds (process running for 2.453)
+[4.754s][info][gc] GC(2) Major Collection (Warmup)
+[5.057s][info][gc] GC(2) Major Collection (Warmup) 144M(20%)->112M(16%) 0.303s
+[5.979s][info][gc] GC(3) Major Collection (Warmup)
+[6.747s][info][gc] GC(3) Major Collection (Warmup) 216M(30%)->284M(40%) 0.769s
+[7.378s][info][gc] GC(4) Major Collection (Allocation Rate)
+[8.644s][info][gc] GC(5) Minor Collection (Allocation Rate)
+[10.017s][info][gc] GC(5) Minor Collection (Allocation Rate) 480M(67%)->584M(81%) 1.373s
+[10.017s][info][gc] GC(6) Minor Collection (Allocation Rate)
+[11.417s][info][gc] GC(6) Minor Collection (Allocation Rate) 584M(81%)->686M(96%) 1.400s
+[11.450s][info][gc] GC(7) Minor Collection (Allocation Rate)
+[11.893s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 248.763ms
+[11.929s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 17.227ms
+[11.930s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.105ms
+[11.930s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 277.669ms
+[11.931s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.548ms
+[12.144s][info][gc] GC(7) Minor Collection (Allocation Rate) 696M(97%)->662M(92%) 0.695s
+[12.145s][info][gc] GC(4) Major Collection (Allocation Rate) 386M(54%)->662M(92%) 4.767s
+[12.147s][info][gc] GC(8) Major Collection (Allocation Rate)
+[12.750s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 217.053ms
+[12.750s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 205.607ms
+[12.862s][info][gc] GC(9) Minor Collection (Allocation Stall)
+[13.161s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 211.682ms
+[13.161s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 211.217ms
+[13.217s][info][gc] GC(9) Minor Collection (Allocation Stall) 706M(98%)->690M(96%) 0.355s
+[13.217s][info][gc] GC(10) Minor Collection (Allocation Rate)
+[13.567s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 141.371ms
+[13.567s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 144.290ms
+[13.567s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 0.350ms
+[13.650s][info][gc] GC(10) Minor Collection (Allocation Rate) 690M(96%)->718M(100%) 0.433s
+[13.650s][info][gc] GC(11) Minor Collection (Allocation Stall)
+[13.819s][info][gc] GC(8) O: Relocation Stall (ZWorkerOld#0) 0.979ms
+[13.819s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 0.821ms
+[13.819s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 170.917ms
+[13.820s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.380ms
+[13.820s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 169.948ms
+[13.821s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.068ms
+[13.822s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.347ms
+[13.832s][info][gc] GC(11) Minor Collection (Allocation Stall) 718M(100%)->710M(99%) 0.183s
+[13.833s][info][gc] GC(12) Minor Collection (Allocation Rate)

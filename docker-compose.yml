@@ -1,4 +1,4 @@
-# Sobe um alvo por vez (profiles go, jvm e native). Os três têm limites idênticos.
+# Sobe um alvo por vez (profiles go, jvm, native e rust). Todos têm limites idênticos.
 x-target: &target
   cpus: 2
   mem_limit: 1g
@@ -54,6 +54,72 @@ services:
     image: bench/java-native
     container_name: bench-java-native
     ports: ["8083:8080"]
+
+  rust-axum:
+    <<: *target
+    profiles: [rust]
+    build: ./rust-axum
+    image: bench/rust-axum
+    container_name: bench-rust-axum
+    ports: ["8084:8080"]
+
+  # Trilha otimizada: mesmos limites e contrato, com os ajustes descritos em opt/README.md.
+  go-fiber-opt:
+    <<: *target
+    profiles: [go-opt]
+    build: ./opt/go-fiber
+    image: bench/go-fiber-opt
+    container_name: bench-go-fiber-opt
+    ports: ["8085:8080"]
+
+  java-jvm-opt:
+    <<: *target
+    profiles: [jvm-opt]
+    build:
+      context: ./opt/java-spring
+      dockerfile: Dockerfile.jvm
+    image: bench/java-jvm-opt
+    container_name: bench-java-jvm-opt
+    ports: ["8086:8080"]
+
+  java-native-opt:
+    <<: *target
+    profiles: [native-opt]
+    build:
+      context: ./opt/java-spring
+      dockerfile: Dockerfile.native
+    image: bench/java-native-opt
+    container_name: bench-java-native-opt
+    ports: ["8087:8080"]
+    command: ["-Xmn400m"]
+
+  java-native-g1:
+    <<: *target
+    profiles: [native-g1]
+    build:
+      context: ./opt/java-spring
+      dockerfile: Dockerfile.native-g1
+    image: bench/java-native-g1
+    container_name: bench-java-native-g1
+    ports: ["8089:8080"]
+
+  java-jvm-zgc:
+    <<: *target
+    profiles: [jvm-zgc]
+    build:
+      context: ./opt/java-spring
+      dockerfile: Dockerfile.zgc
+    image: bench/java-jvm-zgc
+    container_name: bench-java-jvm-zgc
+    ports: ["8090:8080"]
+
+  rust-axum-opt:
+    <<: *target
+    profiles: [rust-opt]
+    build: ./opt/rust-axum
+    image: bench/rust-axum-opt
+    container_name: bench-rust-axum-opt
+    ports: ["8088:8080"]
 
   k6:
     profiles: [tools]

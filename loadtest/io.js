@@ -1,5 +1,7 @@
-// Carga de I/O: N usuários virtuais chamam /api/io em laço, sem pausa entre
+// Carga de I/O com dois modos.
+// MODE=vus (padrão): N usuários virtuais chamam /api/io em laço, sem pausa entre
 // chamadas. Com 5s de latência fixa, o throughput ideal é VUS / 5.
+// MODE=rate: VUS é a taxa em req/s, constante mesmo se o alvo ficar lento.
 import http from 'k6/http';
 import { sleep } from 'k6';
 import { Trend, Counter } from 'k6/metrics';
@@ -9,6 +11,7 @@ const VUS = parseInt(__ENV.VUS || '1000', 10);
 const WARMUP = parseInt(__ENV.WARMUP || '30', 10);
 const DURATION = parseInt(__ENV.DURATION || '180', 10);
 const OUT = __ENV.OUT || '/results/k6.json';
+const RATE_MODE = __ENV.MODE === 'rate';
 
 const ioLatency = new Trend('io_latency', true);
 const ioReqs = new Counter('io_reqs');
@@ -21,8 +24,17 @@ export const options = {
   summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(50)', 'p(90)', 'p(95)', 'p(99)'],
   scenarios: {
     io: {
-      executor: 'constant-vus',
-      vus: VUS,
+      ...(RATE_MODE
+        ? {
+            executor: 'constant-arrival-rate',
+            rate: VUS,
+            timeUnit: '1s',
+            // Cada chamada dura 5s: VUS * 5 ficam em andamento. A folga absorve
+            // alvos lentos; o que passar disso aparece em dropped_iterations.
+            preAllocatedVUs: VUS * 6,
+            maxVUs: VUS * 40,
+          }
+        : { executor: 'constant-vus', vus: VUS }),
       duration: `${WARMUP + DURATION}s`,
       // Precisa ser maior que o timeout da requisição. Senão, requisições
       // travadas somem da contagem sem virar erro.
@@ -37,7 +49,7 @@ export function setup() {
 
 export default function (data) {
   // Espalha os VUs nos 5s de latência para evitar ondas sincronizadas.
-  if (__ITER === 0) {
+  if (!RATE_MODE && __ITER === 0) {
     sleep(Math.random() * 5);
   }
 
@@ -92,7 +104,10 @@ export function handleSummary(data) {
     error_rate: requests > 0 ? errors / requests : 0,
     // Throughput real: só respostas 200. Erros rápidos não podem inflar o número.
     rps: (requests - errors) / DURATION,
-    ideal_rps: VUS / 5,
+    ideal_rps: RATE_MODE ? VUS : VUS / 5,
+    mode: RATE_MODE ? 'rate' : 'vus',
+    // Iterações que o k6 não conseguiu iniciar na taxa pedida. Zero no modo por VUs.
+    dropped_iterations: pick(values(data, 'dropped_iterations'), 'count') || 0,
     latency_ms: {
       avg: pick(lat, 'avg'),
       min: pick(lat, 'min'),
@@ -109,7 +124,7 @@ export function handleSummary(data) {
   };
 
   const text = `alvo=${TARGET_URL} vus=${VUS} reqs=${requests} erros=${errors} ` +
-    `rps=${summary.rps.toFixed(1)}/${summary.ideal_rps} ` +
+    `rps=${summary.rps.toFixed(1)}/${summary.ideal_rps} descartadas=${summary.dropped_iterations} ` +
     `p50=${summary.latency_ms.p50} p99=${summary.latency_ms.p99} max=${summary.latency_ms.max}\n`;
 
   return { [OUT]: JSON.stringify(summary, null, 2), stdout: text };

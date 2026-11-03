@@ -1,0 +1,95 @@
+[0.002s][info][gc] Using G1
+[0.083s][info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 5M->3M(10M) 2.742ms
+[0.121s][info][gc] GC(1) Pause Young (Normal) (G1 Evacuation Pause) 5M->3M(12M) 2.079ms
+[0.160s][info][gc] GC(2) Pause Young (Normal) (G1 Evacuation Pause) 5M->3M(36M) 1.361ms
+[0.378s][info][gc] GC(3) Pause Young (Normal) (G1 Evacuation Pause) 17M->5M(36M) 4.321ms
+[0.551s][info][gc] GC(4) Pause Young (Normal) (G1 Evacuation Pause) 23M->6M(36M) 4.638ms
+2026-11-02T19:09:42.505Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting BenchApplication v1.0.0 using Java 27 with PID 1 (/opt/app/app.jar started by root in /)
+2026-11-02T19:09:42.508Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+[0.748s][info][gc] GC(5) Pause Young (Normal) (G1 Evacuation Pause) 22M->7M(36M) 4.886ms
+[0.995s][info][gc] GC(6) Pause Young (Normal) (G1 Evacuation Pause) 23M->8M(108M) 23.348ms
+[1.161s][info][gc] GC(7) Pause Young (Concurrent Start) (Metadata GC Threshold) 22M->9M(108M) 4.522ms
+[1.161s][info][gc] GC(8) Concurrent Mark Cycle
+[1.195s][info][gc] GC(8) Pause Remark 10M->10M(108M) 2.674ms
+[1.199s][info][gc] GC(8) Pause Cleanup 10M->10M(108M) 0.022ms
+[1.200s][info][gc] GC(8) Concurrent Mark Cycle 38.502ms
+2026-11-02T19:09:43.355Z  INFO 1 --- [java-spring] [           main] o.s.b.j.s.JettyServletWebServerFactory   : Server initialized with port: 8080
+2026-11-02T19:09:43.358Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : jetty-12.1.14; built: 2026-10-02T05:48:05.032Z; git: 15cecbd757a2f6b0fdc6a8944f4c6d0020b17da0; jvm 27+35
+2026-11-02T19:09:43.378Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 834 ms
+2026-11-02T19:09:43.425Z  INFO 1 --- [java-spring] [           main] o.e.j.session.DefaultSessionIdManager    : Session workerName=node0
+2026-11-02T19:09:43.430Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.handler.ContextHandler  : Started osbjs.JettyEmbeddedWebAppContext@715b886f{application,/,b=file:///tmp/jetty-docbase.8080.14272176910757777962/,a=AVAILABLE,h=oeje11s.SessionHandler@7fb29ca9{STARTED}}
+2026-11-02T19:09:43.430Z  INFO 1 --- [java-spring] [           main] o.e.j.e.servlet.ServletContextHandler    : Started osbjs.JettyEmbeddedWebAppContext@715b886f{application,/,b=file:///tmp/jetty-docbase.8080.14272176910757777962/,a=AVAILABLE,h=oeje11s.SessionHandler@7fb29ca9{STARTED}}
+2026-11-02T19:09:43.431Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : Started oejs.Server@350d3f4d{STARTING}[12.1.14,sto=0] @72ms
+[1.879s][info][gc] GC(9) Pause Young (Prepare Mixed) (Metadata GC Threshold) 64M->15M(108M) 11.164ms
+2026-11-02T19:09:43.806Z  INFO 1 --- [java-spring] [           main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T19:09:43.806Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T19:09:43.807Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-02T19:09:43.813Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.AbstractConnector       : Started oejs.ServerConnector@51f95f0d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-11-02T19:09:43.814Z  INFO 1 --- [java-spring] [           main] o.s.boot.jetty.JettyWebServer            : Jetty started on port 8080 (http/1.1) with context path '/'
+2026-11-02T19:09:43.818Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 1.67 seconds (process running for 1.908)
+[1.923s][info][gc] GC(10) Pause Young (Mixed) (Metadata GC Threshold) 17M->17M(108M) 12.576ms
+[1.951s][info][gc] GC(11) Pause Young (Concurrent Start) (Metadata GC Threshold) 19M->16M(324M) 2.881ms
+[1.952s][info][gc] GC(12) Concurrent Mark Cycle
+[1.974s][info][gc] GC(12) Pause Remark 17M->17M(324M) 4.001ms
+[1.978s][info][gc] GC(12) Pause Cleanup 18M->18M(324M) 0.016ms
+[1.980s][info][gc] GC(12) Concurrent Mark Cycle 28.385ms
+[5.839s][info][gc] GC(13) Pause Young (Normal) (G1 Evacuation Pause) 208M->140M(334M) 96.139ms
+[6.727s][info][gc] GC(14) Pause Young (Normal) (G1 Evacuation Pause) 244M->209M(340M) 70.410ms
+[7.278s][info][gc] GC(15) Pause Young (Concurrent Start) (G1 Evacuation Pause) 269M->249M(340M) 31.699ms
+[7.278s][info][gc] GC(16) Concurrent Mark Cycle
+[7.735s][info][gc] GC(17) Pause Young (Normal) (G1 Evacuation Pause) 287M->275M(1020M) 22.386ms
+[8.135s][info][gc] GC(16) Pause Remark 309M->309M(1020M) 11.751ms
+[8.247s][info][gc] GC(16) Pause Cleanup 321M->321M(1020M) 0.116ms
+[8.252s][info][gc] GC(16) Concurrent Mark Cycle 973.947ms
+[9.605s][info][gc] GC(18) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 525M->466M(1020M) 96.138ms
+[10.205s][info][gc] GC(19) Pause Young (Mixed) (G1 Evacuation Pause) 670M->632M(1020M) 92.795ms
+[10.649s][info][gc] GC(20) Pause Young (Concurrent Start) (G1 Evacuation Pause) 776M->748M(1020M) 98.421ms
+[10.650s][info][gc] GC(21) Concurrent Mark Cycle
+[11.042s][info][gc] GC(22) Pause Young (Normal) (G1 Evacuation Pause) 846M->828M(1842M) 32.047ms
+[12.023s][info][gc] GC(23) Pause Young (Normal) (G1 Evacuation Pause) 1042M->1000M(1842M) 101.688ms
+[12.533s][info][gc] GC(21) Pause Remark 1152M->1152M(1842M) 11.181ms
+[12.826s][info][gc] GC(21) Pause Cleanup 1241M->1241M(1842M) 0.141ms
+[12.833s][info][gc] GC(21) Concurrent Mark Cycle 2183.759ms
+[12.977s][info][gc] GC(24) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 1248M->1201M(1842M) 137.114ms
+[13.547s][info][gc] GC(25) Pause Young (Mixed) (G1 Evacuation Pause) 1429M->1385M(1842M) 113.419ms
+[13.923s][info][gc] GC(26) Pause Young (Mixed) (G1 Evacuation Pause) 1547M->1511M(2334M) 93.150ms
+[14.755s][info][gc] GC(27) Pause Young (Normal) (G1 Evacuation Pause) 1773M->1701M(2334M) 105.177ms
+[16.598s][info][gc] GC(28) Pause Young (Normal) (G1 Evacuation Pause) 1905M->1791M(2334M) 83.918ms
+[18.513s][info][gc] GC(29) Pause Young (Normal) (G1 Evacuation Pause) 1997M->1882M(2334M) 96.039ms
+[19.643s][info][gc] GC(30) Pause Young (Normal) (G1 Evacuation Pause) 2064M->1960M(2630M) 100.770ms
+[22.443s][info][gc] GC(31) Pause Young (Normal) (G1 Evacuation Pause) 2230M->2072M(2630M) 135.213ms
+[24.352s][info][gc] GC(32) Pause Young (Normal) (G1 Evacuation Pause) 2318M->2174M(2630M) 111.797ms
+[25.912s][info][gc] GC(33) Pause Young (Concurrent Start) (G1 Evacuation Pause) 2382M->2261M(2630M) 95.016ms
+[25.912s][info][gc] GC(34) Concurrent Mark Cycle
+[26.623s][info][gc] GC(34) Pause Remark 2321M->2303M(2630M) 8.998ms
+[26.833s][info][gc] GC(34) Pause Cleanup 2322M->2322M(2630M) 0.220ms
+[26.840s][info][gc] GC(34) Concurrent Mark Cycle 928.658ms
+[28.086s][info][gc] GC(35) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 2415M->2314M(2808M) 81.150ms
+[29.642s][info][gc] GC(36) Pause Young (Mixed) (G1 Evacuation Pause) 2552M->2136M(2808M) 104.067ms
+[33.007s][info][gc] GC(37) Pause Young (Mixed) (G1 Evacuation Pause) 2458M->2127M(2808M) 161.134ms
+[34.380s][info][gc] GC(38) Pause Young (Mixed) (G1 Evacuation Pause) 2309M->2074M(2808M) 158.123ms
+[36.804s][info][gc] GC(39) Pause Young (Mixed) (G1 Evacuation Pause) 2348M->2092M(2914M) 170.236ms
+[39.159s][info][gc] GC(40) Pause Young (Mixed) (G1 Evacuation Pause) 2344M->2126M(2914M) 153.157ms
+[40.700s][info][gc] GC(41) Pause Young (Mixed) (G1 Evacuation Pause) 2356M->2189M(2914M) 145.774ms
+[44.330s][info][gc] GC(42) Pause Young (Normal) (G1 Evacuation Pause) 2539M->2329M(2914M) 143.097ms
+[46.947s][info][gc] GC(43) Pause Young (Concurrent Start) (G1 Evacuation Pause) 2625M->2441M(2914M) 126.865ms
+[46.947s][info][gc] GC(44) Concurrent Mark Cycle
+[47.632s][info][gc] GC(44) Pause Remark 2512M->2390M(2914M) 9.436ms
+[47.838s][info][gc] GC(44) Pause Cleanup 2415M->2415M(2914M) 0.220ms
+[47.844s][info][gc] GC(44) Concurrent Mark Cycle 896.954ms
+[49.093s][info][gc] GC(45) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 2563M->2415M(2978M) 112.172ms
+[50.443s][info][gc] GC(46) Pause Full (Heap Inspection Initiated GC) 2547M->1278M(2978M) 635.187ms
+[54.888s][info][gc] GC(47) Pause Young (Normal) (G1 Evacuation Pause) 1824M->1502M(2978M) 175.022ms
+[58.970s][info][gc] GC(48) Pause Young (Normal) (G1 Evacuation Pause) 1926M->1626M(2978M) 151.852ms
+[63.319s][info][gc] GC(49) Pause Young (Normal) (G1 Evacuation Pause) 2092M->1765M(2978M) 156.085ms
+[67.814s][info][gc] GC(50) Pause Young (Normal) (G1 Evacuation Pause) 2265M->1912M(2978M) 166.360ms
+[72.640s][info][gc] GC(51) Pause Young (Normal) (G1 Evacuation Pause) 2446M->2053M(2978M) 166.625ms
+[76.586s][info][gc] GC(52) Pause Young (Concurrent Start) (G1 Evacuation Pause) 2543M->2179M(2978M) 153.751ms
+[76.586s][info][gc] GC(53) Concurrent Mark Cycle
+[77.195s][info][gc] GC(53) Pause Remark 2237M->1999M(2978M) 5.941ms
+[77.327s][info][gc] GC(53) Pause Cleanup 2009M->2009M(2978M) 0.225ms
+[77.332s][info][gc] GC(53) Concurrent Mark Cycle 746.563ms
+[80.849s][info][gc] GC(54) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 2365M->2046M(2978M) 138.275ms
+[84.639s][info][gc] GC(55) Pause Young (Mixed) (G1 Evacuation Pause) 2544M->1909M(2978M) 168.598ms
+[89.824s][info][gc] GC(56) Pause Young (Mixed) (G1 Evacuation Pause) 2471M->1946M(2978M) 172.933ms
+[96.085s][info][gc] GC(57) Pause Young (Normal) (G1 Evacuation Pause) 2484M->2017M(3016M) 130.004ms

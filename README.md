@@ -1,4 +1,4 @@
-# Benchmark de I/O: Java com virtual threads vs Go com Fiber
+# Benchmark de I/O: Java com virtual threads, Go com Fiber e Rust com Axum
 
 ## Objetivo
 
@@ -6,6 +6,7 @@ Comparar o custo de **esperar I/O**. Cada requisição recebida chama uma API ex
 
 - **Comparativo A:** Go (Fiber) vs Java (Spring Boot com virtual threads) na JVM.
 - **Comparativo B:** Go (Fiber) vs o mesmo Java em Native Image.
+- **Comparativo C:** Go (Fiber) vs Rust (Axum com reqwest).
 - **Métricas:** startup, latência, memória e CPU.
 - **Carga:** 1.000, 5.000 e 10.000 VUs simultâneos, com um alvo por vez em Docker Compose.
 
@@ -23,6 +24,8 @@ Verificadas em 02/11/2026 nos registries e no Maven Central.
 | Spring Boot | 4.1.2 | Maven Central (4.2 ainda em RC1) |
 | JDK da variante JVM | 27 (Temurin 27+35) | `eclipse-temurin:27-jre`, build com `maven:3.10.0-eclipse-temurin-27` |
 | Native Image | GraalVM CE 25.4.4.1.1, JDK 25.0.4.1 | `ghcr.io/graalvm/native-image-community:25i4-25.0.4.1.1-ol9` |
+| Rust | 1.99.1 | `rust:1.99.1-slim-bookworm` |
+| Axum, hyper, reqwest, Tokio | 0.8.9, 1.12.0, 0.13.5, 1.54.1 | crates.io, com `Cargo.lock` |
 | k6 | 2.3.0 | `grafana/k6:2.3.0` |
 
 ### Nota sobre o JDK do Native Image
@@ -47,12 +50,12 @@ O G1 do Native Image só existe na edição Oracle GraalVM, e os percentuais de 
 
 ```
 k6 (4 vCPU) ──> alvo (2 vCPU / 1 GB) ──> mock-api (4 vCPU / 2 GB, espera 5s)
-                 go-fiber | java-jvm | java-native
+                 go-fiber | java-jvm | java-native | rust-axum
 ```
 
-Todos os containers ficam na rede `bench`. O k6 fala direto com o alvo pela rede do Docker, e só a medição de startup usa as portas publicadas (8081, 8082 e 8083).
+Todos os containers ficam na rede `bench`. O k6 fala direto com o alvo pela rede do Docker, e só a medição de startup usa as portas publicadas (8081, 8082, 8083 e 8084).
 
-Os três alvos têm o mesmo contrato:
+Todos os alvos têm o mesmo contrato:
 
 - `GET /health` retorna `200 ok`, sem Actuator, para não pesar no startup;
 - `GET /api/io` chama `UPSTREAM_URL` e devolve o JSON recebido. Falha ao chamar a API externa retorna 502.
@@ -69,13 +72,17 @@ Os três alvos têm o mesmo contrato:
 | `spring.threads.virtual.enabled=true` | Java | Atende cada requisição numa virtual thread |
 | `HttpClient` com HTTP/1.1 e executor de virtual threads | Java | Mesmo protocolo do Go, sem tentativa de upgrade para HTTP/2 |
 | `c.Response().SetBody(...)` em vez de `c.Send(...)` | Go | `Send` pode reter o buffer, que volta ao pool no `defer` |
+| Backlog de 65535 no socket em vez de `TcpListener::bind` | Rust | O padrão de 1024 criaria um gargalo na subida dos VUs. O Go já usa o `somaxconn` |
+| `pool_idle_timeout` de 60s e `http1_only` | Rust | Mesmos tempo de conexão ociosa e protocolo do Go. O reqwest não limita conexões por host |
+| `strip = true`, sem LTO e com o alocador padrão | Rust | Equivale ao `-s -w` do Go, sem otimizações além do padrão |
+| Tratamento de SIGTERM | Rust | Como PID 1, o processo ignoraria o sinal, e o Docker esperaria 10s para encerrá-lo |
 | `-XX:MaxRAMPercentage=75` | JVM | Usa o limite de 1 GB do container de forma explícita |
-| `nofile` 65535, `somaxconn` 65535, `ip_local_port_range` | Compose, nos três alvos | Limites do sistema não podem interferir |
+| `nofile` 65535, `somaxconn` 65535, `ip_local_port_range` | Compose, em todos os alvos | Limites do sistema não podem interferir |
 | Os mesmos ajustes em mock-api e k6 | Compose | Eles não podem ser o gargalo (não estavam na especificação original) |
 | `libz.so.1` copiada do builder | `Dockerfile.native` | O binário depende dela, e nem `distroless/base` nem `distroless/cc` a trazem |
 | `user:` do k6 igual ao dono do diretório | Compose | A imagem não roda como root e precisa gravar em `results/` |
 
-Os limites de **2 vCPU e 1 GB** são iguais nos três alvos e não são alterados.
+Os limites de **2 vCPU e 1 GB** são iguais em todos os alvos e não são alterados.
 
 ## Metodologia
 
@@ -114,7 +121,7 @@ Os limites de **2 vCPU e 1 GB** são iguais nos três alvos e não são alterado
 ## Comandos
 
 ```bash
-# Benchmark completo (cerca de 2h)
+# Benchmark completo (cerca de 2h30)
 scripts/run-all.sh
 
 # Validação rápida
@@ -131,7 +138,7 @@ scripts/load.sh go-fiber 1000 1 results/teste
 .venv/bin/python report/generate.py results/<timestamp>
 ```
 
-Variáveis de `run-all.sh`, com os padrões: `TARGETS="go-fiber java-jvm java-native"`, `LEVELS="1000 5000 10000"`, `REPS=3`, `WARMUP=30`, `DURATION=180`, `STARTUP_RUNS=10`.
+Variáveis de `run-all.sh`, com os padrões: `TARGETS="go-fiber java-jvm java-native rust-axum"`, `LEVELS="1000 5000 10000"`, `REPS=3`, `WARMUP=30`, `DURATION=180`, `STARTUP_RUNS=10`.
 
 ## Arquivos gerados
 
@@ -161,3 +168,7 @@ Em `results/<timestamp>/`:
 ## Resultado
 
 A análise, as tabelas e os gráficos da rodada completa estão em [`docs/index.html`](docs/index.html). Em resumo, com 2 vCPU e 1 GB, só o Go atendeu aos três níveis. As duas variantes Java esgotaram a memória com 10.000 VUs. O Native Image ficou abaixo do throughput ideal já com 5.000 VUs, por causa das pausas do Serial GC.
+
+O Rust foi medido à parte, com o Go como controle, na rodada [`results/20261102-173102`](results/20261102-173102/report.md). Ele também atendeu aos três níveis com a mesma latência do Go, mas com cerca de 50% mais memória de pico e de 11% a 27% mais CPU por requisição. Esse resultado vale para esta stack, Axum com reqwest, não para a linguagem.
+
+A trilha otimizada, com carga por VUs e por taxa, está descrita em [`opt/README.md`](opt/README.md). Nela, todos os alvos atenderam a 10.000 VUs em 1 GB, sem erros, inclusive o Java, que falha na configuração padrão.

@@ -1,0 +1,16 @@
+# G1 no Native Image só existe na Oracle GraalVM, com licença própria (GFTC).
+FROM container-registry.oracle.com/graalvm/native-image:25-ol9 AS build
+COPY --from=maven:3.10.0-eclipse-temurin-25 /usr/share/maven /usr/share/maven
+ENV PATH="/usr/share/maven/bin:${PATH}"
+ENV NATIVE_IMAGE_OPTIONS=--gc=G1
+WORKDIR /src
+COPY pom.xml ./
+COPY src ./src
+RUN mvn -q -B -Pnative -DskipTests native:compile
+
+# cc: o binário com G1 também depende da libgcc_s, ausente no distroless base.
+FROM gcr.io/distroless/cc-debian12
+COPY --from=build /src/target/java-spring /app
+COPY --from=build /usr/lib64/libz.so.1 /usr/lib/x86_64-linux-gnu/libz.so.1
+# Sem isso, o heap máximo é de 25% da RAM, em vez de 80% como no Serial.
+ENTRYPOINT ["/app","-XX:MaxRAMPercentage=70"]

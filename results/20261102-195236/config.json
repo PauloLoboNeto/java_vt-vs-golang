@@ -1,0 +1,9 @@
+{
+  "WARMUP": "10",
+  "DURATION": "30",
+  "MODE": "rate",
+  "TARGETS": "go-fiber-opt java-jvm-opt java-jvm-zgc java-native-opt java-native-g1 rust-axum-opt",
+  "LEVELS": "100",
+  "REPS": "1",
+  "STARTUP_RUNS": "1"
+}
