@@ -19,6 +19,11 @@ case "$TARGET" in
   rust-axum-opt)   PROFILE=rust-opt;   PORT=8088 ;;
   java-native-g1)  PROFILE=native-g1;  PORT=8089 ;;
   java-jvm-zgc)    PROFILE=jvm-zgc;    PORT=8090 ;;
+  py-fastapi)       PROFILE=py-fastapi;       PORT=8091 ;;
+  py-fastapi-aiohttp) PROFILE=py-fastapi-aiohttp; PORT=8095 ;;
+  py-aiohttp)       PROFILE=py-aiohttp;       PORT=8092 ;;
+  py-flask-gevent)  PROFILE=py-flask-gevent;  PORT=8093 ;;
+  py-flask-threads) PROFILE=py-flask-threads; PORT=8094 ;;
   *) echo "alvo desconhecido: $TARGET" >&2; exit 2 ;;
 esac
 
@@ -64,6 +69,11 @@ PIDS=()
 # Logs e estado de OOM precisam ser lidos antes de remover o alvo.
 docker logs "$CONTAINER" >"$DIR/logs/$TAG.log" 2>&1
 docker logs bench-mock-api >"$DIR/logs/mock-api-$TAG.log" 2>&1
+# Com vários processos, o kernel pode matar um worker sem encerrar o container, e OOMKilled fica
+# falso. O contador oom_kill do cgroup registra esse caso. Precisa ser gravado antes de oom-*,
+# que marca a rodada como completa em resume.sh.
+# Imagens distroless não têm cat: nelas, o arquivo não é gravado.
+docker exec "$CONTAINER" cat /sys/fs/cgroup/memory.events >"$DIR/memevents-$TAG.txt" 2>/dev/null || rm -f "$DIR/memevents-$TAG.txt"
 docker inspect -f '{{.State.OOMKilled}}' "$CONTAINER" >"$DIR/oom-$TAG.txt"
 docker compose --profile "$PROFILE" rm -sf "$TARGET" >/dev/null 2>&1
 

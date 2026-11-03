@@ -9,6 +9,7 @@ import csv
 import glob
 import html
 import json
+import math
 import os
 import re
 import statistics
@@ -32,6 +33,11 @@ TARGETS = {
     "rust-axum-opt": {"label": "Rust (Axum) otimizado", "short": "Rust opt", "color": "#552a8c"},
     "java-jvm-zgc": {"label": "Java JVM otimizado com ZGC", "short": "JVM ZGC", "color": "#d9a400"},
     "java-native-g1": {"label": "Java Native otimizado com G1 (Oracle)", "short": "Native G1", "color": "#39a0a8"},
+    "py-fastapi": {"label": "Python: FastAPI + httpx", "short": "FastAPI", "color": "#eb6834"},
+    "py-fastapi-aiohttp": {"label": "Python: FastAPI + cliente aiohttp", "short": "FastAPI+aio", "color": "#39a0a8"},
+    "py-aiohttp": {"label": "Python: aiohttp", "short": "aiohttp", "color": "#1baf7a"},
+    "py-flask-gevent": {"label": "Python: Flask + gevent", "short": "gevent", "color": "#8e5bd0"},
+    "py-flask-threads": {"label": "Python: Flask + threads", "short": "threads", "color": "#d9a400"},
 }
 COMPARISONS = [
     ("A", "Go vs Java na JVM", "go-fiber", "java-jvm"),
@@ -46,6 +52,7 @@ COMPARISONS = [
     ("J", "Otimizados: Go vs Rust", "go-fiber-opt", "rust-axum-opt"),
     ("K", "JVM otimizada: G1 vs ZGC", "java-jvm-opt", "java-jvm-zgc"),
     ("L", "Native otimizado: Serial (CE) vs G1 (Oracle)", "java-native-opt", "java-native-g1"),
+    ("M", "Python: as cinco pilhas, com Go como controle", "go-fiber", "py-fastapi", "py-fastapi-aiohttp", "py-aiohttp", "py-flask-gevent", "py-flask-threads"),
 ]
 # Nome do nível de carga: VUs ou req/s, conforme o modo da rodada.
 LEVEL = {"name": "VUs", "axis": "VUs simultâneos"}
@@ -110,12 +117,23 @@ def load_rounds(directory):
                   for c in (target, "mock-api", "k6")}
         oom_path = os.path.join(directory, f"oom-{tag}.txt")
         oom = open(oom_path).read().strip() == "true" if os.path.exists(oom_path) else None
+        # Com vários processos, o kernel pode matar um worker sem encerrar o container.
+        events_path = os.path.join(directory, f"memevents-{tag}.txt")
+        worker_oom_kills = 0
+        if os.path.exists(events_path):
+            m_oom = re.search(r"^oom_kill (\d+)$", open(events_path).read(), re.M)
+            worker_oom_kills = int(m_oom.group(1)) if m_oom else 0
+        oom = oom or worker_oom_kills > 0
         # OOM de heap não encerra o container: só aparece no log do alvo.
         log_path = os.path.join(directory, "logs", f"{tag}.log")
         heap_oom = False
+        worker_restarts = 0
         if os.path.exists(log_path):
             with open(log_path, errors="replace") as f:
-                heap_oom = "OutOfMemoryError" in f.read()
+                text = f.read()
+            heap_oom = "OutOfMemoryError" in text or "MemoryError" in text
+            # Worker encerrado e substituído: gunicorn avisa com WORKER TIMEOUT ou SIGKILL, uvicorn com "died".
+            worker_restarts = len(re.findall(r"WORKER TIMEOUT|was sent SIG|Child process \[\d+\] died", text))
         stats = window_stats(series[target], start, end)
         cpu_per_1k = None
         ok_requests = k6["requests"] - k6["errors"]
@@ -124,6 +142,7 @@ def load_rounds(directory):
             cpu_per_1k = stats["cpu_seconds"] / ok_requests * 1000
         rounds.append({
             "target": target, "vus": vus, "rep": rep, "k6": k6, "stats": stats, "oom": oom, "heap_oom": heap_oom,
+            "worker_oom_kills": worker_oom_kills, "worker_restarts": worker_restarts,
             "cpu_per_1k": cpu_per_1k, "series": series,
             "mock": window_stats(series["mock-api"], start, end),
             "k6_stats": window_stats(series["k6"], start, end),
@@ -190,10 +209,14 @@ def sanity_flags(rounds):
                                  f"{num(k6.get('errors_transport', 0))} de transporte"))
         if k6["rps"] < MIN_THROUGHPUT * k6["ideal_rps"]:
             flags.append((where, f"throughput de {num(k6['rps'], 1)} req/s, abaixo de 95% do ideal ({num(k6['ideal_rps'])})"))
-        if r["oom"]:
+        if r["worker_oom_kills"]:
+            flags.append((where, f"{num(r['worker_oom_kills'])} processos encerrados pelo kernel por falta de memória (oom_kill do cgroup)"))
+        elif r["oom"]:
             flags.append((where, "alvo encerrado pelo kernel por falta de memória (OOM kill)"))
+        if r["worker_restarts"]:
+            flags.append((where, f"{num(r['worker_restarts'])} avisos de worker encerrado no log do alvo"))
         if r["heap_oom"]:
-            flags.append((where, "`OutOfMemoryError` no log do alvo (heap esgotado)"))
+            flags.append((where, "`OutOfMemoryError` ou `MemoryError` no log do alvo (heap esgotado)"))
         if r["stats"]["samples"] < 0.5 * k6["duration_s"]:
             flags.append((where, f"coleta incompleta: {r['stats']['samples']} amostras em {k6['duration_s']}s"))
     return flags
@@ -228,7 +251,12 @@ def direct_labels(ax, points, decimals):
     if not points:
         return
     low, high = ax.get_ylim()
-    placed = separate([p[1] for p in points], (high - low) * 0.075)
+    if ax.get_yscale() == "log":
+        # Em escala log, a distância entre rótulos é medida em décadas.
+        logs = [math.log10(p[1]) for p in points]
+        placed = [10 ** v for v in separate(logs, (math.log10(high) - math.log10(low)) * 0.075)]
+    else:
+        placed = separate([p[1] for p in points], (high - low) * 0.075)
     for (x, y, name), ypos in zip(points, placed):
         ax.annotate(f"{name}  {num(y, decimals)}", xy=(x, y), xytext=(x, ypos), textcoords="data",
                     xycoords="data", fontsize=9, color=INK, va="center", ha="left",
@@ -237,7 +265,7 @@ def direct_labels(ax, points, decimals):
 
 def comparisons_with_data(agg):
     targets = {t for t, _ in agg}
-    return [c for c in COMPARISONS if c[2] in targets and c[3] in targets]
+    return [c for c in COMPARISONS if all(t in targets for t in c[2:])]
 
 
 def panel_grid(count):
@@ -251,7 +279,7 @@ def panel_grid(count):
     return fig, flat
 
 
-def metric_chart(agg, key, title, unit, filename, charts_dir, scale=1.0, decimals=0):
+def metric_chart(agg, key, title, unit, filename, charts_dir, scale=1.0, decimals=0, log=False):
     comps = comparisons_with_data(agg)
     if not comps:
         return None
@@ -260,7 +288,7 @@ def metric_chart(agg, key, title, unit, filename, charts_dir, scale=1.0, decimal
         style_axes(ax)
         levels = sorted({v for t, v in agg if t in targets})
         xs = list(range(len(levels)))
-        labels, missing = [], []
+        labels, missing, all_values = [], [], []
         for t in targets:
             pairs = [(i, agg[(t, v)][key]) for i, v in enumerate(levels)
                      if (t, v) in agg and agg[(t, v)][key] is not None]
@@ -272,11 +300,20 @@ def metric_chart(agg, key, title, unit, filename, charts_dir, scale=1.0, decimal
                     markeredgecolor=BG, markeredgewidth=1.5, label=TARGETS[t]["label"])
             labels.append((px[-1] + 0.08, py[-1], TARGETS[t]["short"]))
             if px[-1] < max(xs):
-                missing.append(f"{TARGETS[t]['short']}: sem dado em {num(levels[-1])} VUs")
+                missing.append(f"{TARGETS[t]['short']}: sem dado a partir de {num(levels[px[-1] + 1])} {LEVEL['name']}")
+            all_values.extend(v for v in py if v > 0)
         ax.set_xticks(xs, [num(v) for v in levels])
         ax.set_xlim(-0.2, max(xs) + 0.75)
-        ax.set_ylim(bottom=0)
-        ax.set_ylim(0, ax.get_ylim()[1] * 1.08)
+        if log and all_values and max(all_values) / min(all_values) > 100:
+            # Com valores em ordens de grandeza diferentes, a escala linear esconde os menores.
+            ax.set_yscale("log")
+            ax.set_ylim(min(all_values) / 1.5, max(all_values) * 2.5)
+            ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: num(v, 0 if v >= 1 else 1)))
+            ax.yaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+            unit = f"{unit} (escala log)"
+        else:
+            ax.set_ylim(bottom=0)
+            ax.set_ylim(0, ax.get_ylim()[1] * 1.08)
         ax.set_xlabel(LEVEL["axis"], color=MUTED, fontsize=9)
         ax.set_ylabel(unit, color=MUTED, fontsize=9)
         ax.set_title(f"Comparativo {cid}: {cname}", color=INK, fontsize=10, loc="left")
@@ -284,8 +321,8 @@ def metric_chart(agg, key, title, unit, filename, charts_dir, scale=1.0, decimal
         direct_labels(ax, labels, decimals)
         if missing:
             # Explica a linha interrompida: a falta do ponto é parte do resultado.
-            ax.annotate("; ".join(missing), xy=(1, 1), xycoords="axes fraction", xytext=(0, 2),
-                        textcoords="offset points", fontsize=8, color=MUTED, ha="right", va="bottom")
+            ax.annotate("; ".join(missing), xy=(0, 1), xycoords="axes fraction", xytext=(6, -4),
+                        textcoords="offset points", fontsize=8, color=MUTED, ha="left", va="top")
     fig.suptitle(title, color=INK, fontsize=12, x=0.01, ha="left", fontweight="bold")
     fig.tight_layout(rect=(0, 0, 1, 0.97))
     fig.savefig(os.path.join(charts_dir, filename), dpi=150, facecolor=BG)
@@ -391,8 +428,8 @@ def make_charts(rounds, agg, startup, charts_dir):
     os.makedirs(charts_dir, exist_ok=True)
     return {
         "startup": startup_chart(startup, charts_dir),
-        "overhead": metric_chart(agg, "overhead_p99", "Overhead de latência no p99 (p99 menos os 5.000 ms da API externa)",
-                                 "ms", "overhead_p99.png", charts_dir, decimals=1),
+        "overhead": metric_chart(agg, "overhead_p99", "Overhead de latência no p99 (além dos 5.000 ms da API)",
+                                 "ms", "overhead_p99.png", charts_dir, decimals=1, log=True),
         "mem_peak": metric_chart(agg, "mem_peak", "Memória de pico (limite de 1.024 MiB)", "MiB",
                                  "memoria_pico.png", charts_dir, scale=1 / MIB),
         "cpu_avg": metric_chart(agg, "cpu_avg", "CPU média (100% = 1 core, máximo de 200%)", "% de 1 core",
@@ -442,7 +479,10 @@ RES_HEAD = ["Nível", "Alvo", "Memória parada (MiB)", "Memória média (MiB)", 
 
 
 def build_blocks(directory, rounds, agg, startup, charts):
-    b = [("h1", "Benchmark de I/O: Java com virtual threads, Go com Fiber e Rust com Axum")]
+    title = "Benchmark de I/O: Java com virtual threads, Go com Fiber e Rust com Axum"
+    if any(t.startswith("py-") for t, _ in agg):
+        title = "Benchmark de I/O: pilhas Python, com Go como controle"
+    b = [("h1", title)]
     if LEVEL["name"] != "VUs":
         b.append(("p", "**Carga por taxa:** o nível é a taxa em req/s, constante mesmo se o alvo ficar lento (k6 `constant-arrival-rate`)."))
     else:
