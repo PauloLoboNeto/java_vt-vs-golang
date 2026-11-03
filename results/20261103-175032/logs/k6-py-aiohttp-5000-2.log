@@ -1,0 +1,3 @@
+ Container bench-k6 Creating 
+ Container bench-k6 Created 
+alvo=http://py-aiohttp:8080/api/io vus=5000 reqs=179956 erros=0 rps=999.8/1000 descartadas=0 p50=5001.4299555 p99=5002.43830445 max=5008.85244

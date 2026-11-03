@@ -1,0 +1,9 @@
+{
+  "WARMUP": "30",
+  "DURATION": "60",
+  "MODE": "vus",
+  "TARGETS": "go-fiber py-fastapi py-aiohttp py-flask-gevent py-flask-threads",
+  "LEVELS": "10000",
+  "REPS": "1",
+  "STARTUP_RUNS": "1"
+}

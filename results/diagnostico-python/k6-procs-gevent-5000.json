@@ -1,0 +1,33 @@
+{
+  "target_url": "http://bench-diag:8080/api/io",
+  "vus": 5000,
+  "warmup_s": 30,
+  "duration_s": 30,
+  "window_start_ms": 1793744577309,
+  "window_end_ms": 1793744607309,
+  "requests": 29861,
+  "errors": 0,
+  "errors_transport": 0,
+  "error_rate": 0,
+  "rps": 995.3666666666667,
+  "ideal_rps": 1000,
+  "mode": "vus",
+  "dropped_iterations": 0,
+  "latency_ms": {
+    "avg": 5027.133603856129,
+    "min": 5000.964172,
+    "p50": 5009.650241,
+    "p90": 5073.858232,
+    "p95": 5118.189268,
+    "p99": 5195.2230392,
+    "max": 5283.305497
+  },
+  "http_req_blocked_ms": {
+    "p99": 0.14195829000000004,
+    "max": 27.202982
+  },
+  "http_req_connecting_ms": {
+    "p99": 0.09752074,
+    "max": 13.71103
+  }
+}

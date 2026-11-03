@@ -1,0 +1,33 @@
+{
+  "target_url": "http://py-flask-gevent:8080/api/io",
+  "vus": 1000,
+  "warmup_s": 30,
+  "duration_s": 180,
+  "window_start_ms": 1793737592447,
+  "window_end_ms": 1793737772447,
+  "requests": 35980,
+  "errors": 0,
+  "errors_transport": 0,
+  "error_rate": 0,
+  "rps": 199.88888888888889,
+  "ideal_rps": 200,
+  "mode": "vus",
+  "dropped_iterations": 0,
+  "latency_ms": {
+    "avg": 5003.050786972729,
+    "min": 5000.965406,
+    "p50": 5002.7512635,
+    "p90": 5004.3518475,
+    "p95": 5005.1664787,
+    "p99": 5008.19839503,
+    "max": 5043.64164
+  },
+  "http_req_blocked_ms": {
+    "p99": 0.14274144999999996,
+    "max": 11.522222
+  },
+  "http_req_connecting_ms": {
+    "p99": 0.09837255999999989,
+    "max": 11.493007
+  }
+}

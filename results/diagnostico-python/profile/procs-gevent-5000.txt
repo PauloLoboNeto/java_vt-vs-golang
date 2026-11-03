@@ -1,0 +1,7 @@
+pid=1 cpu=0% rss=38MiB fds=10 threads=2
+pid=7 cpu=46% rss=227MiB fds=4935 threads=1
+pid=8 cpu=48% rss=228MiB fds=5083 threads=1
+---
+pid=1 cpu=0% rss=38MiB fds=10 threads=2
+pid=7 cpu=12% rss=198MiB fds=2472 threads=1
+pid=8 cpu=13% rss=211MiB fds=2546 threads=1

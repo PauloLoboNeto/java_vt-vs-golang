@@ -1,0 +1,7 @@
+N=500 concluídas=1377 ideal≈4000 latência média=27.09s
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+ 94921000   19.368    0.000   27.382    0.000 httpcore/_async/connection.py:192(is_idle)
+      992   13.833    0.014   44.131    0.044 httpcore/_async/connection_pool.py:270(_assign_requests_to_connections)
+ 94921000    8.015    0.000    8.015    0.000 httpcore/_async/http11.py:288(is_idle)
+   188385    0.209    0.000    0.501    0.000 httpcore/_utils.py:8(is_socket_readable)
+   496000    0.194    0.000    2.230    0.000 httpcore/_async/http11.py:274(has_expired)

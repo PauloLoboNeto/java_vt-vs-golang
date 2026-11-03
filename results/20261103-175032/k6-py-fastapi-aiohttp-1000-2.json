@@ -1,0 +1,33 @@
+{
+  "target_url": "http://py-fastapi-aiohttp:8080/api/io",
+  "vus": 1000,
+  "warmup_s": 30,
+  "duration_s": 180,
+  "window_start_ms": 1793733277634,
+  "window_end_ms": 1793733457634,
+  "requests": 35994,
+  "errors": 0,
+  "errors_transport": 0,
+  "error_rate": 0,
+  "rps": 199.96666666666667,
+  "ideal_rps": 200,
+  "mode": "vus",
+  "dropped_iterations": 0,
+  "latency_ms": {
+    "avg": 5001.681208272355,
+    "min": 5000.445685,
+    "p50": 5001.68301,
+    "p90": 5002.1845635,
+    "p95": 5002.3034987,
+    "p99": 5002.53567013,
+    "max": 5003.027723
+  },
+  "http_req_blocked_ms": {
+    "p99": 0.14906386000000035,
+    "max": 8.949416
+  },
+  "http_req_connecting_ms": {
+    "p99": 0.10350671000000003,
+    "max": 8.90552
+  }
+}

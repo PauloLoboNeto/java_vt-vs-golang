@@ -1,0 +1,368 @@
+--progress is a global compose flag, better use `docker compose --progress xx build ...
+ Image bench/py-fastapi-aiohttp Building 
+ Image bench/py-aiohttp Building 
+ Image bench/py-flask-threads Building 
+ Image bench/py-flask-gevent Building 
+ Image bench/py-fastapi Building 
+ Image bench/go-fiber Building 
+ Image bench/mock-api Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.78kB done
+#1 DONE 0.0s
+
+#2 [py-fastapi internal] load build definition from Dockerfile
+#2 transferring dockerfile: 508B done
+#2 DONE 0.0s
+
+#3 [py-flask-threads internal] load build definition from Dockerfile.threads
+#3 transferring dockerfile: 535B done
+#3 DONE 0.0s
+
+#4 [mock-api internal] load build definition from Dockerfile
+#4 transferring dockerfile: 255B done
+#4 DONE 0.0s
+
+#5 [py-aiohttp internal] load build definition from Dockerfile
+#5 transferring dockerfile: 486B done
+#5 DONE 0.0s
+
+#6 [go-fiber internal] load build definition from Dockerfile
+#6 transferring dockerfile: 290B done
+#6 DONE 0.0s
+
+#7 [py-flask-gevent internal] load build definition from Dockerfile.gevent
+#7 transferring dockerfile: 521B done
+#7 DONE 0.0s
+
+#8 [py-fastapi-aiohttp internal] load build definition from Dockerfile
+#8 transferring dockerfile: 508B done
+#8 DONE 0.0s
+
+#9 [go-fiber internal] load metadata for docker.io/library/golang:1.27.3
+#9 DONE 0.0s
+
+#10 [py-flask-threads internal] load .dockerignore
+#10 transferring context: 2B done
+#10 DONE 0.0s
+
+#11 [py-fastapi internal] load .dockerignore
+#11 transferring context: 2B done
+#11 DONE 0.0s
+
+#12 [py-aiohttp internal] load .dockerignore
+#12 transferring context: 2B done
+#12 DONE 0.0s
+
+#13 [py-fastapi-aiohttp internal] load metadata for docker.io/library/python:3.15.2-slim-bookworm
+#13 DONE 0.0s
+
+#14 [py-flask-threads internal] load build context
+#14 transferring context: 64B done
+#14 DONE 0.0s
+
+#15 [py-fastapi internal] load build context
+#15 transferring context: 64B done
+#15 DONE 0.0s
+
+#16 [py-aiohttp internal] load build context
+#16 transferring context: 64B done
+#16 DONE 0.0s
+
+#17 [py-fastapi-aiohttp 1/4] FROM docker.io/library/python:3.15.2-slim-bookworm@sha256:4e03260adeeebafccd084f3584e6b84823aba5651cfb53ef8a078ed441ddf9cd
+#17 resolve docker.io/library/python:3.15.2-slim-bookworm@sha256:4e03260adeeebafccd084f3584e6b84823aba5651cfb53ef8a078ed441ddf9cd 0.0s done
+#17 DONE 0.0s
+
+#18 [py-flask-threads 2/4] COPY requirements.txt .
+#18 CACHED
+
+#19 [py-flask-threads 3/4] RUN pip install --no-cache-dir --root-user-action=ignore --disable-pip-version-check -r requirements.txt
+#19 CACHED
+
+#20 [py-flask-gevent 4/4] COPY app.py .
+#20 CACHED
+
+#21 [py-aiohttp 3/4] RUN pip install --no-cache-dir --root-user-action=ignore --disable-pip-version-check -r requirements.txt
+#21 CACHED
+
+#22 [py-aiohttp 2/4] COPY requirements.txt .
+#22 CACHED
+
+#23 [py-aiohttp 4/4] COPY app.py .
+#23 CACHED
+
+#24 [py-fastapi 3/4] RUN pip install --no-cache-dir --root-user-action=ignore --disable-pip-version-check -r requirements.txt
+#24 CACHED
+
+#25 [py-fastapi 2/4] COPY requirements.txt .
+#25 CACHED
+
+#26 [py-fastapi 4/4] COPY app.py .
+#26 CACHED
+
+#27 [py-fastapi-aiohttp internal] load .dockerignore
+#27 transferring context: 2B done
+#27 DONE 0.0s
+
+#28 [py-aiohttp] exporting to image
+#28 exporting layers done
+#28 exporting manifest sha256:643cdae0784485d395bdcee0a26c3a97565742e69fd1f1ffe750f864150a62a5 done
+#28 exporting config sha256:3ad06b73e3b9a47241f3fb556a50f7452704b37d9d89da7fb7df918f2efbb0b0 done
+#28 exporting attestation manifest sha256:65030de8de800a25a7f0546648213ba6f34b9d97555d24fc8467476d17b8f58a
+#28 ...
+
+#29 [py-fastapi-aiohttp internal] load build context
+#29 transferring context: 1.84kB done
+#29 DONE 0.1s
+
+#17 [py-fastapi 1/4] FROM docker.io/library/python:3.15.2-slim-bookworm@sha256:4e03260adeeebafccd084f3584e6b84823aba5651cfb53ef8a078ed441ddf9cd
+#17 CACHED
+
+#28 [py-aiohttp] exporting to image
+#28 exporting attestation manifest sha256:65030de8de800a25a7f0546648213ba6f34b9d97555d24fc8467476d17b8f58a 0.1s done
+#28 exporting manifest list sha256:751a2a754691a2523a9b2f7ea090c5b77e599e91fbf9d171cbb4b6f9134f0b78 0.0s done
+#28 naming to docker.io/bench/py-aiohttp:latest 0.0s done
+#28 unpacking to docker.io/bench/py-aiohttp:latest
+#28 unpacking to docker.io/bench/py-aiohttp:latest 0.0s done
+#28 DONE 0.2s
+
+#30 [py-fastapi-aiohttp 2/4] COPY requirements.txt .
+#30 DONE 0.1s
+
+#31 [py-flask-gevent] exporting to image
+#31 exporting layers done
+#31 exporting manifest sha256:5b583c29dbca9d701a6915fdb736167409bf739ff0162c8cef758cdeeaa39094 done
+#31 exporting config sha256:f51a69c15370c6bfa63c272ecb653fccb8c204e5a1e40059ce27d4cd034102ed done
+#31 exporting attestation manifest sha256:338417582fdbcaac8c285511e01248f25e3d8c5072eaf9027f2b788275d1d78a 0.0s done
+#31 exporting manifest list sha256:d4aa49bede4cf4c16957ffa1658a031f89c179863efa4d7f6aebfcf2426130d8 0.0s done
+#31 naming to docker.io/bench/py-flask-gevent:latest done
+#31 unpacking to docker.io/bench/py-flask-gevent:latest 0.0s done
+#31 DONE 0.2s
+
+#32 [py-flask-threads] exporting to image
+#32 exporting layers done
+#32 exporting manifest sha256:8999d3742de457dcf93d48d2e608cdbbb866772b2ea62bd5d09155b08c2ac475 done
+#32 exporting config sha256:f6ab88c5d38961d27392f82d767544c4a2399d76df40fcac111493206d63ddca done
+#32 exporting attestation manifest sha256:c9bda6501abda8e92602a4c0933e964458f3d7de2d72ddbbedfdb4c65fb6a6d3 0.0s done
+#32 exporting manifest list sha256:e72cdbf0d7a468958ba591362620e9051ccf7b742c33bcef91ceaf772af8c270 0.0s done
+#32 naming to docker.io/bench/py-flask-threads:latest done
+#32 unpacking to docker.io/bench/py-flask-threads:latest 0.0s done
+#32 DONE 0.2s
+
+#33 [mock-api internal] load metadata for gcr.io/distroless/static-debian12:latest
+#33 DONE 0.3s
+
+#34 [py-fastapi] exporting to image
+#34 exporting layers done
+#34 exporting manifest sha256:1fb9f6453a4457df9fc566faac5a1113ea90fc01e0a58d9297d8003dd2379b74 done
+#34 exporting config sha256:0bf856195f9f4a4fa23df3c4d401c20ffd719e547be904045879a815d8921bf9 0.0s done
+#34 exporting attestation manifest sha256:18e8e9022007673a607713ce0fa0a37e6a11b773e8d588075b5af41d2b1653c7 0.1s done
+#34 exporting manifest list sha256:2b04e8804a8898c673126e6f3a1b06d0a19175c35f2ead4bec23fb860ba67456 0.0s done
+#34 naming to docker.io/bench/py-fastapi:latest done
+#34 unpacking to docker.io/bench/py-fastapi:latest 0.0s done
+#34 DONE 0.2s
+
+#35 [mock-api internal] load .dockerignore
+#35 transferring context: 2B done
+#35 DONE 0.0s
+
+#36 [mock-api internal] load build context
+#36 DONE 0.0s
+
+#37 [go-fiber internal] load .dockerignore
+#37 transferring context: 2B done
+#37 DONE 0.0s
+
+#38 [go-fiber internal] load build context
+#38 DONE 0.0s
+
+#39 [go-fiber build 1/4] FROM docker.io/library/golang:1.27.3@sha256:2920bb124f1a2e12a1d39f0cab756ae0068441ee1da7655dec7f5e374944095b
+#39 resolve docker.io/library/golang:1.27.3@sha256:2920bb124f1a2e12a1d39f0cab756ae0068441ee1da7655dec7f5e374944095b
+#39 resolve docker.io/library/golang:1.27.3@sha256:2920bb124f1a2e12a1d39f0cab756ae0068441ee1da7655dec7f5e374944095b 0.1s done
+#39 DONE 0.2s
+
+#40 [go-fiber stage-1 1/2] FROM gcr.io/distroless/static-debian12:latest@sha256:d75cdd72874d4790092fcb1b058493ecf6bb5bf2b2b897045b00ff01d91843f2
+#40 resolve gcr.io/distroless/static-debian12:latest@sha256:d75cdd72874d4790092fcb1b058493ecf6bb5bf2b2b897045b00ff01d91843f2 0.1s done
+#40 DONE 0.2s
+
+#38 [go-fiber internal] load build context
+#38 transferring context: 81B done
+#38 DONE 0.0s
+
+#36 [mock-api internal] load build context
+#36 transferring context: 54B done
+#36 DONE 0.0s
+
+#41 [go-fiber build 3/6] COPY go.mod go.sum ./
+#41 CACHED
+
+#42 [go-fiber build 4/6] RUN go mod download
+#42 CACHED
+
+#43 [go-fiber build 6/6] RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /app .
+#43 CACHED
+
+#44 [go-fiber build 5/6] COPY main.go ./
+#44 CACHED
+
+#45 [go-fiber stage-1 2/2] COPY --from=build /app /app
+#45 CACHED
+
+#46 [mock-api build 3/4] COPY go.mod main.go ./
+#46 CACHED
+
+#47 [mock-api build 2/4] WORKDIR /src
+#47 CACHED
+
+#48 [mock-api build 4/4] RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /app .
+#48 CACHED
+
+#49 [mock-api stage-1 2/2] COPY --from=build /app /app
+#49 CACHED
+
+#50 [go-fiber] exporting to image
+#50 exporting layers done
+#50 exporting manifest sha256:c770b218fc7660aede13cf2b1d3f05d4d1ec4b65ae696886ee27274714722969 done
+#50 exporting config sha256:80864a6c97a22b84d5c4376f1152624dd2a447c6ac61d16a04198d18c4c14558 done
+#50 exporting attestation manifest sha256:cc678fe99fb9d072ebce6c976bb6431cb292b83b42e119541400964b1060bf4d 0.1s done
+#50 exporting manifest list sha256:c2697a19b703db9d4939ede9a2fc11e1e75040be302ee209bb864ee3c3918325
+#50 exporting manifest list sha256:c2697a19b703db9d4939ede9a2fc11e1e75040be302ee209bb864ee3c3918325 0.0s done
+#50 naming to docker.io/bench/go-fiber:latest 0.0s done
+#50 unpacking to docker.io/bench/go-fiber:latest 0.0s done
+#50 DONE 0.2s
+
+#51 [mock-api] exporting to image
+#51 exporting layers done
+#51 exporting manifest sha256:877a8bb86d9b8ec1cfb4e38b0d863e676df71a2cf21faa510f4f7d5053556368 done
+#51 exporting config sha256:c8ebec5da56a56fcfbbfdfb89877e1a41b34bc2017b0828b36892c71fe992bf6 done
+#51 exporting attestation manifest sha256:326b30f557f2e9d978e31eef3185d53ca2036d47ef0fb3b4cfac9898250a740a 0.0s done
+#51 exporting manifest list sha256:ee1ae66a5a35ab8f446848a6285db32abac3b581e2d5ce9195330d6e7ce230b6 0.0s done
+#51 naming to docker.io/bench/mock-api:latest 0.0s done
+#51 unpacking to docker.io/bench/mock-api:latest 0.0s done
+#51 DONE 0.2s
+
+#52 [py-aiohttp] resolving provenance for metadata file
+#52 ...
+
+#53 [py-flask-threads] resolving provenance for metadata file
+#53 DONE 0.2s
+
+#54 [py-flask-gevent] resolving provenance for metadata file
+#54 DONE 0.2s
+
+#55 [py-fastapi] resolving provenance for metadata file
+#55 DONE 0.1s
+
+#52 [py-aiohttp] resolving provenance for metadata file
+#52 DONE 0.1s
+
+#56 [go-fiber] resolving provenance for metadata file
+#56 DONE 0.0s
+
+#57 [mock-api] resolving provenance for metadata file
+#57 DONE 0.0s
+
+#58 [py-fastapi-aiohttp 3/4] RUN pip install --no-cache-dir --root-user-action=ignore --disable-pip-version-check -r requirements.txt
+#58 1.575 Collecting aiohappyeyeballs==2.7.1 (from -r requirements.txt (line 1))
+#58 1.648   Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl.metadata (5.9 kB)
+#58 2.086 Collecting aiohttp==3.14.5 (from -r requirements.txt (line 2))
+#58 2.096   Downloading aiohttp-3.14.5-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+#58 2.112 Collecting aiosignal==1.4.0 (from -r requirements.txt (line 3))
+#58 2.123   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+#58 2.134 Collecting annotated-doc==0.0.5 (from -r requirements.txt (line 4))
+#58 2.144   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#58 2.155 Collecting annotated-types==0.8.0 (from -r requirements.txt (line 5))
+#58 2.165   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#58 2.184 Collecting anyio==4.16.0 (from -r requirements.txt (line 6))
+#58 2.195   Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+#58 2.208 Collecting attrs==26.1.0 (from -r requirements.txt (line 7))
+#58 2.218   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+#58 2.233 Collecting click==8.5.0 (from -r requirements.txt (line 8))
+#58 2.247   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#58 2.278 Collecting fastapi==0.162.0 (from -r requirements.txt (line 9))
+#58 2.291   Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+#58 2.344 Collecting frozenlist==1.8.0 (from -r requirements.txt (line 10))
+#58 2.355   Downloading frozenlist-1.8.0-py3-none-any.whl.metadata (20 kB)
+#58 2.368 Collecting h11==0.16.0 (from -r requirements.txt (line 11))
+#58 2.379   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#58 2.409 Collecting httptools==0.9.0 (from -r requirements.txt (line 12))
+#58 2.422   Downloading httptools-0.9.0-cp315-cp315-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+#58 2.435 Collecting idna==3.20 (from -r requirements.txt (line 13))
+#58 2.445   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#58 2.638 Collecting multidict==7.2.1 (from -r requirements.txt (line 14))
+#58 2.648   Downloading multidict-7.2.1-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (6.1 kB)
+#58 2.665 Collecting opentelemetry-api==1.45.2 (from -r requirements.txt (line 15))
+#58 2.677   Downloading opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+#58 2.726 Collecting propcache==0.5.4 (from -r requirements.txt (line 16))
+#58 2.737   Downloading propcache-0.5.4-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (25 kB)
+#58 2.809 Collecting pydantic==2.14.2 (from -r requirements.txt (line 17))
+#58 2.820   Downloading pydantic-2.14.2-py3-none-any.whl.metadata (137 kB)
+#58 3.348 Collecting pydantic_core==2.50.2 (from -r requirements.txt (line 18))
+#58 3.360   Downloading pydantic_core-2.50.2-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.5 kB)
+#58 3.379 Collecting starlette==1.10.0 (from -r requirements.txt (line 19))
+#58 3.390   Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+#58 3.402 Collecting typing-inspection==0.4.4 (from -r requirements.txt (line 20))
+#58 3.415   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#58 3.431 Collecting typing_extensions==4.16.0 (from -r requirements.txt (line 21))
+#58 3.442   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#58 3.461 Collecting uvicorn==0.54.0 (from -r requirements.txt (line 22))
+#58 3.472   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+#58 3.502 Collecting uvloop==0.23.0 (from -r requirements.txt (line 23))
+#58 3.514   Downloading uvloop-0.23.0-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+#58 3.698 Collecting yarl==1.25.1 (from -r requirements.txt (line 24))
+#58 3.709   Downloading yarl-1.25.1-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (111 kB)
+#58 3.746 Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl (15 kB)
+#58 3.766 Downloading aiohttp-3.14.5-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)
+#58 3.793    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 99.6 MB/s  0:00:00
+#58 3.804 Downloading multidict-7.2.1-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (508 kB)
+#58 3.816 Downloading yarl-1.25.1-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (117 kB)
+#58 3.828 Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+#58 3.839 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+#58 3.850 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#58 3.860 Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+#58 3.871 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+#58 3.882 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#58 3.892 Downloading fastapi-0.162.0-py3-none-any.whl (148 kB)
+#58 3.902 Downloading frozenlist-1.8.0-py3-none-any.whl (13 kB)
+#58 3.912 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#58 3.925 Downloading httptools-0.9.0-cp315-cp315-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (515 kB)
+#58 3.937 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#58 3.948 Downloading opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+#58 3.961 Downloading propcache-0.5.4-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (232 kB)
+#58 3.978 Downloading pydantic-2.14.2-py3-none-any.whl (490 kB)
+#58 3.995 Downloading pydantic_core-2.50.2-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+#58 4.007    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 201.6 MB/s  0:00:00
+#58 4.017 Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+#58 4.027 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#58 4.038 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#58 4.049 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+#58 4.063 Downloading uvloop-0.23.0-cp315-cp315-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.5 MB)
+#58 4.090    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 165.6 MB/s  0:00:00
+#58 4.246 Installing collected packages: uvloop, typing_extensions, propcache, multidict, idna, httptools, h11, frozenlist, click, attrs, annotated-types, annotated-doc, aiohappyeyeballs, yarl, uvicorn, typing-inspection, pydantic_core, opentelemetry-api, anyio, aiosignal, starlette, pydantic, aiohttp, fastapi
+#58 5.665 
+#58 5.666 Successfully installed aiohappyeyeballs-2.7.1 aiohttp-3.14.5 aiosignal-1.4.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.16.0 attrs-26.1.0 click-8.5.0 fastapi-0.162.0 frozenlist-1.8.0 h11-0.16.0 httptools-0.9.0 idna-3.20 multidict-7.2.1 opentelemetry-api-1.45.2 propcache-0.5.4 pydantic-2.14.2 pydantic_core-2.50.2 starlette-1.10.0 typing-inspection-0.4.4 typing_extensions-4.16.0 uvicorn-0.54.0 uvloop-0.23.0 yarl-1.25.1
+#58 DONE 5.9s
+
+#59 [py-fastapi-aiohttp 4/4] COPY app.py .
+#59 DONE 0.0s
+
+#60 [py-fastapi-aiohttp] exporting to image
+#60 exporting layers
+#60 exporting layers 1.8s done
+#60 exporting manifest sha256:48bff783f12e38735d3822b20b9385d6c7734b8cf1beb82a1b1393e549ac3abc 0.0s done
+#60 exporting config sha256:efd0c98b8410a90f01faa7dbd90c2c3c1eb1c4b357678af07600f0f456414137 0.0s done
+#60 exporting attestation manifest sha256:827d3993679a3f1723c44b68786883ccd2bef5c38d3f81bc75a1c007e08967c5 0.0s done
+#60 exporting manifest list sha256:4e8e2882366fbe48f2d0ffda3b67b3e35484b66c994dcd8075ff31af47783168 0.0s done
+#60 naming to docker.io/bench/py-fastapi-aiohttp:latest done
+#60 unpacking to docker.io/bench/py-fastapi-aiohttp:latest
+#60 unpacking to docker.io/bench/py-fastapi-aiohttp:latest 0.5s done
+#60 DONE 2.4s
+
+#61 [py-fastapi-aiohttp] resolving provenance for metadata file
+#61 DONE 0.0s
+ Image bench/py-aiohttp Built 
+ Image bench/py-flask-gevent Built 
+ Image bench/py-flask-threads Built 
+ Image bench/mock-api Built 
+ Image bench/go-fiber Built 
+ Image bench/py-fastapi Built 
+ Image bench/py-fastapi-aiohttp Built 
