@@ -1,0 +1,33 @@
+{
+  "target_url": "http://rust-axum-opt:8080/api/io",
+  "vus": 1000,
+  "warmup_s": 30,
+  "duration_s": 180,
+  "window_start_ms": 1793669438420,
+  "window_end_ms": 1793669618420,
+  "requests": 35983,
+  "errors": 0,
+  "errors_transport": 0,
+  "error_rate": 0,
+  "rps": 199.90555555555557,
+  "ideal_rps": 200,
+  "mode": "vus",
+  "dropped_iterations": 0,
+  "latency_ms": {
+    "avg": 5001.316658493434,
+    "min": 5000.216641,
+    "p50": 5001.315484,
+    "p90": 5001.8060736,
+    "p95": 5001.9235576,
+    "p99": 5002.12671622,
+    "max": 5002.659704
+  },
+  "http_req_blocked_ms": {
+    "p99": 0.15348956000000005,
+    "max": 8.338391
+  },
+  "http_req_connecting_ms": {
+    "p99": 0.10700050000000008,
+    "max": 8.296301
+  }
+}

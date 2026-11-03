@@ -1,0 +1,3 @@
+ Container bench-k6 Creating 
+ Container bench-k6 Created 
+alvo=http://rust-axum:8080/api/io vus=1000 reqs=35991 erros=0 rps=199.9/200 p50=5001.32763 p99=5002.0912517 max=5002.593152

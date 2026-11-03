@@ -1,0 +1,12 @@
+-XX:-AOTAdapterCaching -XX:-AOTInvokeDynamicLinking -XX:-AOTRecordTraining -XX:-AOTReplayTraining -XX:-AOTStubCaching -XX:ConcGCThreads=1 -XX:G1ConcRefinementThreads=2 -XX:InitialHeapSize=6815736 -XX:MarkStackSize=4194304 -XX:MaxHeapSize=805306368 -XX:MaxRAMPercentage=75.000000 -XX:MinHeapSize=6815736 -XX:+PrintCommandLineFlags -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:-THPStackMitigation -XX:+UseCompressedOops -XX:+UseG1GC 
+2026-11-02T20:36:36.796Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting BenchApplication v1.0.0 using Java 27 with PID 1 (/app.jar started by root in /)
+2026-11-02T20:36:36.799Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+2026-11-02T20:36:37.642Z  INFO 1 --- [java-spring] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-11-02T20:36:37.652Z  INFO 1 --- [java-spring] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-02T20:36:37.652Z  INFO 1 --- [java-spring] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-02T20:36:37.669Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 830 ms
+2026-11-02T20:36:38.061Z  INFO 1 --- [java-spring] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-11-02T20:36:38.067Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 1.665 seconds (process running for 2.032)
+2026-11-02T20:36:38.113Z  INFO 1 --- [java-spring] [omcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T20:36:38.113Z  INFO 1 --- [java-spring] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T20:36:38.114Z  INFO 1 --- [java-spring] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

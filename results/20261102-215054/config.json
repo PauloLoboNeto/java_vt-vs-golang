@@ -1,0 +1,9 @@
+{
+  "WARMUP": "30",
+  "DURATION": "180",
+  "MODE": "vus",
+  "TARGETS": "go-fiber-opt java-jvm-opt java-jvm-zgc java-native-opt java-native-g1 rust-axum-opt",
+  "LEVELS": "1000 5000 10000",
+  "REPS": "3",
+  "STARTUP_RUNS": "10"
+}

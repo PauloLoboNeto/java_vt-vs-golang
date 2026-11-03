@@ -1,0 +1,3 @@
+ Container bench-k6 Creating 
+ Container bench-k6 Created 
+alvo=http://java-jvm-zgc:8080/api/io vus=5000 reqs=179932 erros=0 rps=999.6/1000 descartadas=0 p50=5002.321743 p99=5005.00915392 max=5009.562839

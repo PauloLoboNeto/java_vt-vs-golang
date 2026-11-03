@@ -1,0 +1,90 @@
+{
+  "target": "java-native-g1",
+  "runs": [
+    {
+      "time_to_ready_ms": 177.770985999814,
+      "first_io_ms": 8.524687000317499,
+      "idle_mem_bytes": 25407488,
+      "self_reported_ms": 41.0
+    },
+    {
+      "time_to_ready_ms": 157.03095000208123,
+      "first_io_ms": 8.798540002317168,
+      "idle_mem_bytes": 24637440,
+      "self_reported_ms": 41.0
+    },
+    {
+      "time_to_ready_ms": 163.4028340013174,
+      "first_io_ms": 8.090701998298755,
+      "idle_mem_bytes": 24498176,
+      "self_reported_ms": 40.0
+    },
+    {
+      "time_to_ready_ms": 168.84258899881388,
+      "first_io_ms": 8.356602000276325,
+      "idle_mem_bytes": 24694784,
+      "self_reported_ms": 41.0
+    },
+    {
+      "time_to_ready_ms": 161.64852200017776,
+      "first_io_ms": 7.776211001328193,
+      "idle_mem_bytes": 24686592,
+      "self_reported_ms": 41.0
+    },
+    {
+      "time_to_ready_ms": 156.29865499795415,
+      "first_io_ms": 8.5998729991843,
+      "idle_mem_bytes": 24678400,
+      "self_reported_ms": 40.0
+    },
+    {
+      "time_to_ready_ms": 168.32877100023325,
+      "first_io_ms": 8.722744998522103,
+      "idle_mem_bytes": 24559616,
+      "self_reported_ms": 39.0
+    },
+    {
+      "time_to_ready_ms": 165.26948099999572,
+      "first_io_ms": 8.869934998074314,
+      "idle_mem_bytes": 24481792,
+      "self_reported_ms": 41.0
+    },
+    {
+      "time_to_ready_ms": 164.81475299951853,
+      "first_io_ms": 7.11097200110089,
+      "idle_mem_bytes": 24866816,
+      "self_reported_ms": 41.0
+    },
+    {
+      "time_to_ready_ms": 160.13682799894013,
+      "first_io_ms": 7.858020999265136,
+      "idle_mem_bytes": 24719360,
+      "self_reported_ms": 39.0
+    }
+  ],
+  "image_size_bytes": 199860904,
+  "time_to_ready_ms": {
+    "median": 164.10879350041796,
+    "p90": 168.84258899881388,
+    "min": 156.29865499795415,
+    "max": 177.770985999814
+  },
+  "first_io_ms": {
+    "median": 8.440644500296912,
+    "p90": 8.798540002317168,
+    "min": 7.11097200110089,
+    "max": 8.869934998074314
+  },
+  "idle_mem_bytes": {
+    "median": 24682496.0,
+    "p90": 24866816,
+    "min": 24481792,
+    "max": 25407488
+  },
+  "self_reported_ms": {
+    "median": 41.0,
+    "p90": 41.0,
+    "min": 39.0,
+    "max": 41.0
+  }
+}

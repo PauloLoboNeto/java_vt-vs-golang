@@ -1,0 +1,325 @@
+-XX:-AOTAdapterCaching -XX:-AOTInvokeDynamicLinking -XX:-AOTRecordTraining -XX:-AOTReplayTraining -XX:-AOTStubCaching -XX:InitialHeapSize=6815736 -XX:MaxHeapSize=644245094 -XX:MaxRAMPercentage=60.000000 -XX:MinHeapSize=6815736 -XX:+PrintCommandLineFlags -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:-THPStackMitigation -XX:+UseCompactObjectHeaders -XX:-UseCompressedOops -XX:+UseZGC -XX:ZOldGCThreads=1 -XX:ZYoungGCThreads=1 
+[0.007s][info][gc] Using The Z Garbage Collector
+2026-11-02T19:35:57.802Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting BenchApplication v1.0.0 using Java 27 with PID 1 (/opt/app/app.jar started by root in /opt/app)
+2026-11-02T19:35:57.805Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+[0.717s][info][gc] GC(0) Major Collection (Warmup)
+[0.758s][info][gc] GC(0) Major Collection (Warmup) 62M(10%)->16M(3%) 0.042s
+2026-11-02T19:35:58.693Z  INFO 1 --- [java-spring] [           main] o.s.b.j.s.JettyServletWebServerFactory   : Server initialized with port: 8080
+2026-11-02T19:35:58.697Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : jetty-12.1.14; built: 2026-10-02T05:48:05.032Z; git: 15cecbd757a2f6b0fdc6a8944f4c6d0020b17da0; jvm 27+35
+2026-11-02T19:35:58.719Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 828 ms
+[1.548s][info][gc] GC(1) Major Collection (Metadata GC Threshold)
+2026-11-02T19:35:58.760Z  INFO 1 --- [java-spring] [           main] o.e.j.session.DefaultSessionIdManager    : Session workerName=node0
+2026-11-02T19:35:58.766Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.handler.ContextHandler  : Started osbjs.JettyEmbeddedWebAppContext@5e7c141d{application,/,b=file:///tmp/jetty-docbase.8080.3094198589519787607/,a=AVAILABLE,h=oeje11s.SessionHandler@43af351a{STARTED}}
+2026-11-02T19:35:58.766Z  INFO 1 --- [java-spring] [           main] o.e.j.e.servlet.ServletContextHandler    : Started osbjs.JettyEmbeddedWebAppContext@5e7c141d{application,/,b=file:///tmp/jetty-docbase.8080.3094198589519787607/,a=AVAILABLE,h=oeje11s.SessionHandler@43af351a{STARTED}}
+2026-11-02T19:35:58.767Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : Started oejs.Server@72f9f27c{STARTING}[12.1.14,sto=0] @71ms
+[1.628s][info][gc] GC(1) Major Collection (Metadata GC Threshold) 82M(13%)->28M(5%) 0.080s
+2026-11-02T19:35:59.161Z  INFO 1 --- [java-spring] [           main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T19:35:59.162Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T19:35:59.163Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-02T19:35:59.169Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.AbstractConnector       : Started oejs.ServerConnector@fcc89a0{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-11-02T19:35:59.170Z  INFO 1 --- [java-spring] [           main] o.s.boot.jetty.JettyWebServer            : Jetty started on port 8080 (http/1.1) with context path '/'
+2026-11-02T19:35:59.189Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 1.748 seconds (process running for 1.991)
+[4.220s][info][gc] GC(2) Major Collection (Warmup)
+[4.495s][info][gc] GC(2) Major Collection (Warmup) 124M(20%)->78M(13%) 0.275s
+[5.522s][info][gc] GC(3) Major Collection (Warmup)
+[6.292s][info][gc] GC(3) Major Collection (Warmup) 186M(30%)->254M(41%) 0.770s
+[6.414s][info][gc] GC(4) Minor Collection (Allocation Rate)
+[7.294s][info][gc] GC(4) Minor Collection (Allocation Rate) 276M(45%)->358M(58%) 0.880s
+[7.294s][info][gc] GC(5) Major Collection (Allocation Rate)
+[8.103s][info][gc] GC(6) Minor Collection (Allocation Rate)
+[9.118s][info][gc] GC(6) Minor Collection (Allocation Rate) 436M(71%)->502M(81%) 1.016s
+[9.119s][info][gc] GC(7) Minor Collection (Allocation Rate)
+[9.996s][info][gc] GC(7) Minor Collection (Allocation Rate) 502M(81%)->554M(90%) 0.877s
+[10.015s][info][gc] GC(8) Minor Collection (Allocation Rate)
+[10.907s][info][gc] GC(8) Minor Collection (Allocation Rate) 558M(91%)->574M(93%) 0.893s
+[10.908s][info][gc] GC(5) Major Collection (Allocation Rate) 358M(58%)->574M(93%) 3.613s
+[10.910s][info][gc] GC(9) Major Collection (Allocation Rate)
+[11.422s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 122.028ms
+[11.422s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 122.551ms
+[11.423s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.516ms
+[11.428s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 3.550ms
+[11.524s][info][gc] GC(10) Minor Collection (Allocation Stall)
+[11.994s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 171.245ms
+[11.996s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 105.281ms
+[11.996s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 0.749ms
+[11.998s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 2.114ms
+[12.103s][info][gc] GC(10) Minor Collection (Allocation Stall) 588M(95%)->602M(98%) 0.579s
+[12.103s][info][gc] GC(11) Minor Collection (Allocation Rate)
+[12.400s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 179.844ms
+[12.401s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 0.914ms
+[12.402s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 181.179ms
+[12.490s][info][gc] GC(11) Minor Collection (Allocation Rate) 602M(98%)->608M(99%) 0.387s
+[12.491s][info][gc] GC(12) Minor Collection (Allocation Rate)
+[12.654s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 135.198ms
+[12.655s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 136.099ms
+[12.700s][info][gc] GC(12) Minor Collection (Allocation Rate) 608M(99%)->612M(99%) 0.209s
+[12.700s][info][gc] GC(13) Minor Collection (Allocation Rate)
+[12.818s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 105.362ms
+[12.818s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 106.023ms
+[12.821s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.048ms
+[12.824s][info][gc] GC(13) Minor Collection (Allocation Rate) 612M(99%)->612M(99%) 0.124s
+[12.824s][info][gc] GC(14) Minor Collection (Allocation Rate)
+[12.927s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 90.837ms
+[12.928s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 91.193ms
+[12.929s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.438ms
+[12.942s][info][gc] GC(14) Minor Collection (Allocation Rate) 612M(99%)->616M(100%) 0.118s
+[12.942s][info][gc] GC(15) Minor Collection (Allocation Stall)
+[12.991s][info][gc] GC(15) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.049s
+[12.991s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 50.516ms
+[13.000s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 59.507ms
+[13.118s][info][gc] GC(16) Minor Collection (Allocation Rate)
+[13.299s][info][gc] GC(16) Minor Collection (Allocation Rate) 596M(97%)->576M(94%) 0.182s
+[13.299s][info][gc] GC(17) Minor Collection (Allocation Rate)
+[13.518s][info][gc] GC(17) Minor Collection (Allocation Rate) 576M(94%)->566M(92%) 0.219s
+[13.519s][info][gc] GC(9) Major Collection (Allocation Rate) 576M(94%)->566M(92%) 2.608s
+[13.528s][info][gc] GC(18) Major Collection (Allocation Rate)
+[13.720s][info][gc] GC(19) Minor Collection (Allocation Rate)
+[14.019s][info][gc] GC(19) Minor Collection (Allocation Rate) 578M(94%)->598M(97%) 0.299s
+[14.019s][info][gc] GC(20) Minor Collection (Allocation Rate)
+[14.212s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 0.984ms
+[14.224s][info][gc] GC(20) Minor Collection (Allocation Rate) 598M(97%)->604M(98%) 0.205s
+[14.224s][info][gc] GC(21) Minor Collection (Allocation Rate)
+[14.492s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 94.195ms
+[14.493s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 94.598ms
+[14.494s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 2.354ms
+[14.518s][info][gc] GC(21) Minor Collection (Allocation Rate) 604M(98%)->612M(99%) 0.294s
+[14.518s][info][gc] GC(22) Minor Collection (Allocation Rate)
+[14.629s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 37.981ms
+[14.629s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 38.257ms
+[14.634s][info][gc] GC(22) Minor Collection (Allocation Rate) 612M(99%)->610M(99%) 0.116s
+[14.644s][info][gc] GC(23) Minor Collection (Allocation Rate)
+[14.746s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 41.672ms
+[14.748s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 42.752ms
+[14.799s][info][gc] GC(23) Minor Collection (Allocation Rate) 612M(99%)->616M(100%) 0.154s
+[14.801s][info][gc] GC(24) Minor Collection (Allocation Stall)
+[14.829s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 28.032ms
+[14.829s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.447ms
+[14.829s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 28.306ms
+[14.830s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 0.800ms
+[14.831s][info][gc] GC(24) Minor Collection (Allocation Stall) 616M(100%)->612M(99%) 0.030s
+[14.900s][info][gc] GC(25) Minor Collection (Allocation Stall)
+[14.932s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 32.253ms
+[14.932s][info][gc] GC(25) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.033s
+[14.932s][info][gc] GC(26) Minor Collection (Allocation Stall)
+[15.003s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 103.501ms
+[15.010s][info][gc] GC(26) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.078s
+[15.017s][info][gc] GC(27) Minor Collection (Allocation Stall)
+[15.032s][info][gc] GC(27) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.015s
+[15.379s][info][gc] Allocation Stall (Master-Poller) 478.161ms
+[15.379s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 446.354ms
+[15.379s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 362.098ms
+[15.520s][info][gc] GC(28) Minor Collection (Allocation Rate)
+[15.627s][info][gc] GC(28) Minor Collection (Allocation Rate) 600M(97%)->586M(95%) 0.107s
+[15.627s][info][gc] GC(29) Minor Collection (Allocation Rate)
+[15.823s][info][gc] GC(29) Minor Collection (Allocation Rate) 586M(95%)->580M(94%) 0.196s
+[15.823s][info][gc] GC(30) Minor Collection (Allocation Rate)
+[16.032s][info][gc] GC(30) Minor Collection (Allocation Rate) 582M(94%)->588M(95%) 0.209s
+[16.033s][info][gc] GC(18) Major Collection (Allocation Rate) 568M(92%)->588M(95%) 2.504s
+[16.043s][info][gc] GC(31) Major Collection (Allocation Rate)
+[16.222s][info][gc] GC(32) Minor Collection (Allocation Rate)
+[16.419s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 23.512ms
+[16.420s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 24.112ms
+[16.422s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.112ms
+[16.495s][info][gc] GC(32) Minor Collection (Allocation Rate) 600M(97%)->610M(99%) 0.273s
+[16.495s][info][gc] GC(33) Minor Collection (Allocation Rate)
+[16.603s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 86.106ms
+[16.604s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 85.926ms
+[16.610s][info][gc] GC(33) Minor Collection (Allocation Rate) 610M(99%)->608M(99%) 0.115s
+[16.610s][info][gc] GC(34) Minor Collection (Allocation Rate)
+[16.722s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 26.055ms
+[16.723s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 26.355ms
+[16.724s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.198ms
+[16.791s][info][gc] GC(34) Minor Collection (Allocation Rate) 608M(99%)->614M(100%) 0.181s
+[16.801s][info][gc] GC(35) Minor Collection (Allocation Stall)
+[16.845s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 43.790ms
+[16.845s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.323ms
+[16.845s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 44.004ms
+[16.846s][info][gc] Allocation Stall (Master-Poller) 43.892ms
+[16.848s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.664ms
+[16.848s][info][gc] GC(35) Minor Collection (Allocation Stall) 616M(100%)->614M(100%) 0.047s
+[16.902s][info][gc] GC(36) Minor Collection (Allocation Stall)
+[16.942s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 40.452ms
+[16.942s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.160ms
+[16.942s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 40.810ms
+[16.947s][info][gc] GC(36) Minor Collection (Allocation Stall) 616M(100%)->614M(100%) 0.046s
+[16.990s][info][gc] GC(37) Minor Collection (Allocation Stall)
+[17.025s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 35.068ms
+[17.027s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 37.350ms
+[17.034s][info][gc] GC(37) Minor Collection (Allocation Stall) 616M(100%)->614M(100%) 0.044s
+[17.043s][info][gc] GC(38) Minor Collection (Allocation Stall)
+[17.093s][info][gc] GC(38) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.050s
+[17.677s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 634.308ms
+[17.677s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 634.396ms
+[17.810s][info][gc] GC(39) Minor Collection (Allocation Rate)
+[18.009s][info][gc] GC(39) Minor Collection (Allocation Rate) 588M(95%)->572M(93%) 0.199s
+[18.009s][info][gc] GC(40) Minor Collection (Allocation Rate)
+[18.291s][info][gc] GC(40) Minor Collection (Allocation Rate) 572M(93%)->576M(94%) 0.281s
+[18.291s][info][gc] GC(31) Major Collection (Allocation Rate) 590M(96%)->576M(94%) 2.248s
+[18.301s][info][gc] GC(41) Major Collection (Allocation Rate)
+[18.526s][info][gc] GC(42) Minor Collection (Allocation Rate)
+[18.718s][info][gc] GC(42) Minor Collection (Allocation Rate) 596M(97%)->598M(97%) 0.191s
+[18.718s][info][gc] GC(43) Minor Collection (Allocation Rate)
+[18.929s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 0.902ms
+[18.930s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 24.385ms
+[18.930s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 24.997ms
+[18.930s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.843ms
+[19.004s][info][gc] GC(43) Minor Collection (Allocation Rate) 598M(97%)->610M(99%) 0.286s
+[19.004s][info][gc] GC(44) Minor Collection (Allocation Rate)
+[19.121s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 96.295ms
+[19.123s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 33.912ms
+[19.128s][info][gc] GC(44) Minor Collection (Allocation Rate) 610M(99%)->606M(98%) 0.124s
+[19.128s][info][gc] GC(45) Minor Collection (Allocation Rate)
+[19.235s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 27.471ms
+[19.236s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 28.400ms
+[19.302s][info][gc] GC(45) Minor Collection (Allocation Rate) 606M(98%)->616M(100%) 0.174s
+[19.302s][info][gc] GC(46) Minor Collection (Allocation Stall)
+[19.334s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 0.393ms
+[19.334s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 32.560ms
+[19.334s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 33.163ms
+[19.335s][info][gc] GC(46) Minor Collection (Allocation Stall) 616M(100%)->612M(99%) 0.033s
+[19.403s][info][gc] GC(47) Minor Collection (Allocation Stall)
+[19.435s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 32.726ms
+[19.436s][info][gc] GC(47) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.034s
+[19.436s][info][gc] GC(48) Minor Collection (Allocation Stall)
+[19.436s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 0.666ms
+[19.511s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 107.969ms
+[19.512s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 75.782ms
+[19.520s][info][gc] GC(48) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.084s
+[19.527s][info][gc] GC(49) Minor Collection (Allocation Stall)
+[19.541s][info][gc] GC(49) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.014s
+[19.541s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 14.591ms
+[19.597s][info][gc] GC(50) Minor Collection (Allocation Stall)
+[19.613s][info][gc] GC(50) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.016s
+[20.087s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 560.236ms
+[20.087s][info][gc] Allocation Stall (Master-Poller) 558.577ms
+[20.087s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 490.235ms
+[20.204s][info][gc] GC(51) Minor Collection (Allocation Rate)
+[20.317s][info][gc] GC(51) Minor Collection (Allocation Rate) 602M(98%)->590M(96%) 0.113s
+[20.317s][info][gc] GC(52) Minor Collection (Allocation Rate)
+[20.512s][info][gc] GC(52) Minor Collection (Allocation Rate) 590M(96%)->602M(98%) 0.195s
+[20.513s][info][gc] GC(41) Major Collection (Allocation Rate) 578M(94%)->602M(98%) 2.212s
+[20.516s][info][gc] GC(53) Major Collection (Allocation Rate)
+[20.620s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 14.088ms
+[20.620s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 14.581ms
+[20.628s][info][gc] GC(54) Minor Collection (Allocation Stall)
+[20.827s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 113.514ms
+[20.828s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 114.141ms
+[20.829s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.533ms
+[20.892s][info][gc] GC(54) Minor Collection (Allocation Stall) 604M(98%)->616M(100%) 0.264s
+[20.896s][info][gc] GC(55) Minor Collection (Allocation Stall)
+[20.941s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.252ms
+[20.941s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 45.520ms
+[20.941s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 45.778ms
+[20.943s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.223ms
+[20.945s][info][gc] GC(55) Minor Collection (Allocation Stall) 616M(100%)->612M(99%) 0.049s
+[21.001s][info][gc] GC(56) Minor Collection (Allocation Stall)
+[21.055s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.610ms
+[21.055s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 0.730ms
+[21.055s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 54.044ms
+[21.055s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 54.029ms
+[21.056s][info][gc] GC(56) Minor Collection (Allocation Stall) 616M(100%)->612M(99%) 0.055s
+[21.100s][info][gc] GC(57) Minor Collection (Allocation Stall)
+[21.192s][info][gc] GC(53) O: Relocation Stall (ZWorkerOld#0) 1.717ms
+[21.192s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.436ms
+[21.193s][info][gc] GC(53) O: Relocation Stall (ZWorkerOld#0) 0.716ms
+[21.193s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 93.175ms
+[21.193s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 0.915ms
+[21.195s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 2.151ms
+[21.198s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 4.412ms
+[21.201s][info][gc] GC(57) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.101s
+[21.210s][info][gc] GC(58) Minor Collection (Allocation Stall)
+[21.292s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 0.865ms
+[21.292s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 191.769ms
+[21.299s][info][gc] GC(58) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.089s
+[21.300s][info][gc] GC(59) Minor Collection (Allocation Stall)
+[21.320s][info][gc] GC(59) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.019s
+[21.850s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 2.567ms
+[21.850s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 638.210ms
+[21.852s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 4.047ms
+[21.852s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 547.731ms
+[21.854s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 3.773ms
+[21.912s][info][gc] GC(60) Minor Collection (Allocation Rate)
+[22.091s][info][gc] GC(60) Minor Collection (Allocation Rate) 592M(96%)->584M(95%) 0.178s
+[22.091s][info][gc] GC(61) Minor Collection (Allocation Rate)
+[22.313s][info][gc] GC(61) Minor Collection (Allocation Rate) 584M(95%)->584M(95%) 0.223s
+[22.313s][info][gc] GC(53) Major Collection (Allocation Rate) 604M(98%)->584M(95%) 1.797s
+[22.322s][info][gc] GC(62) Major Collection (Allocation Rate)
+[22.518s][info][gc] GC(63) Minor Collection (Allocation Rate)
+[22.737s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 118.587ms
+[22.738s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 119.387ms
+[22.810s][info][gc] GC(63) Minor Collection (Allocation Rate) 600M(97%)->610M(99%) 0.292s
+[22.810s][info][gc] GC(64) Minor Collection (Allocation Rate)
+[22.942s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 113.645ms
+[22.942s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 53.522ms
+[22.990s][info][gc] GC(64) Minor Collection (Allocation Rate) 610M(99%)->606M(98%) 0.180s
+[22.990s][info][gc] GC(65) Minor Collection (Allocation Rate)
+[23.126s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 109.153ms
+[23.127s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 109.058ms
+[23.128s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.357ms
+[23.194s][info][gc] GC(65) Minor Collection (Allocation Rate) 606M(98%)->612M(99%) 0.204s
+[23.207s][info][gc] GC(66) Minor Collection (Allocation Stall)
+[23.248s][info][gc] GC(62) O: Relocation Stall (ZWorkerOld#0) 0.816ms
+[23.249s][info][gc] GC(62) O: Relocation Stall (ZWorkerOld#0) 0.995ms
+[23.249s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.263ms
+[23.250s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 42.942ms
+[23.250s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 42.999ms
+[23.253s][info][gc] GC(66) Minor Collection (Allocation Stall) 616M(100%)->610M(99%) 0.047s
+[23.308s][info][gc] GC(67) Minor Collection (Allocation Stall)
+[23.400s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 0.954ms
+[23.400s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 92.316ms
+[23.401s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.316ms
+[23.401s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 92.642ms
+[23.404s][info][gc] GC(67) Minor Collection (Allocation Stall) 616M(100%)->610M(99%) 0.096s
+[23.425s][info][gc] GC(68) Minor Collection (Allocation Stall)
+[23.511s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.090ms
+[23.512s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.203ms
+[23.512s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 87.538ms
+[23.512s][info][gc] GC(68) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.088s
+[23.512s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 87.586ms
+[23.521s][info][gc] GC(69) Minor Collection (Allocation Stall)
+[23.590s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 68.749ms
+[23.592s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.925ms
+[23.593s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.036ms
+[23.611s][info][gc] GC(69) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.090s
+[23.611s][info][gc] GC(70) Minor Collection (Allocation Stall)
+[23.635s][info][gc] GC(70) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.024s
+[23.991s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 469.781ms
+[23.991s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 384.292ms
+[24.042s][info][gc] GC(71) Minor Collection (Allocation Rate)
+[24.214s][info][gc] GC(71) Minor Collection (Allocation Rate) 596M(97%)->590M(96%) 0.172s
+[24.215s][info][gc] GC(72) Minor Collection (Allocation Rate)
+[24.428s][info][gc] GC(72) Minor Collection (Allocation Rate) 590M(96%)->606M(98%) 0.213s
+[24.428s][info][gc] GC(62) Major Collection (Allocation Rate) 588M(95%)->606M(98%) 2.106s
+[24.438s][info][gc] GC(73) Major Collection (Allocation Rate)
+[24.553s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 47.155ms
+[24.553s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 47.672ms
+[24.564s][info][gc] GC(74) Minor Collection (Allocation Stall)
+[24.733s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 37.937ms
+[24.734s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 0.416ms
+[24.734s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 37.276ms
+[24.800s][info][gc] GC(74) Minor Collection (Allocation Stall) 598M(97%)->614M(100%) 0.236s
+[24.808s][info][gc] GC(75) Minor Collection (Allocation Stall)
+[24.898s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 0.567ms
+[24.899s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.294ms
+[24.900s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 0.660ms
+[24.900s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.967ms
+[24.900s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 91.516ms
+[24.900s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 91.550ms
+[24.900s][info][gc] Relocation Stall (ForkJoinPool.commonPool-delayScheduler) 1.119ms
+[24.905s][info][gc] GC(75) Minor Collection (Allocation Stall) 616M(100%)->604M(98%) 0.097s
+[24.936s][info][gc] GC(76) Minor Collection (Allocation Stall)
+[25.049s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 1.180ms
+[25.049s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 112.555ms
+[25.049s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 112.820ms
+[25.051s][info][gc] GC(76) Minor Collection (Allocation Stall) 616M(100%)->614M(100%) 0.115s
+[25.097s][info][gc] GC(77) Minor Collection (Allocation Stall)
+[25.149s][info][gc] Relocation Stall (ForkJoinPool-1-worker-1) 1.252ms
+[25.149s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 52.042ms
+[25.149s][info][gc] Allocation Stall (ForkJoinPool-1-worker-1) 52.125ms
+[25.189s][info][gc] GC(77) Minor Collection (Allocation Stall) 616M(100%)->614M(100%) 0.092s
+[25.197s][info][gc] GC(78) Minor Collection (Allocation Stall)
+[25.249s][info][gc] Relocation Stall (ForkJoinPool-1-worker-2) 0.592ms
+[25.249s][info][gc] Allocation Stall (ForkJoinPool-1-worker-2) 52.121ms
+[25.302s][info][gc] GC(78) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.105s
+[25.302s][info][gc] GC(79) Minor Collection (Allocation Stall)
+[25.324s][info][gc] GC(79) Minor Collection (Allocation Stall) 616M(100%)->616M(100%) 0.022s

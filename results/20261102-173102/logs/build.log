@@ -1,0 +1,156 @@
+--progress is a global compose flag, better use `docker compose --progress xx build ...
+ Image bench/rust-axum Building 
+ Image bench/mock-api Building 
+ Image bench/go-fiber Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.59kB done
+#1 DONE 0.0s
+
+#2 [mock-api internal] load build definition from Dockerfile
+#2 transferring dockerfile: 255B done
+#2 DONE 0.0s
+
+#3 [go-fiber internal] load build definition from Dockerfile
+#3 transferring dockerfile: 290B done
+#3 DONE 0.0s
+
+#4 [rust-axum internal] load build definition from Dockerfile
+#4 transferring dockerfile: 346B done
+#4 DONE 0.0s
+
+#5 [mock-api internal] load metadata for docker.io/library/golang:1.27.3
+#5 DONE 0.0s
+
+#6 [rust-axum internal] load metadata for docker.io/library/rust:1.99.1-slim-bookworm
+#6 DONE 0.0s
+
+#7 [go-fiber internal] load metadata for gcr.io/distroless/static-debian12:latest
+#7 DONE 0.3s
+
+#8 [go-fiber internal] load .dockerignore
+#8 transferring context: 2B done
+#8 DONE 0.0s
+
+#9 [mock-api internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [rust-axum internal] load metadata for gcr.io/distroless/cc-debian12:latest
+#10 DONE 0.3s
+
+#11 [rust-axum internal] load .dockerignore
+#11 transferring context: 47B done
+#11 DONE 0.0s
+
+#12 [go-fiber build 1/6] FROM docker.io/library/golang:1.27.3@sha256:2920bb124f1a2e12a1d39f0cab756ae0068441ee1da7655dec7f5e374944095b
+#12 resolve docker.io/library/golang:1.27.3@sha256:2920bb124f1a2e12a1d39f0cab756ae0068441ee1da7655dec7f5e374944095b 0.0s done
+#12 DONE 0.0s
+
+#13 [go-fiber stage-1 1/2] FROM gcr.io/distroless/static-debian12:latest@sha256:d75cdd72874d4790092fcb1b058493ecf6bb5bf2b2b897045b00ff01d91843f2
+#13 resolve gcr.io/distroless/static-debian12:latest@sha256:d75cdd72874d4790092fcb1b058493ecf6bb5bf2b2b897045b00ff01d91843f2 0.0s done
+#13 DONE 0.1s
+
+#14 [go-fiber internal] load build context
+#14 transferring context: 81B done
+#14 DONE 0.0s
+
+#15 [mock-api internal] load build context
+#15 transferring context: 54B done
+#15 DONE 0.0s
+
+#16 [rust-axum build 1/5] FROM docker.io/library/rust:1.99.1-slim-bookworm@sha256:24707e70a4f1e23d9a7b25202ec43126d28a52294b96aad5c670df1fd1f1d400
+#16 resolve docker.io/library/rust:1.99.1-slim-bookworm@sha256:24707e70a4f1e23d9a7b25202ec43126d28a52294b96aad5c670df1fd1f1d400 0.0s done
+#16 DONE 0.1s
+
+#17 [rust-axum stage-1 1/2] FROM gcr.io/distroless/cc-debian12:latest@sha256:e5d81ddde149641e2a9ba55be4545bc125c67de07508b03ba4c22e6eb0ded5aa
+#17 resolve gcr.io/distroless/cc-debian12:latest@sha256:e5d81ddde149641e2a9ba55be4545bc125c67de07508b03ba4c22e6eb0ded5aa 0.0s done
+#17 DONE 0.1s
+
+#18 [rust-axum internal] load build context
+#18 transferring context: 117B done
+#18 DONE 0.0s
+
+#19 [mock-api build 3/4] COPY go.mod main.go ./
+#19 CACHED
+
+#20 [mock-api build 4/4] RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /app .
+#20 CACHED
+
+#21 [mock-api stage-1 2/2] COPY --from=build /app /app
+#21 CACHED
+
+#22 [go-fiber build 5/6] COPY main.go ./
+#22 CACHED
+
+#23 [mock-api build 2/6] WORKDIR /src
+#23 CACHED
+
+#24 [go-fiber build 3/6] COPY go.mod go.sum ./
+#24 CACHED
+
+#25 [go-fiber build 4/6] RUN go mod download
+#25 CACHED
+
+#26 [go-fiber build 6/6] RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /app .
+#26 CACHED
+
+#27 [go-fiber stage-1 2/2] COPY --from=build /app /app
+#27 CACHED
+
+#28 [rust-axum build 3/5] COPY Cargo.toml Cargo.lock ./
+#28 CACHED
+
+#29 [rust-axum build 2/5] WORKDIR /src
+#29 CACHED
+
+#30 [rust-axum build 5/5] RUN cargo build --release --locked
+#30 CACHED
+
+#31 [rust-axum build 4/5] COPY src ./src
+#31 CACHED
+
+#32 [rust-axum stage-1 2/2] COPY --from=build /src/target/release/rust-axum /app
+#32 CACHED
+
+#33 [rust-axum] exporting to image
+#33 exporting layers done
+#33 exporting manifest sha256:99311f01858259d7851bb9c7403f85a7c2f4e51526ed5eb8bd7a81b6abdde9d3 0.0s done
+#33 exporting config sha256:de0b068cbb847010ccdfe509432e4fb9c4f9b7b42680e1884a5f6e335ad18aa5 done
+#33 exporting attestation manifest sha256:bbdfe6ad13f9e6a10b0c86816799d3ac2d3539240a3870031e64e52f7470d81b
+#33 exporting attestation manifest sha256:bbdfe6ad13f9e6a10b0c86816799d3ac2d3539240a3870031e64e52f7470d81b 0.1s done
+#33 exporting manifest list sha256:a583b44a73bc3956c975a76765b0d120891faf523d2bdf5c09b52719daf68651 0.0s done
+#33 naming to docker.io/bench/rust-axum:latest done
+#33 unpacking to docker.io/bench/rust-axum:latest done
+#33 DONE 0.2s
+
+#34 [go-fiber] exporting to image
+#34 exporting layers done
+#34 exporting manifest sha256:c770b218fc7660aede13cf2b1d3f05d4d1ec4b65ae696886ee27274714722969 done
+#34 exporting config sha256:80864a6c97a22b84d5c4376f1152624dd2a447c6ac61d16a04198d18c4c14558 done
+#34 exporting attestation manifest sha256:048e9e8d37056ab4291a185c3506150c34bbc8eaacd9356949aca72ca6d4939f 0.1s done
+#34 exporting manifest list sha256:84324482de134a939d8fd8e3e52e309713414eaf64d1f05c3e7042f3974ce059 0.0s done
+#34 naming to docker.io/bench/go-fiber:latest done
+#34 unpacking to docker.io/bench/go-fiber:latest 0.0s done
+#34 DONE 0.2s
+
+#35 [mock-api] exporting to image
+#35 exporting layers done
+#35 exporting manifest sha256:877a8bb86d9b8ec1cfb4e38b0d863e676df71a2cf21faa510f4f7d5053556368 done
+#35 exporting config sha256:c8ebec5da56a56fcfbbfdfb89877e1a41b34bc2017b0828b36892c71fe992bf6 done
+#35 exporting attestation manifest sha256:b245d16e53755e79cdd960df3214c9976c77d9d28e07da39dff40c1530b079e5 0.1s done
+#35 exporting manifest list sha256:146aedaae1df40dedce79844dc27740f4a02a55122da012bf7cf01bee0f75ece 0.0s done
+#35 naming to docker.io/bench/mock-api:latest 0.0s done
+#35 unpacking to docker.io/bench/mock-api:latest 0.0s done
+#35 DONE 0.2s
+
+#36 [mock-api] resolving provenance for metadata file
+#36 DONE 0.1s
+
+#37 [go-fiber] resolving provenance for metadata file
+#37 DONE 0.0s
+
+#38 [rust-axum] resolving provenance for metadata file
+#38 DONE 0.0s
+ Image bench/rust-axum Built 
+ Image bench/mock-api Built 
+ Image bench/go-fiber Built 

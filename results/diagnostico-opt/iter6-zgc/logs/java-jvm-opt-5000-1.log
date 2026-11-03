@@ -1,0 +1,81 @@
+-XX:-AOTAdapterCaching -XX:-AOTInvokeDynamicLinking -XX:-AOTRecordTraining -XX:-AOTReplayTraining -XX:-AOTStubCaching -XX:InitialHeapSize=6815736 -XX:MaxHeapSize=751619276 -XX:MaxRAMPercentage=70.000000 -XX:MinHeapSize=6815736 -XX:+PrintCommandLineFlags -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:-THPStackMitigation -XX:-UseCompressedOops -XX:+UseZGC -XX:ZOldGCThreads=1 -XX:ZYoungGCThreads=1 
+[0.006s][info][gc] Using The Z Garbage Collector
+2026-11-02T19:33:59.906Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Starting BenchApplication v1.0.0 using Java 27 with PID 1 (/opt/app/app.jar started by root in /opt/app)
+2026-11-02T19:33:59.944Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : No active profile set, falling back to 1 default profile: "default"
+[1.037s][info][gc] GC(0) Major Collection (Warmup)
+[1.107s][info][gc] GC(0) Major Collection (Warmup) 72M(10%)->20M(3%) 0.070s
+2026-11-02T19:34:01.019Z  INFO 1 --- [java-spring] [           main] o.s.b.j.s.JettyServletWebServerFactory   : Server initialized with port: 8080
+2026-11-02T19:34:01.022Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : jetty-12.1.14; built: 2026-10-02T05:48:05.032Z; git: 15cecbd757a2f6b0fdc6a8944f4c6d0020b17da0; jvm 27+35
+2026-11-02T19:34:01.047Z  INFO 1 --- [java-spring] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1055 ms
+2026-11-02T19:34:01.086Z  INFO 1 --- [java-spring] [           main] o.e.j.session.DefaultSessionIdManager    : Session workerName=node0
+2026-11-02T19:34:01.091Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.handler.ContextHandler  : Started osbjs.JettyEmbeddedWebAppContext@97d0c06{application,/,b=file:///tmp/jetty-docbase.8080.10145196737206581664/,a=AVAILABLE,h=oeje11s.SessionHandler@5e7c141d{STARTED}}
+2026-11-02T19:34:01.091Z  INFO 1 --- [java-spring] [           main] o.e.j.e.servlet.ServletContextHandler    : Started osbjs.JettyEmbeddedWebAppContext@97d0c06{application,/,b=file:///tmp/jetty-docbase.8080.10145196737206581664/,a=AVAILABLE,h=oeje11s.SessionHandler@5e7c141d{STARTED}}
+2026-11-02T19:34:01.092Z  INFO 1 --- [java-spring] [           main] org.eclipse.jetty.server.Server          : Started oejs.Server@1305c126{STARTING}[12.1.14,sto=0] @70ms
+[2.062s][info][gc] GC(1) Major Collection (Metadata GC Threshold)
+[2.140s][info][gc] GC(1) Major Collection (Metadata GC Threshold) 90M(13%)->46M(6%) 0.078s
+2026-11-02T19:34:01.679Z  INFO 1 --- [java-spring] [           main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02T19:34:01.679Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-02T19:34:01.680Z  INFO 1 --- [java-spring] [           main] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-02T19:34:01.686Z  INFO 1 --- [java-spring] [           main] o.e.jetty.server.AbstractConnector       : Started oejs.ServerConnector@4214ae8f{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-11-02T19:34:01.688Z  INFO 1 --- [java-spring] [           main] o.s.boot.jetty.JettyWebServer            : Jetty started on port 8080 (http/1.1) with context path '/'
+2026-11-02T19:34:01.692Z  INFO 1 --- [java-spring] [           main] bench.BenchApplication                   : Started BenchApplication in 2.194 seconds (process running for 2.539)
+[4.492s][info][gc] GC(2) Major Collection (Warmup)
+[4.799s][info][gc] GC(2) Major Collection (Warmup) 144M(20%)->108M(15%) 0.308s
+[6.398s][info][gc] GC(3) Major Collection (Warmup)
+[6.835s][info][gc] GC(3) Major Collection (Warmup) 216M(30%)->192M(27%) 0.437s
+[11.605s][info][gc] GC(4) Minor Collection (Allocation Rate)
+[12.532s][info][gc] GC(4) Minor Collection (Allocation Rate) 568M(79%)->348M(48%) 0.927s
+[12.667s][info][gc] GC(5) Major Collection (Allocation Rate)
+[13.616s][info][gc] GC(5) Major Collection (Allocation Rate) 360M(50%)->340M(47%) 0.949s
+[14.249s][info][gc] GC(6) Minor Collection (Allocation Rate)
+[14.522s][info][gc] GC(6) Minor Collection (Allocation Rate) 396M(55%)->352M(49%) 0.273s
+[14.975s][info][gc] GC(7) Major Collection (Allocation Rate)
+[15.883s][info][gc] GC(7) Major Collection (Allocation Rate) 392M(55%)->382M(53%) 0.908s
+[17.156s][info][gc] GC(8) Minor Collection (Allocation Rate)
+[17.447s][info][gc] GC(8) Minor Collection (Allocation Rate) 484M(67%)->412M(57%) 0.290s
+[19.462s][info][gc] GC(9) Minor Collection (Allocation Rate)
+[20.072s][info][gc] GC(9) Minor Collection (Allocation Rate) 564M(79%)->500M(70%) 0.610s
+[20.072s][info][gc] GC(10) Major Collection (Allocation Rate)
+[20.850s][info][gc] GC(11) Minor Collection (Allocation Rate)
+[21.060s][info][gc] GC(11) Minor Collection (Allocation Rate) 538M(75%)->520M(72%) 0.210s
+[21.239s][info][gc] GC(10) Major Collection (Allocation Rate) 500M(70%)->358M(50%) 1.168s
+[24.138s][info][gc] GC(12) Major Collection (Allocation Rate)
+[25.216s][info][gc] GC(12) Major Collection (Allocation Rate) 560M(78%)->412M(57%) 1.078s
+[27.506s][info][gc] GC(13) Minor Collection (Allocation Rate)
+[27.971s][info][gc] GC(13) Minor Collection (Allocation Rate) 574M(80%)->392M(55%) 0.465s
+[30.644s][info][gc] GC(14) Minor Collection (Allocation Rate)
+[31.171s][info][gc] GC(14) Minor Collection (Allocation Rate) 578M(81%)->416M(58%) 0.526s
+[33.654s][info][gc] GC(15) Minor Collection (Allocation Rate)
+[34.284s][info][gc] GC(15) Minor Collection (Allocation Rate) 580M(81%)->436M(61%) 0.630s
+[36.069s][info][gc] GC(16) Major Collection (Allocation Rate)
+[36.889s][info][gc] GC(16) Major Collection (Allocation Rate) 564M(79%)->338M(47%) 0.820s
+[40.290s][info][gc] GC(17) Minor Collection (Allocation Rate)
+[40.816s][info][gc] GC(17) Minor Collection (Allocation Rate) 570M(79%)->332M(46%) 0.526s
+[44.436s][info][gc] GC(18) Minor Collection (Allocation Rate)
+[44.951s][info][gc] GC(18) Minor Collection (Allocation Rate) 582M(81%)->354M(49%) 0.514s
+[48.450s][info][gc] GC(19) Minor Collection (Allocation Rate)
+[49.043s][info][gc] GC(19) Minor Collection (Allocation Rate) 598M(83%)->364M(51%) 0.593s
+[52.049s][info][gc] GC(20) Minor Collection (Allocation Rate)
+[52.581s][info][gc] GC(20) Minor Collection (Allocation Rate) 584M(81%)->390M(54%) 0.532s
+[55.573s][info][gc] GC(21) Minor Collection (Allocation Rate)
+[56.155s][info][gc] GC(21) Minor Collection (Allocation Rate) 596M(83%)->414M(58%) 0.582s
+[58.890s][info][gc] GC(22) Major Collection (Allocation Rate)
+[59.807s][info][gc] GC(22) Major Collection (Allocation Rate) 592M(82%)->356M(50%) 0.917s
+[63.234s][info][gc] GC(23) Minor Collection (Allocation Rate)
+[63.721s][info][gc] GC(23) Minor Collection (Allocation Rate) 600M(84%)->330M(46%) 0.487s
+[67.432s][info][gc] GC(24) Minor Collection (Allocation Rate)
+[68.021s][info][gc] GC(24) Minor Collection (Allocation Rate) 598M(83%)->362M(50%) 0.589s
+[71.185s][info][gc] GC(25) Minor Collection (Allocation Rate)
+[71.701s][info][gc] GC(25) Minor Collection (Allocation Rate) 586M(82%)->380M(53%) 0.517s
+[74.943s][info][gc] GC(26) Minor Collection (Allocation Rate)
+[75.517s][info][gc] GC(26) Minor Collection (Allocation Rate) 598M(83%)->402M(56%) 0.574s
+[78.300s][info][gc] GC(27) Major Collection (Allocation Rate)
+[79.099s][info][gc] GC(27) Major Collection (Allocation Rate) 594M(83%)->354M(49%) 0.799s
+[82.439s][info][gc] GC(28) Minor Collection (Allocation Rate)
+[83.007s][info][gc] GC(28) Minor Collection (Allocation Rate) 596M(83%)->360M(50%) 0.568s
+[86.354s][info][gc] GC(29) Minor Collection (Allocation Rate)
+[86.869s][info][gc] GC(29) Minor Collection (Allocation Rate) 594M(83%)->382M(53%) 0.514s
+[90.064s][info][gc] GC(30) Minor Collection (Allocation Rate)
+[90.635s][info][gc] GC(30) Minor Collection (Allocation Rate) 598M(83%)->396M(55%) 0.570s
+[93.493s][info][gc] GC(31) Minor Collection (Allocation Rate)
+[94.020s][info][gc] GC(31) Minor Collection (Allocation Rate) 596M(83%)->390M(54%) 0.527s
