@@ -1,0 +1,7 @@
+FROM python:3.15.2-slim-bookworm
+ENV PYTHONUNBUFFERED=1
+COPY requirements.txt .
+RUN pip install --no-cache-dir --root-user-action=ignore --disable-pip-version-check -r requirements.txt
+COPY app.py .
+# Uma thread do sistema por requisição em andamento, criada sob demanda até o limite.
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8080", "--workers", "2", "--worker-class", "gthread", "--threads", "10000", "--worker-connections", "20000", "--backlog", "65535", "--keep-alive", "60"]

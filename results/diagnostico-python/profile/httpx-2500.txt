@@ -1,0 +1,13 @@
+N=2500 concluídas=2976 ideal≈20000 latência média=96.49s
+   List reduced from 394 to 10 due to restriction <10>
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+ 48234775   10.036    0.000   14.136    0.000 /usr/local/lib/python3.15/site-packages/httpcore/_async/connecti
+     1167    7.321    0.006   22.690    0.019 /usr/local/lib/python3.15/site-packages/httpcore/_async/connecti
+ 48182560    4.100    0.000    4.100    0.000 /usr/local/lib/python3.15/site-packages/httpcore/_async/http11.p
+   734151    0.191    0.000    0.709    0.000 /usr/local/lib/python3.15/site-packages/httpcore/_async/http11.p
+   734216    0.177    0.000    0.887    0.000 /usr/local/lib/python3.15/site-packages/httpcore/_async/connecti
+   734226    0.165    0.000    0.235    0.000 /usr/local/lib/python3.15/site-packages/httpcore/_async/connecti
+    36324    0.117    0.000    0.229    0.000 /usr/local/lib/python3.15/site-packages/anyio/abc/_sockets.py:14
+  1281392    0.095    0.000    0.095    0.000 /usr/local/lib/python3.15/site-packages/httpcore/_async/connecti
+   735303    0.091    0.000    0.091    0.000 {built-in method time.monotonic}
+   734151    0.070    0.000    0.070    0.000 /usr/local/lib/python3.15/site-packages/httpcore/_async/http11.p

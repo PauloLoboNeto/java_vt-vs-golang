@@ -172,3 +172,5 @@ A análise, as tabelas e os gráficos da rodada completa estão em [`docs/index.
 O Rust foi medido à parte, com o Go como controle, na rodada [`results/20261102-173102`](results/20261102-173102/report.md). Ele também atendeu aos três níveis com a mesma latência do Go, mas com cerca de 50% mais memória de pico e de 11% a 27% mais CPU por requisição. Esse resultado vale para esta stack, Axum com reqwest, não para a linguagem.
 
 A trilha otimizada, com carga por VUs e por taxa, está descrita em [`opt/README.md`](opt/README.md). Nela, todos os alvos atenderam a 10.000 VUs em 1 GB, sem erros, inclusive o Java, que falha na configuração padrão.
+
+A trilha Python, com cinco pilhas e o Go como controle, está descrita em [`python/README.md`](python/README.md). Só o aiohttp puro acompanhou o Go com 10.000 VUs, com 3,2 vezes a CPU por requisição.

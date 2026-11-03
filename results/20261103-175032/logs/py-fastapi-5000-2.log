@@ -1,0 +1,10 @@
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+INFO:     Started parent process [1]
+INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Started server process [8]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+started in 0.213 seconds
+started in 0.212 seconds
+INFO:     Application startup complete.

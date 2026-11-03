@@ -23,6 +23,11 @@ TARGETS = {
     "rust-axum-opt": ("rust-opt", 8088),
     "java-native-g1": ("native-g1", 8089),
     "java-jvm-zgc": ("jvm-zgc", 8090),
+    "py-fastapi": ("py-fastapi", 8091),
+    "py-aiohttp": ("py-aiohttp", 8092),
+    "py-fastapi-aiohttp": ("py-fastapi-aiohttp", 8095),
+    "py-flask-gevent": ("py-flask-gevent", 8093),
+    "py-flask-threads": ("py-flask-threads", 8094),
 }
 READY_TIMEOUT_S = 60
 

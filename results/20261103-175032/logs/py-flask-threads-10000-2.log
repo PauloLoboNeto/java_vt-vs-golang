@@ -1,0 +1,148 @@
+[2026-11-03 20:11:03 +0000] [1] [INFO] Starting gunicorn 26.2.0
+[2026-11-03 20:11:03 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)
+[2026-11-03 20:11:03 +0000] [1] [INFO] Using worker: gthread
+[2026-11-03 20:11:03 +0000] [7] [INFO] Booting worker with pid: 7
+[2026-11-03 20:11:03 +0000] [8] [INFO] Booting worker with pid: 8
+started in 0.120 seconds
+started in 0.100 seconds
+[2026-11-03 20:11:03 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+[2026-11-03 20:11:11 +0000] [1] [ERROR] Worker (pid:8) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:11 +0000] [8271] [INFO] Booting worker with pid: 8271
+[2026-11-03 20:11:11 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.164 seconds
+[2026-11-03 20:11:16 +0000] [1] [ERROR] Worker (pid:7) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:16 +0000] [12407] [INFO] Booting worker with pid: 12407
+[2026-11-03 20:11:16 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.125 seconds
+[2026-11-03 20:11:22 +0000] [1] [ERROR] Worker (pid:8271) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:22 +0000] [16527] [INFO] Booting worker with pid: 16527
+[2026-11-03 20:11:22 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.138 seconds
+[2026-11-03 20:11:27 +0000] [1] [ERROR] Worker (pid:12407) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:27 +0000] [20668] [INFO] Booting worker with pid: 20668
+[2026-11-03 20:11:27 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.148 seconds
+[2026-11-03 20:11:32 +0000] [1] [ERROR] Worker (pid:16527) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:32 +0000] [24792] [INFO] Booting worker with pid: 24792
+[2026-11-03 20:11:32 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.130 seconds
+[2026-11-03 20:11:38 +0000] [1] [ERROR] Worker (pid:20668) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:38 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+[2026-11-03 20:11:38 +0000] [28911] [INFO] Booting worker with pid: 28911
+started in 0.188 seconds
+[2026-11-03 20:11:44 +0000] [1] [ERROR] Worker (pid:24792) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:44 +0000] [33030] [INFO] Booting worker with pid: 33030
+[2026-11-03 20:11:44 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.160 seconds
+[2026-11-03 20:11:49 +0000] [1] [ERROR] Worker (pid:28911) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:49 +0000] [37149] [INFO] Booting worker with pid: 37149
+[2026-11-03 20:11:49 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.129 seconds
+[2026-11-03 20:11:55 +0000] [1] [ERROR] Worker (pid:33030) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:11:55 +0000] [41270] [INFO] Booting worker with pid: 41270
+[2026-11-03 20:11:55 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.161 seconds
+[2026-11-03 20:12:00 +0000] [1] [ERROR] Worker (pid:37149) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:00 +0000] [45590] [INFO] Booting worker with pid: 45590
+[2026-11-03 20:12:00 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.122 seconds
+[2026-11-03 20:12:05 +0000] [1] [ERROR] Worker (pid:41270) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:05 +0000] [49786] [INFO] Booting worker with pid: 49786
+[2026-11-03 20:12:05 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.140 seconds
+[2026-11-03 20:12:10 +0000] [1] [ERROR] Worker (pid:45590) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:10 +0000] [53905] [INFO] Booting worker with pid: 53905
+[2026-11-03 20:12:10 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.151 seconds
+[2026-11-03 20:12:15 +0000] [1] [ERROR] Worker (pid:49786) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:15 +0000] [58024] [INFO] Booting worker with pid: 58024
+[2026-11-03 20:12:15 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.127 seconds
+[2026-11-03 20:12:21 +0000] [1] [ERROR] Worker (pid:53905) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:21 +0000] [62144] [INFO] Booting worker with pid: 62144
+[2026-11-03 20:12:21 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.153 seconds
+[2026-11-03 20:12:26 +0000] [1] [ERROR] Worker (pid:58024) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:26 +0000] [66263] [INFO] Booting worker with pid: 66263
+[2026-11-03 20:12:26 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.153 seconds
+[2026-11-03 20:12:31 +0000] [1] [ERROR] Worker (pid:62144) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:31 +0000] [70401] [INFO] Booting worker with pid: 70401
+[2026-11-03 20:12:31 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.146 seconds
+[2026-11-03 20:12:37 +0000] [1] [ERROR] Worker (pid:66263) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:37 +0000] [74540] [INFO] Booting worker with pid: 74540
+[2026-11-03 20:12:37 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.147 seconds
+[2026-11-03 20:12:48 +0000] [1] [ERROR] Worker (pid:74540) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:48 +0000] [78660] [INFO] Booting worker with pid: 78660
+[2026-11-03 20:12:48 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.144 seconds
+[2026-11-03 20:12:53 +0000] [1] [ERROR] Worker (pid:70401) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:53 +0000] [82908] [INFO] Booting worker with pid: 82908
+[2026-11-03 20:12:53 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.159 seconds
+[2026-11-03 20:12:59 +0000] [1] [ERROR] Worker (pid:78660) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:12:59 +0000] [87125] [INFO] Booting worker with pid: 87125
+[2026-11-03 20:12:59 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.150 seconds
+[2026-11-03 20:13:04 +0000] [1] [ERROR] Worker (pid:82908) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:04 +0000] [91244] [INFO] Booting worker with pid: 91244
+[2026-11-03 20:13:04 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.136 seconds
+[2026-11-03 20:13:09 +0000] [1] [ERROR] Worker (pid:87125) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:09 +0000] [95363] [INFO] Booting worker with pid: 95363
+[2026-11-03 20:13:09 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.151 seconds
+[2026-11-03 20:13:14 +0000] [1] [ERROR] Worker (pid:91244) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:14 +0000] [99475] [INFO] Booting worker with pid: 99475
+[2026-11-03 20:13:14 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.143 seconds
+[2026-11-03 20:13:20 +0000] [1] [ERROR] Worker (pid:95363) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:20 +0000] [103587] [INFO] Booting worker with pid: 103587
+[2026-11-03 20:13:20 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.147 seconds
+[2026-11-03 20:13:25 +0000] [1] [ERROR] Worker (pid:99475) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:25 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+[2026-11-03 20:13:25 +0000] [107715] [INFO] Booting worker with pid: 107715
+started in 0.135 seconds
+[2026-11-03 20:13:30 +0000] [1] [ERROR] Worker (pid:103587) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:30 +0000] [111833] [INFO] Booting worker with pid: 111833
+[2026-11-03 20:13:30 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.143 seconds
+[2026-11-03 20:13:36 +0000] [1] [ERROR] Worker (pid:107715) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:36 +0000] [115951] [INFO] Booting worker with pid: 115951
+[2026-11-03 20:13:36 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.126 seconds
+[2026-11-03 20:13:41 +0000] [1] [ERROR] Worker (pid:111833) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:41 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+[2026-11-03 20:13:41 +0000] [120070] [INFO] Booting worker with pid: 120070
+started in 0.183 seconds
+[2026-11-03 20:13:46 +0000] [1] [ERROR] Worker (pid:115951) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:46 +0000] [124190] [INFO] Booting worker with pid: 124190
+[2026-11-03 20:13:46 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.145 seconds
+[2026-11-03 20:13:51 +0000] [1] [ERROR] Worker (pid:120070) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:51 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+[2026-11-03 20:13:51 +0000] [128309] [INFO] Booting worker with pid: 128309
+started in 0.133 seconds
+[2026-11-03 20:13:57 +0000] [1] [ERROR] Worker (pid:124190) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:13:57 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+[2026-11-03 20:13:57 +0000] [132424] [INFO] Booting worker with pid: 132424
+started in 0.130 seconds
+[2026-11-03 20:14:17 +0000] [1] [ERROR] Worker (pid:128309) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:14:17 +0000] [136322] [INFO] Booting worker with pid: 136322
+[2026-11-03 20:14:17 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.201 seconds
+[2026-11-03 20:14:24 +0000] [1] [ERROR] Worker (pid:136322) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:14:24 +0000] [140661] [INFO] Booting worker with pid: 140661
+[2026-11-03 20:14:24 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.132 seconds
+[2026-11-03 20:14:29 +0000] [1] [ERROR] Worker (pid:132424) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:14:29 +0000] [144859] [INFO] Booting worker with pid: 144859
+[2026-11-03 20:14:29 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.160 seconds
+[2026-11-03 20:14:35 +0000] [1] [ERROR] Worker (pid:140661) was sent SIGKILL! Perhaps out of memory?
+[2026-11-03 20:14:35 +0000] [148982] [INFO] Booting worker with pid: 148982
+[2026-11-03 20:14:35 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
+started in 0.134 seconds

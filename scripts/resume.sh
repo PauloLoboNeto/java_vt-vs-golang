@@ -37,7 +37,8 @@ for ((rep = 1; rep <= REPS; rep++)); do
   done
 done
 
-docker compose --profile go-opt --profile jvm-opt --profile native-opt --profile rust-opt \
-  --profile native-g1 --profile jvm-zgc --profile tools down >/dev/null 2>&1
+docker compose --profile go --profile go-opt --profile jvm-opt --profile native-opt --profile rust-opt \
+  --profile native-g1 --profile jvm-zgc --profile py-fastapi --profile py-fastapi-aiohttp --profile py-aiohttp --profile py-flask-gevent \
+  --profile py-flask-threads --profile tools down >/dev/null 2>&1
 .venv/bin/python report/generate.py "$DIR"
 echo "concluído: $DIR"

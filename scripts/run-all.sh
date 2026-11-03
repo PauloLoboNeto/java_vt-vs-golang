@@ -47,6 +47,7 @@ for t in $TARGETS; do
     rust-axum-opt) profiles+=(--profile rust-opt) ;;
     java-native-g1) profiles+=(--profile native-g1) ;;
     java-jvm-zgc) profiles+=(--profile jvm-zgc) ;;
+    py-fastapi|py-fastapi-aiohttp|py-aiohttp|py-flask-gevent|py-flask-threads) profiles+=(--profile "$t") ;;
     *) echo "alvo desconhecido: $t" >&2; exit 2 ;;
   esac
 done
@@ -92,7 +93,7 @@ for ((rep = 1; rep <= REPS; rep++)); do
   done
 done
 
-docker compose --profile go --profile jvm --profile native --profile rust --profile go-opt --profile jvm-opt --profile native-opt --profile rust-opt --profile native-g1 --profile jvm-zgc --profile tools down >/dev/null 2>&1
+docker compose --profile go --profile jvm --profile native --profile rust --profile go-opt --profile jvm-opt --profile native-opt --profile rust-opt --profile native-g1 --profile jvm-zgc --profile py-fastapi --profile py-fastapi-aiohttp --profile py-aiohttp --profile py-flask-gevent --profile py-flask-threads --profile tools down >/dev/null 2>&1
 
 # Sem matplotlib o relatório sai só com as tabelas.
 PY=python3

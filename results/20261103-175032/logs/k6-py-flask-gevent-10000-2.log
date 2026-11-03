@@ -1,0 +1,5 @@
+ Container bench-k6 Creating 
+ Container bench-k6 Created 
+time="2026-11-03T20:09:05Z" level=warning msg="Request Failed" error="unexpected EOF"
+time="2026-11-03T20:10:09Z" level=warning msg="Request Failed" error="unexpected EOF"
+alvo=http://py-flask-gevent:8080/api/io vus=10000 reqs=298453 erros=2 rps=1658.1/2000 descartadas=0 p50=5797.978878 p99=7976.3639685 max=10595.191253

@@ -1,0 +1,3 @@
+ Container bench-k6 Creating 
+ Container bench-k6 Created 
+alvo=http://py-flask-gevent:8080/api/io vus=1000 reqs=35980 erros=0 rps=199.9/200 descartadas=0 p50=5002.7512635 p99=5008.19839503 max=5043.64164

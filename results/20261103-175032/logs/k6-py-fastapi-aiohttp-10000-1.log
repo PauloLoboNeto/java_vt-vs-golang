@@ -1,0 +1,3 @@
+ Container bench-k6 Creating 
+ Container bench-k6 Created 
+alvo=http://py-fastapi-aiohttp:8080/api/io vus=10000 reqs=348746 erros=0 rps=1937.5/2000 descartadas=0 p50=5049.868963 p99=5909.3383856499995 max=6179.4734

@@ -1,0 +1,33 @@
+{
+  "target_url": "http://py-aiohttp:8080/api/io",
+  "vus": 1000,
+  "warmup_s": 30,
+  "duration_s": 180,
+  "window_start_ms": 1793733499959,
+  "window_end_ms": 1793733679959,
+  "requests": 35989,
+  "errors": 0,
+  "errors_transport": 0,
+  "error_rate": 0,
+  "rps": 199.9388888888889,
+  "ideal_rps": 200,
+  "mode": "vus",
+  "dropped_iterations": 0,
+  "latency_ms": {
+    "avg": 5001.611317606576,
+    "min": 5000.366631,
+    "p50": 5001.614283,
+    "p90": 5002.1115094,
+    "p95": 5002.2337334,
+    "p99": 5002.45336708,
+    "max": 5002.918937
+  },
+  "http_req_blocked_ms": {
+    "p99": 0.15367146999999967,
+    "max": 8.313026
+  },
+  "http_req_connecting_ms": {
+    "p99": 0.10540323999999962,
+    "max": 8.275321
+  }
+}

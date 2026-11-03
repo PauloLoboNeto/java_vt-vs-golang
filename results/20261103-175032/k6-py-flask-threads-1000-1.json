@@ -1,0 +1,33 @@
+{
+  "target_url": "http://py-flask-threads:8080/api/io",
+  "vus": 1000,
+  "warmup_s": 30,
+  "duration_s": 180,
+  "window_start_ms": 1793730070988,
+  "window_end_ms": 1793730250988,
+  "requests": 35979,
+  "errors": 0,
+  "errors_transport": 0,
+  "error_rate": 0,
+  "rps": 199.88333333333333,
+  "ideal_rps": 200,
+  "mode": "vus",
+  "dropped_iterations": 0,
+  "latency_ms": {
+    "avg": 5002.479123666481,
+    "min": 5000.930171,
+    "p50": 5002.334661,
+    "p90": 5003.0347438,
+    "p95": 5003.4421972,
+    "p99": 5006.75259394,
+    "max": 5047.247082
+  },
+  "http_req_blocked_ms": {
+    "p99": 0.14851915999999835,
+    "max": 10.776495
+  },
+  "http_req_connecting_ms": {
+    "p99": 0.10243691999999978,
+    "max": 10.744772
+  }
+}

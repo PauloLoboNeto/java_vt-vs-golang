@@ -1,0 +1,8 @@
+[2026-11-03 20:52:02 +0000] [1] [INFO] Starting gunicorn 26.2.0
+[2026-11-03 20:52:02 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)
+[2026-11-03 20:52:02 +0000] [1] [INFO] Using worker: gthread
+[2026-11-03 20:52:02 +0000] [6] [INFO] Booting worker with pid: 6
+[2026-11-03 20:52:02 +0000] [7] [INFO] Booting worker with pid: 7
+started in 0.117 seconds
+started in 0.108 seconds
+[2026-11-03 20:52:02 +0000] [1] [INFO] Control socket listening at /root/.gunicorn/gunicorn.ctl
