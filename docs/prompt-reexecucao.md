@@ -46,7 +46,7 @@ Serve só para detectar erros grosseiros. Não misture com os novos resultados. 
 ## Entrega
 1. Escreva `results/<timestamp>/analise.md` e regenere o relatório com `.venv/bin/python report/generate.py results/<timestamp>`.
 2. Compacte o diretório em `results-<timestamp>.tgz`, na raiz do projeto.
-3. Copie o relatório para `docs/resultados-<timestamp>.html`. **Não sobrescreva `docs/index.html` nem o pacote da rodada anterior.**
+3. Copie o relatório para `docs/resultados-<timestamp>.html`. **Não sobrescreva `docs/index.html` nem o pacote da rodada anterior.** O `docs/index.html` é gerado por `report/site.py` a partir das rodadas de referência; só mude essas referências e o texto de `site.py` se eu pedir.
 4. Antes de publicar, procure credenciais nos arquivos e no pacote.
 5. Faça commit em uma branch nova, faça push e abra um pull request para `main`. Não faça merge. Se o SSH falhar por chave de host desconhecida, use HTTPS com `gh auth git-credential`, configurado só neste repositório.
 6. Envie a mensagem final com:

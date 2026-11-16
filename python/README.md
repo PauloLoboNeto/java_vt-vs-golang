@@ -47,4 +47,4 @@ TARGETS="go-fiber py-fastapi py-fastapi-aiohttp py-aiohttp py-flask-gevent py-fl
 
 ## Resultado
 
-A análise está em [`results/20261103-175032`](../results/20261103-175032/report.md). Com 10.000 VUs, só o aiohttp puro ficou no nível do Go em latência e throughput, com 3,2 vezes a CPU por requisição. FastAPI + httpx teve 100% de erros já com 5.000 VUs, por causa do pool de conexões do `httpcore`. Trocar só o cliente pelo do aiohttp resolve os erros.
+A análise está em [`results/20261103-175032`](../results/20261103-175032/report.md), e o resumo junto com as outras linguagens, em [`docs/index.html`](../docs/index.html#python). Com 10.000 VUs, só o aiohttp puro ficou no nível do Go em latência e throughput, com 3,2 vezes a CPU por requisição. FastAPI + httpx teve 100% de erros já com 5.000 VUs, por causa do pool de conexões do `httpcore`. Trocar só o cliente pelo do aiohttp resolve os erros.

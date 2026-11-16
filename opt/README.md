@@ -18,6 +18,8 @@ Os dois vieram de rodadas com 10.000 VUs e valem para qualquer projeto com muita
 - **Limite do `VirtualThreadPool`:** o padrão é de 200 tarefas simultâneas. Com 5 s de espera, isso dá só 40 req/s.
 - **`headerCacheSize`:** o cache de cabeçalhos é por conexão e consome cerca de 100 KB em cada uma. Aqui está desligado.
 
+A lista completa das mudanças do Java, arquivo por arquivo, com os valores padrão, a sequência de diagnósticos que levou a cada uma e o código do `JettyConfig`, está no [README principal](../README.md#java-otimizado-do-tomcat-ao-jetty) e em [`docs/index.html`](../docs/index.html#jetty).
+
 ## O que estes ajustes custam
 
 - **Cabeçalhos:** os limites de 2 KiB são adequados a este teste, mas podem rejeitar requisições reais com cookies ou tokens grandes.
@@ -26,7 +28,9 @@ Os dois vieram de rodadas com 10.000 VUs e valem para qualquer projeto com muita
 
 ## Resultado
 
-Com 10.000 VUs, todos os alvos atenderam sem erros em 1 GB, mas o Native com Serial ficou em 82,5% do ideal. A análise está em [`results/20261102-215054`](../results/20261102-215054/report.md), e a carga de 100 req/s, em [`results/20261102-195930`](../results/20261102-195930/report.md).
+Com 10.000 VUs, todos os alvos atenderam sem erros em 1 GB, mas o Native com Serial ficou em 82,5% do ideal. A análise está em [`results/20261102-215054`](../results/20261102-215054/report.md).
+
+A carga constante de 100 req/s, com os 10 alvos padrão e otimizados, está em [`results/20261102-195930`](../results/20261102-195930/report.md). Com cerca de 500 chamadas em andamento, todos atenderam sem erros e sem iterações descartadas. Ela mede o custo em carga leve, não a capacidade: o Java otimizado usou menos memória que o padrão, mas mais CPU por requisição. A diferença entre carga por VUs e por taxa está explicada no [README principal](../README.md#modos-de-carga-vus-e-taxa).
 
 ## Como executar
 
